@@ -1,0 +1,28 @@
+<% layout('./layouts/boilerplate') %>
+
+    <div class="card col-6 offset-3 my-4">
+        <img src=" <%= theCampground.image %>  " class="card-img-top" alt="...">
+        <div class="card-body">
+            <h4 class="card-title">
+                <%= theCampground.title %>
+                    </h3>
+                    <h5>$
+                        <%= theCampground.price %> /night
+                    </h5>
+                    <h6 class="text-muted">
+                        <%= theCampground.location %>
+                    </h6>
+                    <p class="card-text">
+                        Description:
+                        <%= theCampground.description %>
+                    </p>
+
+
+                    <a class="btn btn-info my-3" href="/campgrounds/<%= theCampground._id %>/edit">  Edit this camp  </a>
+                    <a class="btn btn-info my-3" href="/campgrounds">   All campgrounds  </a>
+                    <form class="d-inline" action="/campgrounds/<%= theCampground._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger my-3">Delete</button>
+                    </form>
+        </div>
+        <div class="card-footer text-muted ">&copy; Yelp_Camps</div>
+    </div>
