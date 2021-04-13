@@ -1,15 +1,17 @@
 const express = require('express')
+const app = express()
 const path = require('path')
 const methodOverRide = require('method-override')
 const mongoose = require('mongoose')
 const ejsMate = require('ejs-mate')
-const app = express()
-const seedDB = require('./seeds/index')
+const seedDB = require('./seeds/index.js')
 const session = require('express-session')
 const sessionConfig = { secret: 'secret', resave: false, saveUninitialized: false }
 const flash = require('connect-flash')
 const appError = require('./tools/appError')
 const campgroundRoutes = require('./routes/campgroundRoutes')
+const loginRoutes = require('./routes/loginRoutes')
+const signupRoutes = require('./routes/signupRoutes')
 
 
 
@@ -40,10 +42,12 @@ app.use(flash())
 app.use((req, res, next) => {
     res.locals.success = req.flash('success')
     res.locals.danger = req.flash('danger')
+    next();
 })
 
 app.use('/campgrounds', campgroundRoutes)
-
+app.use('/login', loginRoutes)
+app.use('/signup', signupRoutes)
 
 app.all('*', (req, res, next) => {
     throw new appError('Not Found', 404)

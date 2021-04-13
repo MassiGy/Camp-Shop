@@ -1,0 +1,36 @@
+<% layout('./layouts/boilerplate') %>
+    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 22rem; margin: auto; ">
+        <img src="https://images.unsplash.com/photo-1476041800959-2f6bb412c8ce?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" class="card-img-top">
+        <div class="card-body">
+
+            <form action="/login" method="post" class="needs-validation" novalidate>
+                <label for="username">Username :</label>
+                <div class="input-group mb-3">
+                    <input required name="user[username]" id="username" type="text" class="form-control" placeholder="Username" aria-label="image" aria-describedby="basic-addon1" autofocus>
+                    <div class="valid-feedback">Looks Good!</div>
+                    <div class="invalid-feedback">Please enter a valid username</div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email :</label>
+                    <input type="email" class="form-control " id="email" name="user[email]" placeholder="Email" required>
+                    <div class="valid-feedback">Looks Good!</div>
+                    <div class="invalid-feedback">
+                        Please enter a valid email
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">password :</label>
+                    <input type="password" class="form-control " id="email" name="user[password]" placeholder="Password" required>
+                    <div class="valid-feedback">Looks Good!</div>
+                    <div class="invalid-feedback">
+                        Please enter a valid email
+                    </div>
+                </div>
+
+
+                <button class="btn btn-success my-3"><i class="fas fa-user-check"></i> login</button>
+            </form>
+
+        </div>
+    </div>
