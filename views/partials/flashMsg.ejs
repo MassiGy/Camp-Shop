@@ -1,14 +1,24 @@
 <% if(danger && danger.length){ %>
-    <div class="alert alert-danger alert-dissmissible" role="alert">
-        <h3 class="alert-heading text-center">
+    <div class="alert alert-danger alert-alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <h4 class="alert-heading text-center py-0">
             <%= danger %>
-        </h3>
+        </h4>
     </div>
     <% } %>
         <% if(success && success.length){ %>
-            <div class="alert alert-danger alert-dissmissible" role="alert">
-                <h3 class="alert-heading text-center">
+            <div class="alert alert-success alert-alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <h4 class="alert-heading text-center py-0">
                     <%= success%>
-                </h3>
+                </h4>
             </div>
             <% } %>
+                <% if(passport && passport.length){ %>
+                    <div class="alert alert-danger alert-alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <h4 class="alert-heading text-center py-0">
+                            <%= passport %>
+                        </h4>
+                    </div>
+                    <% } %>

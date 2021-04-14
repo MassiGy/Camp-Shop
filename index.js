@@ -5,10 +5,14 @@ const methodOverRide = require('method-override')
 const mongoose = require('mongoose')
 const ejsMate = require('ejs-mate')
 const seedDB = require('./seeds/index.js')
+const flash = require('connect-flash')
 const session = require('express-session')
 const sessionConfig = { secret: 'secret', resave: false, saveUninitialized: false }
-const flash = require('connect-flash')
 const appError = require('./tools/appError')
+const passport = require('passport')
+const localStrategy = require('passport-local');
+const passportLM = require('passport-local-mongoose')
+const User = require('./modals/user')
 const campgroundRoutes = require('./routes/campgroundRoutes')
 const loginRoutes = require('./routes/loginRoutes')
 const signupRoutes = require('./routes/signupRoutes')
@@ -32,7 +36,11 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(session(sessionConfig))
 app.use(flash())
-
+app.use(passport.initialize())
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()))
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
 
 
 
@@ -42,6 +50,8 @@ app.use(flash())
 app.use((req, res, next) => {
     res.locals.success = req.flash('success')
     res.locals.danger = req.flash('danger')
+    res.locals.passport = req.flash('error')
+    isSignedIn = req.session.isSignedIn
     next();
 })
 

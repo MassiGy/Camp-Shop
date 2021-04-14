@@ -1,10 +1,10 @@
 const express = require('express')
-const router = express.Router()
+const router = express.Router();
+const catchAsync = require('../tools/catchAsync')
 const signupControllers = require('./Controllers/signupControllers')
 
-
 router.get('/', signupControllers.renderSignupForm)
-router.post('/', signupControllers.postSignup)
+router.post('/', catchAsync(signupControllers.postSignup))
 
 
 
