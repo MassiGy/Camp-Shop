@@ -1,0 +1,64 @@
+@import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-image: url('https://images.unsplash.com/photo-1476041800959-2f6bb412c8ce?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80') no-repeat !important;
+    background: rgb(2, 0, 36) !important;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(2, 2, 19, 1) 61%, rgba(0, 212, 255, 1) 100%) !important;
+    font-family: sans-serif !important;
+    background-size: cover !important;
+}
+
+.login-box {
+    width: 280px !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    color: white !important;
+}
+
+.login-box h1 {
+    float: left !important;
+    font-size: 40px !important;
+    border-bottom: 6px solid #4caf50 !important;
+    margin-bottom: 50px !important;
+    padding: 13px 0 !important;
+}
+
+.textbox {
+    width: 100% !important;
+    overflow: hidden !important;
+    font-size: 20px !important;
+    padding: 8px 0 !important;
+    margin: 8px 0 !important;
+    border-bottom: 1px solid #4caf50 !important;
+}
+
+.textbox i {
+    width: 26px !important;
+    float: left !important;
+    text-align: center !important;
+}
+
+.textbox input {
+    border: none !important;
+    outline: none !important;
+    background: none !important;
+    color: white !important;
+    font-size: 18px !important;
+    width: 80%;
+    float: left;
+    margin: 0 10px !important;
+}
+
+.btn {
+    width: 100% !important;
+    background: none !important;
+    border: 2px solid #4caf50 !important;
+    color: white !important;
+    padding: 5px !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    margin: 12px 0 !important;
+}

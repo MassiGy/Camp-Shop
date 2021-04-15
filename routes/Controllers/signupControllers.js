@@ -15,8 +15,7 @@ module.exports.postSignup = async(req, res) => {
     dataValidator(userValidator, req.body);
     const { email, username, password } = req.body.user;
     const fetchedUser = await User.findOne({ username })
-    const secondFetchedUser = await User.findOne({ email })
-    if (!fetchedUser && !secondFetchedUser) {
+    if (!fetchedUser) {
         const newUser = await new User({ email, username });
         const newSignup = await User.register(newUser, password)
         req.session.isSignedIn = newSignup.username

@@ -7,7 +7,6 @@ const ejsMate = require('ejs-mate')
 const seedDB = require('./seeds/index.js')
 const flash = require('connect-flash')
 const session = require('express-session')
-const sessionConfig = { secret: 'secret', resave: false, saveUninitialized: false }
 const appError = require('./tools/appError')
 const passport = require('passport')
 const localStrategy = require('passport-local');
@@ -33,9 +32,20 @@ app.use(methodOverRide('_method'))
 app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
-app.use(session(sessionConfig))
+app.use('/public', express.static('public'))
 app.use(flash())
+
+const sessionConfig = {
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false,
+    Cookie: {
+        httpOnly: true,
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    }
+
+}
+app.use(session(sessionConfig))
 app.use(passport.initialize())
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()))
@@ -58,6 +68,14 @@ app.use((req, res, next) => {
 app.use('/campgrounds', campgroundRoutes)
 app.use('/login', loginRoutes)
 app.use('/signup', signupRoutes)
+
+
+
+
+
+
+
+
 
 app.all('*', (req, res, next) => {
     throw new appError('Not Found', 404)

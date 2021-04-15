@@ -1,22 +1,32 @@
-<% layout('./layouts/boilerplate') %>
+<title>Camps Shop</title>
+<%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="../public/styles/campgrounds.css">
+    </head>
 
+    <body>
+        <%- include('./partials/navbar.ejs') %>
 
-
-    <div class="row">
-        <% for(let campground of campgrounds) {%>
-            <div class="col-md-4 ">
-                <div class="card my-5 shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
-                    <img src=" <%= campground.image %>  " class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <%=campground.title %>
-                        </h5>
-                        <p class="card-text text-muted">
-                            <%= campground.location %>
-                        </p>
-                        <a href="campgrounds/<%= campground._id %>" class="btn btn-success">View <%= campground.title %> </a>
+            <div class="row">
+                <% for(let campground of campgrounds) {%>
+                    <div class="col-md-4 ">
+                        <div class="card my-5 shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem; height: 20rem;">
+                            <img src=" <%= campground.image %>  " class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%=campground.title %>
+                                </h5>
+                                <p class="card-text text-muted">
+                                    <%= campground.location %>
+                                </p>
+                                <a href="campgrounds/<%= campground._id %>" class="btn btn-outline-success btn-sm ">
+                                    <%= campground.title %>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <% } %>
             </div>
-            <% } %>
-    </div>
+
+
+    </body>
+    <%- include('./partials/buttom.ejs') %>
