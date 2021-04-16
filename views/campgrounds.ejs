@@ -4,12 +4,40 @@
     </head>
 
     <body>
-        <%- include('./partials/navbar.ejs') %>
+        <div class="hero-image" id="first">
+            <div class="hero-text">
+                <h1>Camp Shop</h1>
+                <h4>Find, Post, Review Campgrounds For Free!</h4>
+            </div>
+        </div>
+        <nav class="navbar">
+            <div class="navbar-nav">
+                <ul class="nav-item">
 
-            <div class="row">
+                    <li class="nav-link"><a href="/home"><i class="mx-4 fas fa-home"></i></a> </li>
+                    <li class="nav-link"> <a href="/campgrounds"><i class="mx-4 fas fa-campground"></i></a></li>
+                    <li class="nav-link"> <a href="/login"><i class="mx-4 fas fa-user-check"></i></a></li>
+                    <li class="nav-link"> <a href="/Signup"><i class="mx-4 fas fa-user-plus"></i></a></li>
+                    <li class="nav-link"> <a href="/Signout"><i class="mx-4 fas fa-user-minus"></i></a></li>
+
+                </ul>
+            </div>
+        </nav>
+        <main>
+            <div class="mx-5 flashMsg">
+                <%- include('./partials/flashMsg.ejs') %>
+            </div>
+            <div class="search-box">
+                <form class="search-section" action="/campgrounds/search" method="POST">
+                    <input type="text" placeholder="City, State" name="searchedInput" id="searchedInput" autofocus>
+                    <button id="searchIcon"><i  class="fas fa-search "></i></button>
+                </form>
+            </div>
+
+            <div class="row pt-5">
                 <% for(let campground of campgrounds) {%>
-                    <div class="col-md-4 ">
-                        <div class="card my-5 shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem; height: 20rem;">
+                    <div class="col-xs-6 col-lg-4 ">
+                        <div class="card my-5 shadow-lg p-3  mb-5 bg-body rounded" style="width: 18rem; height: 20rem;">
                             <img src=" <%= campground.image %>  " class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">
@@ -18,7 +46,7 @@
                                 <p class="card-text text-muted">
                                     <%= campground.location %>
                                 </p>
-                                <a href="campgrounds/<%= campground._id %>" class="btn btn-outline-success btn-sm ">
+                                <a href="campgrounds/<%= campground._id %>" class="btn btn-outline-success btn-sm mb-1 ">
                                     <%= campground.title %>
                                 </a>
                             </div>
@@ -26,7 +54,16 @@
                     </div>
                     <% } %>
             </div>
+        </main>
+        <div class="bottumPage">
+            <a href="/home"><i class="mx-4 fas fa-home"></i></a>
 
+            <a href="/campgrounds"><i class="mx-4 fas fa-campground"></i></a>
 
+            <a href="/campgrounds/new"><i class="mx-4 fas fa-map-marked-alt"></i></a>
+            <a href="/login"><i class="mx-4 fas fa-user-check"></i></a>
+            <a href="/Signup"><i class=" mx-4 fas fa-user-plus"></i></a>
+            <a href="/Signout"><i class=" mx-4 fas fa-user-minus"></i></a>
+        </div>
     </body>
     <%- include('./partials/buttom.ejs') %>

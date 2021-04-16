@@ -59,7 +59,7 @@ router.patch('/:id', validateCamp, catchAsync(campgroundControllers.postEditCamp
 
 router.delete('/:id', catchAsync(campgroundControllers.deleteCamp))
 
-
+router.post('/search', catchAsync(campgroundControllers.search))
 
 
 module.exports = router;

@@ -21,8 +21,8 @@ db.once('open', function() {
 const sample = array => array[Math.floor(Math.random() * array.length)]
 
 const seedDB = async() => {
-    await Campground.deleteMany({})
-    for (let i = 0; i < 12; i++) {
+    // await Campground.deleteMany({})
+    for (let i = 0; i < 3; i++) {
         const rand1000 = Math.floor(Math.random() * 1000)
         let camp = new Campground({
             title: `${sample(descriptors)} ${sample(places)}`,

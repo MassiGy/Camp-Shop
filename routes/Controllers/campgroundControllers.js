@@ -32,9 +32,23 @@ module.exports.postEditCamp = async(req, res) => {
 
 }
 
+
+
 module.exports.deleteCamp = async(req, res) => {
     let { id } = req.params;
     await Campground.findByIdAndDelete(id)
     req.flash('success', 'Successfully Deleted Campground')
     res.redirect(`/campgrounds`)
+}
+
+
+module.exports.search = async(req, res) => {
+    const { searchedInput } = req.body
+    const campgrounds = await Campground.find({ location: searchedInput })
+    if (campgrounds.length > 0) {
+        res.render('campgrounds.ejs', { campgrounds })
+    } else {
+        req.flash('danger', 'Not Found (Please Insert Location As : City, State)');
+        res.redirect('/campgrounds')
+    }
 }
