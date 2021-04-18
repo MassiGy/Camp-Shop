@@ -1,24 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const catchAsync = require('../tools/catchAsync')
-const appError = require('../tools/appError')
-const { campValidator } = require('../tools/validators')
 const campgroundControllers = require('./Controllers/campgroundControllers')
+const { isLoggedIn } = require('./middelwares/authMiddelwares')
 
 
 
 
 
 
-const validateCamp = (req, res, next) => {
-    const { error } = campValidator.validate(req.body)
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new appError(msg, 400)
-    } else {
-        next()
-    }
-}
 
 
 
@@ -29,11 +19,11 @@ const validateCamp = (req, res, next) => {
 
 router.get('/', catchAsync(campgroundControllers.allCamps))
 
-router.get('/new', campgroundControllers.renderNewForm)
+router.get('/new', isLoggedIn, campgroundControllers.renderNewForm)
 
 router.get('/:id', catchAsync(campgroundControllers.showPage))
 
-router.get('/:id/edit', catchAsync(campgroundControllers.renderEditForm))
+router.get('/:id/edit', isLoggedIn, catchAsync(campgroundControllers.renderEditForm))
 
 
 
@@ -53,11 +43,11 @@ router.get('/:id/edit', catchAsync(campgroundControllers.renderEditForm))
 
 
 
-router.post('/new', validateCamp, catchAsync(campgroundControllers.postNewCamp))
+router.post('/new', isLoggedIn, catchAsync(campgroundControllers.postNewCamp))
 
-router.patch('/:id', validateCamp, catchAsync(campgroundControllers.postEditCamp))
+router.patch('/:id', isLoggedIn, catchAsync(campgroundControllers.postEditCamp))
 
-router.delete('/:id', catchAsync(campgroundControllers.deleteCamp))
+router.delete('/:id', isLoggedIn, catchAsync(campgroundControllers.deleteCamp))
 
 router.post('/search', catchAsync(campgroundControllers.search))
 

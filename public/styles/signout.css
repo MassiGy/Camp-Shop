@@ -8,7 +8,7 @@ body {
     background-size: cover !important;
 }
 
-.login-box {
+.signout-box {
     width: 280px !important;
     position: absolute !important;
     top: 50% !important;
@@ -17,7 +17,7 @@ body {
     color: white !important;
 }
 
-.login-box h1 {
+.signout-box h1 {
     float: left !important;
     font-size: 40px !important;
     border-bottom: 6px solid #f07c00 !important;
@@ -49,6 +49,10 @@ body {
     width: 80%;
     float: left;
     margin: 0 10px !important;
+}
+
+.textbox input::placeholder {
+    color: blanchedalmond;
 }
 
 .btn {

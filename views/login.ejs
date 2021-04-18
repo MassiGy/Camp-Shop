@@ -12,21 +12,23 @@
 <%- include('./partials/navbar.ejs') %>
 
     <body>
-        <form action="/login" method="post">
-            <div class="login-box">
-                <h1>Login</h1>
-                <div class="textbox ">
-                    <i class="fas fa-user"></i>
-                    <input type="text" placeholder="Username" name="user[username]" required autofocus>
-                </div>
+        <%- include('./partials/flashMsg.ejs') %>
 
-                <div class="textbox">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" name="user[password]" required>
-                </div>
-                <button class="btn btn-outline-success my-3"><i class="fas fa-user-check"></i> login</button>
+            <form action="/login" method="post">
+                <div class="login-box">
+                    <h1>Login</h1>
+                    <div class="textbox ">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Username" name="username" required autofocus>
+                    </div>
 
-        </form>
+                    <div class="textbox">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" name="password" required>
+                    </div>
+                    <button class="btn btn-outline-success my-3"><i class="fas fa-user-check"></i> login</button>
+
+            </form>
 
 
     </body>

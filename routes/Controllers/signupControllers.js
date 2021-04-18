@@ -16,7 +16,7 @@ module.exports.postSignup = async(req, res) => {
     const { email, username, password } = req.body.user;
     const fetchedUser = await User.findOne({ username })
     if (!fetchedUser) {
-        const newUser = await new User({ email, username });
+        const newUser = new User({ email, username });
         const newSignup = await User.register(newUser, password)
         req.session.isSignedIn = newSignup.username
         req.login(newSignup, (err) => {
@@ -28,12 +28,7 @@ module.exports.postSignup = async(req, res) => {
             res.redirect('/campgrounds')
         })
     } else {
-        if (fetchedUser) {
-            req.flash('danger', 'Username  Already taken')
-        }
-        if (secondFetchedUser) {
-            req.flash('danger', ' Email Already taken ')
-        }
+        req.flash('danger', 'Username  Already taken')
         res.redirect('/Signup')
     }
 }

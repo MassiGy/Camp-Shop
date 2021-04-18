@@ -16,14 +16,21 @@
 
                     <li class="nav-link"><a href="/home"><i class="mx-4 fas fa-home"></i></a> </li>
                     <li class="nav-link"> <a href="/campgrounds"><i class="mx-4 fas fa-campground"></i></a></li>
-                    <li class="nav-link"> <a href="/login"><i class="mx-4 fas fa-user-check"></i></a></li>
-                    <li class="nav-link"> <a href="/Signup"><i class="mx-4 fas fa-user-plus"></i></a></li>
-                    <li class="nav-link"> <a href="/Signout"><i class="mx-4 fas fa-user-minus"></i></a></li>
+                    <li class="nav-link"> <a href="/campgrounds/new"><i class="mx-4 fas fa-map-marked-alt"></i></a></li>
+                    <% if(!activeUser){ %>
+                        <li class="nav-link"> <a href="/login"><i class="mx-4 fas fa-user-check"></i></a></li>
+                        <li class="nav-link"> <a href="/Signup"><i class="mx-4 fas fa-user-plus"></i></a></li>
+                        <% }else{ %>
+                            <li class="nav-link"><a href="/Logout"><i class="mx-4 fas fa-sign-out-alt"></i></a></li>
+                            <li class="nav-link"> <a href="/Signout"><i class="mx-4 fas fa-user-minus"></i></a></li>
+                            <% } %>
 
                 </ul>
             </div>
         </nav>
         <main>
+
+
             <div class="mx-5 flashMsg">
                 <%- include('./partials/flashMsg.ejs') %>
             </div>
@@ -57,13 +64,13 @@
         </main>
         <div class="bottumPage">
             <a href="/home"><i class="mx-4 fas fa-home"></i></a>
-
             <a href="/campgrounds"><i class="mx-4 fas fa-campground"></i></a>
 
             <a href="/campgrounds/new"><i class="mx-4 fas fa-map-marked-alt"></i></a>
             <a href="/login"><i class="mx-4 fas fa-user-check"></i></a>
             <a href="/Signup"><i class=" mx-4 fas fa-user-plus"></i></a>
             <a href="/Signout"><i class=" mx-4 fas fa-user-minus"></i></a>
+            <a id="last" href="#first"> <i class="fas fa-arrow-up"></i></a>
         </div>
     </body>
     <%- include('./partials/buttom.ejs') %>

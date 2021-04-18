@@ -9,5 +9,4 @@ router.get('/', loginControllers.renderLoginForm)
 router.post('/', passport.authenticate('local', passportAuthConfig), catchAsync(loginControllers.postLogin))
 
 
-
 module.exports = router;

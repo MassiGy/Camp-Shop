@@ -15,6 +15,8 @@ const User = require('./modals/user')
 const campgroundRoutes = require('./routes/campgroundRoutes')
 const loginRoutes = require('./routes/loginRoutes')
 const signupRoutes = require('./routes/signupRoutes')
+const otherRoutes = require('./routes/otherRoutes')
+const signoutRoutes = require('./routes/signoutRoutes')
 
 
 
@@ -33,7 +35,6 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/public', express.static('public'))
-app.use(flash())
 
 const sessionConfig = {
     secret: 'secret',
@@ -46,6 +47,7 @@ const sessionConfig = {
 
 }
 app.use(session(sessionConfig))
+app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()))
@@ -61,14 +63,17 @@ app.use((req, res, next) => {
     res.locals.success = req.flash('success')
     res.locals.danger = req.flash('danger')
     res.locals.passport = req.flash('error')
-    isSignedIn = req.session.isSignedIn
+    res.locals.activeUser = req.user;
+    isSignedIn = req.session.isSignedIn;
+    previousUrl = req.session.previousUrl;
     next();
 })
 
 app.use('/campgrounds', campgroundRoutes)
-app.use('/login', loginRoutes)
 app.use('/signup', signupRoutes)
-
+app.use('/login', loginRoutes)
+app.use('/signout', signoutRoutes)
+app.use('/', otherRoutes)
 
 
 

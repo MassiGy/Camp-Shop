@@ -1,6 +1,5 @@
 const Campground = require('../../modals/campground');
 
-
 module.exports.allCamps = async(req, res) => {
     const campgrounds = await Campground.find({});
     res.render('campgrounds.ejs', { campgrounds })

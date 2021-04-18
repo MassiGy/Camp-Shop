@@ -17,16 +17,23 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/campgrounds/new"><i class="fas fa-map-marked-alt"></i> Add Camp</a>
+
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login"><i class="fas fa-user-check"></i> Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Signup"><i class="fas fa-user-plus"></i> Signup</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Signout"><i class="fas fa-user-minus"></i> Signout</a>
-                        </li>
+                        <% if(!activeUser){ %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login"><i class="fas fa-user-check"></i> Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Signup"><i class="fas fa-user-plus"></i> Signup</a>
+                            </li>
+                            <% }else{ %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Signout"><i class="fas fa-user-minus"></i> Signout</a>
+                                </li>
+                                <% } %>
 
 
 
