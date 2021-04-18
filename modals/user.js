@@ -1,3 +1,4 @@
+const { array } = require('joi');
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const passportLM = require('passport-local-mongoose')
@@ -19,16 +20,18 @@ userSchema.plugin(passportLM)
 
 
 
-const User = mongoose.model('User', userSchema)
 
 userSchema.post('findOneAndDelete', async(doc) => {
-    req.session.isSignedIn = null;
-    Campground.deleteMany({
-        _id: {
-            $in: doc.postedCampgrounds
-        }
-    })
+    if (doc.postedCampgrounds.length > 0) {
+        await Campground.deleteMany({
+            _id: {
+                $in: doc.postedCampgrounds
+            }
+        })
+    }
+
 })
 
+const User = mongoose.model('User', userSchema)
 
 module.exports = User;
