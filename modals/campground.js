@@ -24,10 +24,10 @@ const campgroundSchema = new Schema({
     image: {
         type: String,
     },
-    author: [{
+    author: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-    }, ]
+    },
 })
 
 

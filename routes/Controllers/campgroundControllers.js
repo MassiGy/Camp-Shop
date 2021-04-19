@@ -17,10 +17,11 @@ module.exports.showPage = async(req, res) => {
     res.render('theCampground.ejs', { theCampground })
 }
 module.exports.postNewCamp = async(req, res) => {
-    await Campground.insertMany(req.body.campground)
-    const newCampground = await Campground.findOne(req.body.campground);
+    const newCamp = await new Campground(req.body.campground);
+    newCamp.author = req.user._id;
+    await newCamp.save();
     req.flash('success', 'Successfully Created Campground');
-    res.redirect(`/campgrounds/${newCampground._id}`)
+    res.redirect(`/campgrounds/${newCamp._id}`)
 }
 
 module.exports.postEditCamp = async(req, res) => {
