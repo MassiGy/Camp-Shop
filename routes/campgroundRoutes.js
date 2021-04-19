@@ -28,26 +28,11 @@ router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(campgroundControllers.r
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 router.post('/new', isLoggedIn, catchAsync(campgroundControllers.postNewCamp))
 
-router.patch('/:id', isLoggedIn, catchAsync(campgroundControllers.postEditCamp))
+router.patch('/:id', isLoggedIn, isAuthor, catchAsync(campgroundControllers.postEditCamp))
 
-router.delete('/:id', isLoggedIn, catchAsync(campgroundControllers.deleteCamp))
+router.delete('/:id', isLoggedIn, isAuthor, catchAsync(campgroundControllers.deleteCamp))
 
 router.post('/search', catchAsync(campgroundControllers.search))
 

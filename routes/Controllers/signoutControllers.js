@@ -1,4 +1,5 @@
 const User = require('../../modals/user')
+const { userValidator, dataValidator } = require('../../tools/validators')
 
 
 module.exports.renderSignoutForm = (req, res) => {
@@ -11,6 +12,7 @@ module.exports.renderSignoutForm = (req, res) => {
 }
 
 module.exports.signout = async(req, res) => {
+    dataValidator(userValidator, req.body.user)
     const foundUser = await User.findOne({ username: req.body.user.username })
     if (!foundUser) {
         req.flash('danger', 'There Is No SignedIn User With That Credentials')

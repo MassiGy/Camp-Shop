@@ -1,5 +1,5 @@
 const Campground = require('../../modals/campground');
-
+const { dataValidator, campValidator } = require('../../tools/validators')
 module.exports.allCamps = async(req, res) => {
     const campgrounds = await Campground.find({});
     res.render('campgrounds.ejs', { campgrounds })
@@ -17,6 +17,7 @@ module.exports.showPage = async(req, res) => {
     res.render('theCampground.ejs', { theCampground })
 }
 module.exports.postNewCamp = async(req, res) => {
+    dataValidator(campValidator, req.body.campground);
     const newCamp = await new Campground(req.body.campground);
     newCamp.author = req.user._id;
     await newCamp.save();
@@ -25,6 +26,7 @@ module.exports.postNewCamp = async(req, res) => {
 }
 
 module.exports.postEditCamp = async(req, res) => {
+    dataValidator(campValidator, req.body.campground);
     let { id } = req.params;
     let theCampToEdit = await Campground.findByIdAndUpdate(id, req.body.campground, { runValidators: true })
     req.flash('success', 'Successfully Uptaded Campground')
