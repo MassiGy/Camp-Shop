@@ -1,37 +1,83 @@
 <title>
 
-    About Campground</title>
+    About This Camp</title>
 <%- include('./partials/head.ejs') %>
     </head>
 
     <body>
         <%- include('./partials/navbar.ejs') %>
+            <div class="row">
+                <div class="card col-4  offset-2 my-4 ">
+                    <img src=" <%= theCampground.image %>  " class="card-img-top">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <%= theCampground.title %>
+                                </h3>
+                                <h5>$
+                                    <%= theCampground.price %> /night
+                                </h5>
+                                <h6 class="text-muted">
+                                    <%= theCampground.location %>
+                                </h6>
+                                <p class="card-text">
+                                    Description:
+                                    <%= theCampground.description %>
+                                </p>
 
-            <div class="card col-6 offset-3 my-4">
-                <img src=" <%= theCampground.image %>  " class="card-img-top">
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <%= theCampground.title %>
-                            </h3>
-                            <h5>$
-                                <%= theCampground.price %> /night
-                            </h5>
-                            <h6 class="text-muted">
-                                <%= theCampground.location %>
-                            </h6>
-                            <p class="card-text">
-                                Description:
-                                <%= theCampground.description %>
-                            </p>
-
-
-                            <a class="btn btn-outline-info my-3" href="/campgrounds/<%= theCampground._id %>/edit">  Edit Camp  </a>
-                            <a class="btn btn-outline-info my-3" href="/campgrounds">All Camps  </a>
-                            <form class="d-inline" action="/campgrounds/<%= theCampground._id %>?_method=DELETE" method="POST">
-                                <button class="btn btn-outline-danger my-3">Delete</button>
-                            </form>
+                                <% if(activeUser && activeUser._id.equals(theCampground.author)){ %>
+                                    <a class="btn btn-outline-info my-3" href="/campgrounds/<%= theCampground._id %>/edit">  Edit Camp  </a>
+                                    <a class="btn btn-outline-info my-3" href="/campgrounds">All Camps  </a>
+                                    <form class="d-inline" action="/campgrounds/<%= theCampground._id %>?_method=DELETE" method="POST">
+                                        <button class="btn btn-outline-danger my-3">Delete</button>
+                                    </form>
+                                    <% } %>
+                    </div>
                 </div>
+                <div class="card col-4  my-4 mx-5 ">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h5>Leave a Review</h5>
+                        </div>
+                        <form class="form-groupe" action="/campground/<%= theCampground._id %>/review/new" method="post">
+                            <div class="input-groupe my-3">
+                                <label class="form-label" for="rating">Mark/5 :</label>
+                                <br>
+
+                                <input type="range" min="0" max="5" name="review[rating]" id="rating" class="form-range" style="width: 30%;" value="0">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="review[reviewBody]">Poste Your Review</label>
+                                <textarea class="form-control" name="review[reviewBody]" id="review[reviewBody]" cols="60" rows="3"></textarea>
+                            </div>
+                            <button class="btn btn-outline-success my-3 ">Post</button>
+
+                        </form>
+
+                    </div>
+                </div>
+
             </div>
+            <div class="col-6 offset-3 text-centred">
+                <% for(let review of theCampground.reviews){ %>
+                    <div class="card  my-3  shadow rounded">
+                        <div class="card-body">
+                            <h5>Mark :
+                                <%= review.rating %>
+                            </h5>
+                            <p>
+                                <h6>Review Text :</h6>
+                                <%= review.reviewBody %>
+                            </p>
+                        </div>
+                        <div class="m-3">
+                            <form action="/campground/<%= theCampground._id %>/review/<%= review._id %>?_method=DELETE" method="post">
+                                <button class="btn btn-outline-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+
 
     </body>
     <%- include('./partials/buttom.ejs') %>

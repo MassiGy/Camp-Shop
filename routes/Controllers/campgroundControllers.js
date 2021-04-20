@@ -1,7 +1,8 @@
 const Campground = require('../../modals/campground');
+const User = require('../../modals/user');
 const { dataValidator, campValidator } = require('../../tools/validators')
 module.exports.allCamps = async(req, res) => {
-    const campgrounds = await Campground.find({});
+    const campgrounds = await Campground.find({}).populate('reviews');
     res.render('campgrounds.ejs', { campgrounds })
 }
 module.exports.renderNewForm = (req, res) => {
@@ -13,20 +14,24 @@ module.exports.renderEditForm = async(req, res) => {
 }
 
 module.exports.showPage = async(req, res) => {
-    const theCampground = await Campground.findById(req.params.id)
+    const theCampground = await Campground.findById(req.params.id).populate('reviews')
     res.render('theCampground.ejs', { theCampground })
 }
 module.exports.postNewCamp = async(req, res) => {
-    dataValidator(campValidator, req.body.campground);
+    dataValidator(campValidator, req.body);
     const newCamp = await new Campground(req.body.campground);
     newCamp.author = req.user._id;
     await newCamp.save();
+    const user = await User.findOne(req.user);
+    user.postedCampgrounds.push(newCamp);
+    await user.save()
+    console.log(user)
     req.flash('success', 'Successfully Created Campground');
     res.redirect(`/campgrounds/${newCamp._id}`)
 }
 
 module.exports.postEditCamp = async(req, res) => {
-    dataValidator(campValidator, req.body.campground);
+    dataValidator(campValidator, req.body);
     let { id } = req.params;
     let theCampToEdit = await Campground.findByIdAndUpdate(id, req.body.campground, { runValidators: true })
     req.flash('success', 'Successfully Uptaded Campground')

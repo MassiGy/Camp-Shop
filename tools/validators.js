@@ -49,7 +49,12 @@ module.exports.userValidator = joi.object({
 
 })
 
-
+module.exports.reviewValidator = joi.object({
+    review: joi.object({
+        rating: joi.number().min(0).max(5).required(),
+        reviewBody: joi.string().required().escapeHTML(),
+    }).required()
+})
 
 module.exports.dataValidator = (modelValidators, data) => {
     let { error } = modelValidators.validate(data);

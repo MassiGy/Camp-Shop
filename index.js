@@ -17,6 +17,7 @@ const loginRoutes = require('./routes/loginRoutes')
 const signupRoutes = require('./routes/signupRoutes')
 const otherRoutes = require('./routes/otherRoutes')
 const signoutRoutes = require('./routes/signoutRoutes')
+const reviewRoutes = require('./routes/reviewRoutes')
 
 
 
@@ -74,7 +75,7 @@ app.use('/signup', signupRoutes)
 app.use('/login', loginRoutes)
 app.use('/signout', signoutRoutes)
 app.use('/', otherRoutes)
-
+app.use('/campground/:id/review', reviewRoutes)
 
 
 

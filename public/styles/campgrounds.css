@@ -149,7 +149,8 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
-.flashMsg {
+
+/* .flashMsg {
     width: 800px;
 }
 
@@ -158,7 +159,7 @@ body::-webkit-scrollbar-thumb {
         width: 300px;
         margin-right: 60px !important;
     }
-}
+} */
 
 @media screen and (min-width: 800px) {
     .bottumPage {

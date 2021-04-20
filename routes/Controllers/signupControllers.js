@@ -12,7 +12,7 @@ module.exports.renderSignupForm = (req, res) => {
 
 
 module.exports.postSignup = async(req, res) => {
-    dataValidator(userValidator, req.body.user);
+    dataValidator(userValidator, req.body);
     const { email, username, password } = req.body.user;
     const fetchedUser = await User.findOne({ username })
     if (!fetchedUser) {

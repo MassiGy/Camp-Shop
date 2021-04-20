@@ -20,7 +20,6 @@ userSchema.plugin(passportLM)
 
 
 
-
 userSchema.post('findOneAndDelete', async(doc) => {
     if (doc.postedCampgrounds.length > 0) {
         await Campground.deleteMany({
@@ -31,7 +30,6 @@ userSchema.post('findOneAndDelete', async(doc) => {
     }
 
 })
-
 const User = mongoose.model('User', userSchema)
 
 module.exports = User;

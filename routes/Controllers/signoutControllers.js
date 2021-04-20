@@ -12,7 +12,7 @@ module.exports.renderSignoutForm = (req, res) => {
 }
 
 module.exports.signout = async(req, res) => {
-    dataValidator(userValidator, req.body.user)
+    dataValidator(userValidator, req.body)
     const foundUser = await User.findOne({ username: req.body.user.username })
     if (!foundUser) {
         req.flash('danger', 'There Is No SignedIn User With That Credentials')
