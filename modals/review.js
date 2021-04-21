@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const User = require('./user');
 
 
 const reviewSchema = new Schema({
@@ -21,5 +20,4 @@ const reviewSchema = new Schema({
 })
 
 
-const Review = mongoose.model('Review', reviewSchema)
-module.exports = Review;
+module.exports = mongoose.model('Review', reviewSchema)

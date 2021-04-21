@@ -30,6 +30,10 @@ const seedDB = async() => {
             description: 'a good place to rest!',
             image: 'https://source.unsplash.com/collection/483251/1600x900',
             price: rand1000 / 10,
+            author: "60808d6903847a313057c721",
+
+
+
         })
         await camp.save()
     }

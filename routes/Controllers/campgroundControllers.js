@@ -1,6 +1,9 @@
 const Campground = require('../../modals/campground');
 const User = require('../../modals/user');
 const { dataValidator, campValidator } = require('../../tools/validators')
+
+
+
 module.exports.allCamps = async(req, res) => {
     const campgrounds = await Campground.find({}).populate('reviews');
     res.render('campgrounds.ejs', { campgrounds })
@@ -15,19 +18,31 @@ module.exports.renderEditForm = async(req, res) => {
 
 module.exports.showPage = async(req, res) => {
     const theCampground = await Campground.findById(req.params.id).populate('reviews')
-    res.render('theCampground.ejs', { theCampground })
+        .then(() => {
+            res.render('theCampground.ejs', { theCampground })
+        })
+        .catch(e => {
+            req.flash('danger', e)
+            res.redirect('/campgrounds')
+        })
 }
 module.exports.postNewCamp = async(req, res) => {
     dataValidator(campValidator, req.body);
-    const newCamp = await new Campground(req.body.campground);
-    newCamp.author = req.user._id;
-    await newCamp.save();
-    const user = await User.findOne(req.user);
-    user.postedCampgrounds.push(newCamp);
-    await user.save()
-    console.log(user)
-    req.flash('success', 'Successfully Created Campground');
-    res.redirect(`/campgrounds/${newCamp._id}`)
+    try {
+        const newCamp = await new Campground(req.body.campground);
+        newCamp.author = req.user._id;
+        const user = await User.findOne(req.user);
+        user.postedCampgrounds.push(newCamp);
+
+        await newCamp.save();
+        await user.save()
+        req.flash('success', 'Successfully Created Campground');
+        res.redirect(`/campgrounds/${newCamp._id}`)
+    } catch (err) {
+        req.flash('danger', err)
+        res.redirect('/campgrounds/new')
+    }
+
 }
 
 module.exports.postEditCamp = async(req, res) => {
@@ -44,8 +59,15 @@ module.exports.postEditCamp = async(req, res) => {
 module.exports.deleteCamp = async(req, res) => {
     let { id } = req.params;
     await Campground.findByIdAndDelete(id)
-    req.flash('success', 'Successfully Deleted Campground')
-    res.redirect(`/campgrounds`)
+        .then(() => {
+
+            req.flash('success', 'Successfully Deleted Campground')
+            res.redirect(`/campgrounds`)
+        })
+        .catch((e) => {
+            req.flash('danger', e);
+            res.redirect('/campgrounds')
+        })
 }
 
 

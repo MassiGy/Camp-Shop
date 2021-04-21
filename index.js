@@ -71,11 +71,11 @@ app.use((req, res, next) => {
 })
 
 app.use('/campgrounds', campgroundRoutes)
+app.use('/campgrounds/:id/reviews', reviewRoutes)
 app.use('/signup', signupRoutes)
 app.use('/login', loginRoutes)
 app.use('/signout', signoutRoutes)
 app.use('/', otherRoutes)
-app.use('/campground/:id/review', reviewRoutes)
 
 
 
