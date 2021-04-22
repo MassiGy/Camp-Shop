@@ -15,27 +15,21 @@ module.exports.postSignup = async(req, res) => {
     dataValidator(userValidator, req.body);
     const { email, username, password } = req.body.user;
     const fetchedUser = await User.findOne({ username })
-        .then(async() => {
-            if (!fetchedUser) {
-                const newUser = new User({ email, username });
-                const newSignup = await User.register(newUser, password)
-                req.session.isSignedIn = newSignup.username
-                req.login(newSignup, (err) => {
-                    if (err) {
-                        req.flash('danger', err);
-                        res.redirect('/campgrounds')
-                    }
-                    req.flash('success', 'Successfully SignedIn & LoggedIn')
-                    res.redirect('/campgrounds')
-                })
-            } else {
-                req.flash('danger', 'Username  Already taken')
-                res.redirect('/Signup')
+    if (!fetchedUser) {
+        const newUser = new User({ email, username });
+        const newSignup = await User.register(newUser, password)
+        req.session.isSignedIn = newSignup.username
+        req.login(newSignup, (err) => {
+            if (err) {
+                req.flash('danger', err);
+                res.redirect('/campgrounds')
             }
+            req.flash('success', 'Successfully SignedIn & LoggedIn')
+            res.redirect('/campgrounds')
+        })
+    } else {
+        req.flash('danger', 'Username  Already taken')
+        res.redirect('/Signup')
+    }
 
-        })
-        .catch(e => {
-            req.flash('danger', e.message)
-            res.redirect('/signup')
-        })
 }

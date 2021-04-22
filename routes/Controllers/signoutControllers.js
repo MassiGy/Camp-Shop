@@ -14,20 +14,14 @@ module.exports.renderSignoutForm = (req, res) => {
 module.exports.signout = async(req, res) => {
     dataValidator(userValidator, req.body)
     const foundUser = await User.findOne({ username: req.body.user.username })
-        .then(async() => {
-            if (!foundUser) {
-                req.flash('danger', 'There Is No SignedIn User With That Credentials')
-                res.redirect('/signout')
-            } else {
-                await User.findOneAndDelete({ username: req.body.user.username })
-                req.session.isSignedIn = null;
-                req.flash('success', 'Successfully Signed Out, GoodBy!')
-                res.redirect('/campgrounds')
-            }
-        })
-        .catch(e => {
-            req.flash('danger', e.message)
-            res.redirect('/campgrounds')
-        })
+    if (!foundUser) {
+        req.flash('danger', 'There Is No SignedIn User With That Credentials')
+        res.redirect('/signout')
+    } else {
+        await User.findOneAndDelete({ username: req.body.user.username })
+        req.session.isSignedIn = null;
+        req.flash('success', 'Successfully Signed Out, GoodBy!')
+        res.redirect('/campgrounds')
+    }
 
 }

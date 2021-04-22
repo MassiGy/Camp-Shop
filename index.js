@@ -24,10 +24,10 @@ const signoutRoutes = require('./routes/signoutRoutes')
 const reviewRoutes = require('./routes/reviewRoutes')
 const dbUrl = process.env.dataBaseUrl
 const sessionName = process.env.sessionName
-const sessionSecret = process.env.sessionSecret
+const sessionSecret = process.env.sessionSecret || 'changeMe'
 const sessionConfig = {
-    name: sessionName,
     secret: sessionSecret,
+    name: sessionName,
     resave: false,
     saveUninitialized: false,
     Cookie: {

@@ -14,22 +14,25 @@
     <body>
         <%- include('./partials/flashMsg.ejs') %>
 
-            <form action="/login" method="post">
+            <form action="/login" method="post" class="needs-validation" novalidate>
                 <div class="login-box">
                     <h1>Login</h1>
-                    <div class="textbox ">
+                    <div class="textbox">
                         <i class="fas fa-user"></i>
                         <input type="text" placeholder="Username" name="username" required autofocus>
+                        <div class="valid-feedback">Looks Good!</div>
+                        <div class="invalid-feedback">Invalid Username</div>
                     </div>
 
                     <div class="textbox">
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Password" name="password" required>
+                        <div class="valid-feedback">Looks Good!</div>
+                        <div class="invalid-feedback">Invalid Password</div>
                     </div>
                     <button class="btn btn-outline-success my-3"><i class="fas fa-user-check"></i> login</button>
 
             </form>
-
 
     </body>
     <%- include('./partials/buttom.ejs') %>

@@ -31,17 +31,18 @@ body {
     font-size: 20px !important;
     padding: 8px 0 !important;
     margin: 8px 0 !important;
-    border-bottom: 1px solid #f07c00 !important;
 }
 
 .textbox i {
     width: 26px !important;
     float: left !important;
     text-align: center !important;
+    border-bottom: 2px solid #f07c00 !important;
 }
 
 .textbox input {
     border: none !important;
+    border-bottom: 2px solid #f07c00 !important;
     outline: none !important;
     background: none !important;
     color: white !important;
@@ -52,12 +53,17 @@ body {
 }
 
 .btn {
-    width: 100% !important;
+    width: 94% !important;
     background: none !important;
-    border: 2px solid #f07c00 !important;
     color: white !important;
     padding: 5px !important;
     font-size: 18px !important;
     cursor: pointer !important;
     margin: 12px 0 !important;
+    margin-left: 3% !important;
+}
+
+.invalid-feedback,
+.valid-feedback {
+    margin-left: 10px;
 }

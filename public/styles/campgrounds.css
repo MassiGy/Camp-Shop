@@ -149,18 +149,6 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
-
-/* .flashMsg {
-    width: 800px;
-}
-
-@media screen and (max-width: 800px) {
-    .flashMsg {
-        width: 300px;
-        margin-right: 60px !important;
-    }
-} */
-
 @media screen and (min-width: 800px) {
     .bottumPage {
         display: none !important;
