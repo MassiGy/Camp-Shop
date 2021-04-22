@@ -12,4 +12,8 @@ router.get('/logout', (req, res) => {
 })
 
 
+router.all('*', (req, res, next) => {
+    throw new appError('Not Found', 404)
+})
+
 module.exports = router;
