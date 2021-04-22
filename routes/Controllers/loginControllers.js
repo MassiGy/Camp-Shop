@@ -1,5 +1,9 @@
 module.exports.renderLoginForm = (req, res) => {
-    res.render('login.ejs')
+    if (!req.user) {
+        res.render('login.ejs')
+    } else {
+        req.flash('success', 'You Are Already LoggedIn! ')
+    }
 }
 
 

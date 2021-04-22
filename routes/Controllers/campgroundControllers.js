@@ -5,7 +5,7 @@ const { dataValidator, campValidator } = require('../../tools/validators')
 
 
 module.exports.allCamps = async(req, res) => {
-    const campgrounds = await Campground.find({}).populate('reviews');
+    const campgrounds = await Campground.find({});
     res.render('campgrounds.ejs', { campgrounds })
 }
 module.exports.renderNewForm = (req, res) => {
@@ -22,7 +22,7 @@ module.exports.showPage = async(req, res) => {
             res.render('theCampground.ejs', { theCampground })
         })
         .catch(e => {
-            req.flash('danger', e)
+            req.flash('danger', e.message)
             res.redirect('/campgrounds')
         })
 }
@@ -38,8 +38,8 @@ module.exports.postNewCamp = async(req, res) => {
         await user.save()
         req.flash('success', 'Successfully Created Campground');
         res.redirect(`/campgrounds/${newCamp._id}`)
-    } catch (err) {
-        req.flash('danger', err)
+    } catch (e) {
+        req.flash('danger', e.message)
         res.redirect('/campgrounds/new')
     }
 
@@ -49,8 +49,14 @@ module.exports.postEditCamp = async(req, res) => {
     dataValidator(campValidator, req.body);
     let { id } = req.params;
     let theCampToEdit = await Campground.findByIdAndUpdate(id, req.body.campground, { runValidators: true })
-    req.flash('success', 'Successfully Uptaded Campground')
-    res.redirect(`/campgrounds/${theCampToEdit._id}`)
+        .then(() => {
+            req.flash('success', 'Successfully Uptaded Campground')
+            res.redirect(`/campgrounds/${theCampToEdit._id}`)
+        })
+        .catch(e => {
+            req.flash('danger', e.message)
+            res.redirect('/campgrounds/new')
+        })
 
 }
 
@@ -65,7 +71,7 @@ module.exports.deleteCamp = async(req, res) => {
             res.redirect(`/campgrounds`)
         })
         .catch((e) => {
-            req.flash('danger', e);
+            req.flash('danger', e.message);
             res.redirect('/campgrounds')
         })
 }
@@ -74,10 +80,18 @@ module.exports.deleteCamp = async(req, res) => {
 module.exports.search = async(req, res) => {
     const { searchedInput } = req.body
     const campgrounds = await Campground.find({ location: searchedInput })
-    if (campgrounds.length > 0) {
-        res.render('campgrounds.ejs', { campgrounds })
-    } else {
-        req.flash('danger', 'Not Found (Please Insert Location As : City, State)');
-        res.redirect('/campgrounds')
-    }
+        .then(() => {
+            if (campgrounds.length > 0) {
+                res.render('campgrounds.ejs', { campgrounds })
+            } else {
+                req.flash('danger', 'Not Found (Please Insert Location As : City, State)');
+                res.redirect('/campgrounds')
+            }
+
+        })
+        .catch(e => {
+            req.flash('danger', e.message)
+            res.redirect('/campgrounds')
+        })
+
 }
