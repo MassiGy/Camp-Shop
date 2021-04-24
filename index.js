@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 
+
 /// Requiring the Needed Packages & Config
 const express = require('express')
 const app = express()
@@ -24,7 +25,7 @@ const signoutRoutes = require('./routes/signoutRoutes')
 const reviewRoutes = require('./routes/reviewRoutes')
 const dbUrl = process.env.dataBaseUrl
 const sessionName = process.env.sessionName
-const sessionSecret = process.env.sessionSecret || 'changeMe'
+const sessionSecret = process.env.sessionSecret
 const sessionConfig = {
     secret: sessionSecret,
     name: sessionName,
