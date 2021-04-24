@@ -2,11 +2,13 @@
 
     About This Camp</title>
 <%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="/public/styles/stars.css">
     </head>
 
     <body>
         <%- include('./partials/navbar.ejs') %>
             <%- include('./partials/flashMsg.ejs') %>
+
                 <div class="row">
 
                     <div class="card col-4  offset-2 my-4 ">
@@ -35,21 +37,43 @@
                                         <% } %>
                         </div>
                     </div>
-                    <div class="card col-4  my-4 mx-5 ">
+                    <div class="card col-4  my-4  mx-3">
                         <div class="card-body">
                             <div class="card-title">
                                 <h5>Leave a Review</h5>
                             </div>
                             <form class="form-groupe" action="/campgrounds/<%= theCampground._id %>/reviews/new" method="post">
-                                <div class="input-groupe my-3">
-                                    <label class="form-label" for="rating">Mark/5 :</label>
-                                    <br>
+                                <label for="rate1">Mark/5</label>
+                                <input class="input-range" type="range" min="0" max="5" name="review[rating]" id="rangeRating" style="width: 80%;" required>
+                                <br>
+                                <section id="starsRating">
+                                    <div class="col-3 ">
+                                        <fieldset class="starability-checkmark">
+                                            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0" checked aria-label="No rating." />
 
-                                    <input type="range" min="0" max="5" name="review[rating]" id="rating" class="form-range" style="width: 30%;" value="0">
-                                </div>
+                                            <input type="radio" id="rate1" name="review[rating]" value="1" />
+                                            <label for="rate1">1 star.</label>
+
+                                            <input type="radio" id="rate2" name="review[rating]" value="2" />
+                                            <label for="rate2">2 stars.</label>
+
+                                            <input type="radio" id="rate3" name="review[rating]" value="3" />
+                                            <label for="rate3">3 stars.</label>
+
+                                            <input type="radio" id="rate4" name="review[rating]" value="4" />
+                                            <label for="rate4">4 stars.</label>
+
+                                            <input type="radio" id="rate5" name="review[rating]" value="5" />
+                                            <label for="rate5">5 stars.</label>
+
+                                            <span class="starability-focus-ring"></span>
+                                        </fieldset>
+
+                                    </div>
+                                </section>
                                 <div class="mb-3">
-                                    <label class="form-label" for="review[reviewBody]">Poste Your Review</label>
-                                    <textarea class="form-control" name="review[reviewBody]" id="review[reviewBody]" cols="60" rows="3"></textarea>
+                                    <label class="form-label" for="review[reviewBody]">What You Think?</label>
+                                    <textarea class="form-control" name="review[reviewBody]" id="review[reviewBody]" cols="60" rows="3" autofocus></textarea>
                                 </div>
                                 <button class="btn btn-outline-success my-3 ">Post</button>
 
@@ -59,29 +83,41 @@
                     </div>
 
                 </div>
-                <div class="col-6 offset-3 text-centred">
-                    <% for(let review of theCampground.reviews){ %>
-                        <div class="card  my-3  shadow rounded">
-                            <div class="card-body">
-                                <h5>Mark :
-                                    <%= review.rating %>
-                                </h5>
-                                <p>
-                                    <h6>Review Text :</h6>
-                                    <%= review.reviewBody %>
-                                </p>
-                            </div>
-                            <% if(activeUser && activeUser._id.equals(review.owner)){%>
-                                <div class="m-3">
-                                    <form action="/campgrounds/<%= theCampground._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
-                                        <button class="btn btn-outline-danger">Delete</button>
-                                    </form>
-                                </div>
-                                <% } %>
-                        </div>
-                        <% } %>
-                </div>
 
+                <% for(let review of theCampground.reviews){ %>
+                    <div class="card  my-3  shadow rounded" style="width: 40%;margin: auto;">
+                        <div class="card-body">
+                            <h5>Mark/5 :
+                                <p id="rangeRatingResult">
+                                    <%= review.rating %>
+                                </p>
+                                <p id="starsRatingResult" class="starability-result" data-rating=<%=review.rating %>>
+                                </p>
+                            </h5>
+                            <p>
+                                <h6>Review Text :</h6>
+                                <%= review.reviewBody %>
+                            </p>
+                        </div>
+                        <% if(activeUser && activeUser._id.equals(review.owner)){%>
+                            <div class="m-3">
+                                <form action="/campgrounds/<%= theCampground._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
+                                    <button class="btn btn-outline-danger">Delete</button>
+                                </form>
+                            </div>
+                            <% } %>
+                    </div>
+                    <% } %>
+                        </div>
 
     </body>
+    <script>
+        let rangeRating = document.getElementById('rangeRating')
+        let starsRating = document.getElementById('starsRating')
+        if (screen.width > 600) {
+            rangeRating.remove()
+        } else {
+            starsRating.remove()
+        }
+    </script>
     <%- include('./partials/buttom.ejs') %>

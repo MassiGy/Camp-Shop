@@ -4,6 +4,7 @@ const catchAsync = require('../tools/catchAsync')
 const reviewControllers = require('./Controllers/reviewControllers')
 const { isLoggedIn, isOwner } = require('./middelwares/authMiddelwares')
 
+router.get('/new', isLoggedIn, reviewControllers.showPage)
 router.post('/new', isLoggedIn, catchAsync(reviewControllers.postReview))
 router.delete('/:reviewId', isLoggedIn, isOwner, catchAsync(reviewControllers.delete))
 

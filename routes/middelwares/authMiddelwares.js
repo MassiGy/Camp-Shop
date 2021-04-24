@@ -24,10 +24,7 @@ module.exports.isAuthor = async(req, res, next) => {
 
 module.exports.isOwner = async(req, res, next) => {
     const { reviewId, id } = req.params;
-    console.log(req.params)
     const fetchedReview = await Review.findById(reviewId)
-    console.log(fetchedReview)
-    console.log(req.user)
     if (req.user && req.user._id.equals(fetchedReview.owner)) {
         next();
     } else {

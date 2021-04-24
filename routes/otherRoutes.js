@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-
+const appError = require('../tools/appError')
 
 router.get('/home', (req, res) => {
     res.redirect('/campgrounds')

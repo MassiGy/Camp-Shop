@@ -18,30 +18,19 @@ module.exports.renderEditForm = async(req, res) => {
 
 module.exports.showPage = async(req, res) => {
     const theCampground = await Campground.findById(req.params.id).populate('reviews')
-        .then(() => {
-            res.render('theCampground.ejs', { theCampground })
-        })
-        .catch(e => {
-            req.flash('danger', e.message)
-            res.redirect('/campgrounds')
-        })
+    res.render('theCampground.ejs', { theCampground })
 }
 module.exports.postNewCamp = async(req, res) => {
     dataValidator(campValidator, req.body);
-    try {
-        const newCamp = await new Campground(req.body.campground);
-        newCamp.author = req.user._id;
-        const user = await User.findOne(req.user);
-        user.postedCampgrounds.push(newCamp);
+    const newCamp = await new Campground(req.body.campground);
+    newCamp.author = req.user._id;
+    const user = await User.findOne(req.user);
+    user.postedCampgrounds.push(newCamp);
 
-        await newCamp.save();
-        await user.save()
-        req.flash('success', 'Successfully Created Campground');
-        res.redirect(`/campgrounds/${newCamp._id}`)
-    } catch (e) {
-        req.flash('danger', e.message)
-        res.redirect('/campgrounds/new')
-    }
+    await newCamp.save();
+    await user.save()
+    req.flash('success', 'Successfully Created Campground');
+    res.redirect(`/campgrounds/${newCamp._id}`)
 
 }
 
@@ -49,14 +38,8 @@ module.exports.postEditCamp = async(req, res) => {
     dataValidator(campValidator, req.body);
     let { id } = req.params;
     let theCampToEdit = await Campground.findByIdAndUpdate(id, req.body.campground, { runValidators: true })
-        .then(() => {
-            req.flash('success', 'Successfully Uptaded Campground')
-            res.redirect(`/campgrounds/${theCampToEdit._id}`)
-        })
-        .catch(e => {
-            req.flash('danger', e.message)
-            res.redirect('/campgrounds/new')
-        })
+    req.flash('success', 'Successfully Uptaded Campground')
+    res.redirect(`/campgrounds/${theCampToEdit._id}`)
 
 }
 
@@ -65,33 +48,20 @@ module.exports.postEditCamp = async(req, res) => {
 module.exports.deleteCamp = async(req, res) => {
     let { id } = req.params;
     await Campground.findByIdAndDelete(id)
-        .then(() => {
-
-            req.flash('success', 'Successfully Deleted Campground')
-            res.redirect(`/campgrounds`)
-        })
-        .catch((e) => {
-            req.flash('danger', e.message);
-            res.redirect('/campgrounds')
-        })
+    req.flash('success', 'Successfully Deleted Campground')
+    res.redirect(`/campgrounds`)
 }
 
 
 module.exports.search = async(req, res) => {
     const { searchedInput } = req.body
     const campgrounds = await Campground.find({ location: searchedInput })
-        .then(() => {
-            if (campgrounds.length > 0) {
-                res.render('campgrounds.ejs', { campgrounds })
-            } else {
-                req.flash('danger', 'Not Found (Please Insert Location As : City, State)');
-                res.redirect('/campgrounds')
-            }
+    if (campgrounds.length > 0) {
+        res.render('campgrounds.ejs', { campgrounds })
+    } else {
+        req.flash('danger', 'Not Found (Please Insert Location As : City, State)');
+        res.redirect('/campgrounds')
+    }
 
-        })
-        .catch(e => {
-            req.flash('danger', e.message)
-            res.redirect('/campgrounds')
-        })
 
 }
