@@ -16,7 +16,7 @@
                         <H4>Update Your Campground!</H4>
                     </ul>
                     <ul>
-                        <form action="/campgrounds/<%= theCampground._id %>?_method=PATCH" method="POST" class="needs-validation" novalidate>
+                        <form action="/campgrounds/<%= theCampground._id %>?_method=PATCH" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
                             <label for="title">Campground title :</label>
                             <div class="input-group mb-3">
                                 <input required name="campground[title]" id="title" type="text" class="form-control" value=" <%= theCampground.title %>  " placeholder="title" aria-label="title" aria-describedby="basic-addon1" autofocus>

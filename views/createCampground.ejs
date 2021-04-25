@@ -14,7 +14,7 @@
                     <ul>
                         <H4>Make your campground!</H4>
                     </ul>
-                    <form action="/campgrounds/new" method="post" class="needs-validation" novalidate>
+                    <form action="/campgrounds/new" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
                         <label for="title">Campground title :</label>
                         <div class="input-group mb-3">
                             <input required name="campground[title]" id="title" type="text" class="form-control" placeholder="title" aria-label="title" aria-describedby="basic-addon1" autofocus>
@@ -28,35 +28,42 @@
                             <div class="valid-feedback">Looks Good!</div>
                             <div class="invalid-feedback">Please enter a valid location</div>
                         </div>
-
+                        <!-- 
                         <label for="image">Campground image :</label>
                         <div class="input-group mb-3">
                             <input required name="campground[image]" id="image" type="url" class="form-control" placeholder="image adress (url)" aria-label="image" aria-describedby="basic-addon1">
                             <div class="valid-feedback">Looks Good!</div>
                             <div class="invalid-feedback">Please enter a valid image adress</div>
+                        </div> -->
+
+                        <label for="image">Campground image :</label>
+                        <div class="input-group mb-3">
+                            <input required name="image" id="image" type="file" class="form-control " placeholder="image adress (url) " aria-label="image " aria-describedby="basic-addon1 ">
+                            <div class="valid-feedback ">Looks Good!</div>
+                            <div class="invalid-feedback ">Please enter a valid image adress</div>
                         </div>
-                        <div class="mb-3">
-                            <label for="validationTextarea" class="form-label">Description:</label>
-                            <textarea class="form-control " id="validationTextarea" name="campground[description]" placeholder="Required example textarea" required></textarea>
-                            <div class="valid-feedback">Looks Good!</div>
-                            <div class="invalid-feedback">
+                        <div class="mb-3 ">
+                            <label for="validationTextarea " class="form-label ">Description:</label>
+                            <textarea class="form-control " id="validationTextarea " name="campground[description] " placeholder="Required example textarea " required></textarea>
+                            <div class="valid-feedback ">Looks Good!</div>
+                            <div class="invalid-feedback ">
                                 Please enter a description in the textarea.
                             </div>
                         </div>
 
 
-                        <label for="price" class="form-label">Price/night:</label>
-                        <div class="input-group has-validation">
-                            <span class="input-group-text" id="inputGroupPrepend3">$</span>
-                            <input type="number" class="form-control" id="price" name="campground[price]" placeholder="0.00" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
-                            <div class="invalid-feedback">
+                        <label for="price " class="form-label ">Price/night:</label>
+                        <div class="input-group has-validation ">
+                            <span class="input-group-text " id="inputGroupPrepend3 ">$</span>
+                            <input type="number " class="form-control " id="price " name="campground[price] " placeholder="0.00 " aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback " required>
+                            <div class="invalid-feedback ">
                                 Please choose a price greater then 0$.
                             </div>
-                            <div class="valid-feedback">Looks Good!</div>
+                            <div class="valid-feedback ">Looks Good!</div>
 
                         </div>
-                        <button class="btn btn-outline-success my-3">Post</button>
-                        <a class="btn btn-outline-info" href="/campgrounds ">All Camps</a>
+                        <button class="btn btn-outline-success my-3 ">Post</button>
+                        <a class="btn btn-outline-info " href="/campgrounds ">All Camps</a>
                     </form>
 
 
