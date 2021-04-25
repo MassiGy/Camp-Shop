@@ -26,7 +26,6 @@ module.exports.postNewCamp = async(req, res) => {
         url: req.file.path,
         filename: req.file.filename
     })
-    console.log(postedImage)
     const newCamp = await new Campground(req.body.campground);
     newCamp.author = req.user._id;
     newCamp.image = postedImage
@@ -34,7 +33,6 @@ module.exports.postNewCamp = async(req, res) => {
     user.postedCampgrounds.push(newCamp);
 
     await newCamp.save();
-    console.log(newCamp)
     await user.save()
     req.flash('success', 'Successfully Created Campground');
     res.redirect(`/campgrounds/${newCamp._id}`)
@@ -44,6 +42,12 @@ module.exports.postNewCamp = async(req, res) => {
 module.exports.postEditCamp = async(req, res) => {
     dataValidator(campValidator, req.body);
     let { id } = req.params;
+    const newImage = new Object({
+        url: req.file.path,
+        filename: req.file.filename
+    })
+
+    req.body.campground.image = newImage
     let theCampToEdit = await Campground.findByIdAndUpdate(id, req.body.campground, { runValidators: true })
     req.flash('success', 'Successfully Uptaded Campground')
     res.redirect(`/campgrounds/${theCampToEdit._id}`)

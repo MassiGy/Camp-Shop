@@ -31,7 +31,7 @@ router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(campgroundControllers.r
 
 router.post('/new', isLoggedIn, upload.single('campground[image]'), catchAsync(campgroundControllers.postNewCamp))
 
-router.patch('/:id', isLoggedIn, isAuthor, catchAsync(campgroundControllers.postEditCamp))
+router.patch('/:id', isLoggedIn, isAuthor, upload.single('campground[image]'), catchAsync(campgroundControllers.postEditCamp))
 
 router.delete('/:id', isLoggedIn, isAuthor, catchAsync(campgroundControllers.deleteCamp))
 
