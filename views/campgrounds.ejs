@@ -46,7 +46,7 @@
                 <% for(let campground of campgrounds) {%>
                     <div class="col-xs-6 col-lg-4 ">
                         <div class="card my-5 shadow-lg p-3  mb-5 bg-body rounded" style="width: 18rem; height: 20rem;">
-                            <img src=" <%= campground.image %>  " class="card-img-top">
+                            <img src=" <%= campground.image.path %>  " class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <%=campground.title %>

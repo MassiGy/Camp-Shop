@@ -22,13 +22,13 @@ module.exports.showPage = async(req, res) => {
 }
 module.exports.postNewCamp = async(req, res) => {
     dataValidator(campValidator, req.body);
-    const postedImage = new Object({
+
+    const newCamp = await new Campground(req.body.campground);
+    newCamp.author = req.user._id;
+    newCamp.image = new Object({
         url: req.file.path,
         filename: req.file.filename
     })
-    const newCamp = await new Campground(req.body.campground);
-    newCamp.author = req.user._id;
-    newCamp.image = postedImage
     const user = await User.findOne(req.user);
     user.postedCampgrounds.push(newCamp);
 
@@ -42,12 +42,12 @@ module.exports.postNewCamp = async(req, res) => {
 module.exports.postEditCamp = async(req, res) => {
     dataValidator(campValidator, req.body);
     let { id } = req.params;
-    const newImage = new Object({
+    req.body.campground.image = new Object({
         url: req.file.path,
         filename: req.file.filename
     })
 
-    req.body.campground.image = newImage
+
     let theCampToEdit = await Campground.findByIdAndUpdate(id, req.body.campground, { runValidators: true })
     req.flash('success', 'Successfully Uptaded Campground')
     res.redirect(`/campgrounds/${theCampToEdit._id}`)
