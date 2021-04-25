@@ -38,13 +38,13 @@
 
                         <label for="image">Campground image :</label>
                         <div class="input-group mb-3">
-                            <input required name="image" id="image" type="file" class="form-control " placeholder="image adress (url) " aria-label="image " aria-describedby="basic-addon1 ">
+                            <input required name="campground[image]" id="image" type="file" class="form-control " placeholder="image adress (url) " aria-label="image " aria-describedby="basic-addon1 ">
                             <div class="valid-feedback ">Looks Good!</div>
                             <div class="invalid-feedback ">Please enter a valid image adress</div>
                         </div>
                         <div class="mb-3 ">
                             <label for="validationTextarea " class="form-label ">Description:</label>
-                            <textarea class="form-control " id="validationTextarea " name="campground[description] " placeholder="Required example textarea " required></textarea>
+                            <textarea class="form-control " id="validationTextarea " name="campground[description]" placeholder="Required example textarea " required></textarea>
                             <div class="valid-feedback ">Looks Good!</div>
                             <div class="invalid-feedback ">
                                 Please enter a description in the textarea.
@@ -55,7 +55,7 @@
                         <label for="price " class="form-label ">Price/night:</label>
                         <div class="input-group has-validation ">
                             <span class="input-group-text " id="inputGroupPrepend3 ">$</span>
-                            <input type="number " class="form-control " id="price " name="campground[price] " placeholder="0.00 " aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback " required>
+                            <input type="number " class="form-control " id="price " name="campground[price]" placeholder="0.00 " aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback " required>
                             <div class="invalid-feedback ">
                                 Please choose a price greater then 0$.
                             </div>

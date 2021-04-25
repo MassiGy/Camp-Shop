@@ -22,12 +22,19 @@ module.exports.showPage = async(req, res) => {
 }
 module.exports.postNewCamp = async(req, res) => {
     dataValidator(campValidator, req.body);
+    const postedImage = new Object({
+        url: req.file.path,
+        filename: req.file.filename
+    })
+    console.log(postedImage)
     const newCamp = await new Campground(req.body.campground);
     newCamp.author = req.user._id;
+    newCamp.image = postedImage
     const user = await User.findOne(req.user);
     user.postedCampgrounds.push(newCamp);
 
     await newCamp.save();
+    console.log(newCamp)
     await user.save()
     req.flash('success', 'Successfully Created Campground');
     res.redirect(`/campgrounds/${newCamp._id}`)

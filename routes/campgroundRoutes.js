@@ -21,7 +21,7 @@ const upload = multer({ storage })
 
 router.get('/', catchAsync(campgroundControllers.allCamps))
 
-router.get('/new', campgroundControllers.renderNewForm)
+router.get('/new', isLoggedIn, campgroundControllers.renderNewForm)
 
 router.get('/:id', catchAsync(campgroundControllers.showPage))
 
@@ -29,12 +29,8 @@ router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(campgroundControllers.r
 
 
 
-router.post('/new', upload.single('image'), (req, res) => {
-    console.log(req.body, req.file)
-    res.send('sent!')
-})
+router.post('/new', isLoggedIn, upload.single('campground[image]'), catchAsync(campgroundControllers.postNewCamp))
 
-// router.post('/new', isLoggedIn, catchAsync(campgroundControllers.postNewCamp))
 router.patch('/:id', isLoggedIn, isAuthor, catchAsync(campgroundControllers.postEditCamp))
 
 router.delete('/:id', isLoggedIn, isAuthor, catchAsync(campgroundControllers.deleteCamp))
