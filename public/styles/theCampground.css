@@ -1,0 +1,22 @@
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviews {
+    width: 40% !important;
+    margin-left: 30% !important;
+}
+
+@media screen and (max-width: 600px) {
+    .reviews {
+        width: 70% !important;
+        margin-left: 15% !important;
+    }
+}
+
+textarea {
+    max-width: 400px;
+    max-height: 100px;
+}

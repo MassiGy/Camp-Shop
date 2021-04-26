@@ -2,7 +2,9 @@
 
     About This Camp</title>
 <%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="/public/styles/theCampground.css">
     <link rel="stylesheet" href="/public/styles/stars.css">
+
     </head>
 
     <body>
@@ -11,8 +13,8 @@
 
                 <div class="row">
 
-                    <div class="card col-4  offset-2 my-4 ">
-                        <img src=" <%= theCampground.image.url %>  " class="card-img-top" style="width: 100% !important;">
+                    <div id="theCampShowcase" class="col-xs-6 col-md-4  mx-2 card my-5 shadow-lg p-3  mb-5 bg-body rounded" style="width: 24rem; height: 30rem;">
+                        <img src=" <%= theCampground.image.url %>  " class="card-img-top img-fluid">
                         <div class="card-body">
                             <h4 class="card-title">
                                 <%= theCampground.title %>
@@ -37,15 +39,18 @@
                                         <% } %>
                         </div>
                     </div>
-                    <div class="card col-4  my-4  mx-3">
+                    <div class="col-xs-6 col-md-4 mx-2  card my-5 shadow-lg p-3  mb-5 bg-body rounded" style="width: 24rem; height: 30rem;">
                         <div class="card-body">
                             <div class="card-title">
-                                <h5>Leave a Review</h5>
+                                <h5><strong>Leave a Review</strong></h5>
                             </div>
                             <form class="form-groupe" action="/campgrounds/<%= theCampground._id %>/reviews/new" method="post">
-                                <label for="rate1">Mark/5</label>
-                                <input class="input-range" type="range" min="0" max="5" name="review[rating]" id="rangeRating" style="width: 80%;" required>
+                                <label for="rate1"><b>Mark/5:</b></label>
                                 <br>
+                                <br>
+
+                                <input class="input-range" type="range" min="0" max="5" name="review[rating]" id="rangeRating" style="width: 150px;" required>
+
                                 <section id="starsRating">
                                     <div class="col-3 ">
                                         <fieldset class="starability-checkmark">
@@ -72,8 +77,9 @@
                                     </div>
                                 </section>
                                 <div class="mb-3">
-                                    <label class="form-label" for="review[reviewBody]">What You Think?</label>
-                                    <textarea class="form-control" name="review[reviewBody]" id="review[reviewBody]" cols="60" rows="3" autofocus></textarea>
+                                    <br>
+                                    <label class="form-label" for="review[reviewBody]"><b>What You Think?</b></label>
+                                    <textarea class="form-control" name="review[reviewBody]" id="review[reviewBody]" cols="60" rows="3" placeholder="Tell us more about this camp!" autofocus></textarea>
                                 </div>
                                 <button class="btn btn-outline-success my-3 ">Post</button>
 
@@ -83,14 +89,17 @@
                     </div>
 
                 </div>
-
                 <% for(let review of theCampground.reviews){ %>
-                    <div class="card  my-3  shadow rounded" style="width: 40%;margin: auto;">
+                    <div class="col-6  card my-5 mx-3 shadow-lg p-3  bg-body rounded reviews" style="height: 15rem;">
+
                         <div class="card-body">
                             <h5>Mark/5 :
+
                                 <p id="rangeRatingResult">
                                     <%= review.rating %>
+
                                 </p>
+
                                 <p id="starsRatingResult" class="starability-result" data-rating=<%=review.rating %>>
                                 </p>
                             </h5>
@@ -100,7 +109,7 @@
                             </p>
                         </div>
                         <% if(activeUser && activeUser._id.equals(review.owner)){%>
-                            <div class="m-3">
+                            <div class="mb-3 ms-3">
                                 <form action="/campgrounds/<%= theCampground._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
                                     <button class="btn btn-outline-danger">Delete</button>
                                 </form>
@@ -109,6 +118,7 @@
                     </div>
                     <% } %>
                         </div>
+
 
     </body>
     <script>
