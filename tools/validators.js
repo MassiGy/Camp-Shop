@@ -35,7 +35,7 @@ module.exports.campValidator = joi.object({
         description: joi.string().required().escapeHTML(),
         image: joi.object({
             url: joi.string().required(),
-            filename: joi.string().required(),
+            filename: joi.string().required().escapeHTML(),
         }),
         price: joi.number().required().min(0)
     }).required()

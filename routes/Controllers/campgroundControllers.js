@@ -1,7 +1,7 @@
 const Campground = require('../../modals/campground');
 const User = require('../../modals/user');
 const { dataValidator, campValidator } = require('../../tools/validators')
-
+const { cloudinary } = require('../../cloudinary/index')
 
 
 module.exports.allCamps = async(req, res) => {
@@ -47,8 +47,8 @@ module.exports.postEditCamp = async(req, res) => {
         filename: req.file.filename
     })
 
-
     let theCampToEdit = await Campground.findByIdAndUpdate(id, req.body.campground, { runValidators: true })
+    await cloudinary.uploader.destroy(theCampToEdit.image.filename)
     req.flash('success', 'Successfully Uptaded Campground')
     res.redirect(`/campgrounds/${theCampToEdit._id}`)
 
@@ -58,7 +58,8 @@ module.exports.postEditCamp = async(req, res) => {
 
 module.exports.deleteCamp = async(req, res) => {
     let { id } = req.params;
-    await Campground.findByIdAndDelete(id)
+    const campToDelete = await Campground.findByIdAndDelete(id)
+    await cloudinary.uploader.destroy(campToDelete.image.filename)
     req.flash('success', 'Successfully Deleted Campground')
     res.redirect(`/campgrounds`)
 }
