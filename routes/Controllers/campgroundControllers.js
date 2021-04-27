@@ -2,8 +2,12 @@ const Campground = require('../../modals/campground');
 const User = require('../../modals/user');
 const { dataValidator, campValidator } = require('../../tools/validators')
 const { cloudinary } = require('../../cloudinary/index')
-const mbxSdk = require('@mapbox/mapbox-sdk');
-const mbxgeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
+const mbxSDK = require('@mapbox/mapbox-sdk');
+const mbxGeoCoding = require('@mapbox/mapbox-sdk/services/geocoding');
+const mbxToken = process.env.mapbox_token;
+const geoCoder = mbxGeoCoding({ accessToken: mbxToken })
+
+
 
 module.exports.allCamps = async(req, res) => {
     const campgrounds = await Campground.find({});
@@ -21,15 +25,29 @@ module.exports.showPage = async(req, res) => {
     const theCampground = await Campground.findById(req.params.id).populate('reviews')
     res.render('theCampground.ejs', { theCampground })
 }
+
+
+
+
 module.exports.postNewCamp = async(req, res) => {
     dataValidator(campValidator, req.body);
 
+
+    const geoData = await geoCoder.forwardGeocode({
+        query: req.body.campground.location,
+        limit: 1,
+    }).send()
+
+
     const newCamp = await new Campground(req.body.campground);
+    newCamp.geoLocationCode = geoData.body.features[0].geometry
     newCamp.author = req.user._id;
     newCamp.image = new Object({
         url: req.file.path,
         filename: req.file.filename
     })
+
+
     const user = await User.findOne(req.user);
     user.postedCampgrounds.push(newCamp);
 
@@ -42,7 +60,15 @@ module.exports.postNewCamp = async(req, res) => {
 
 module.exports.postEditCamp = async(req, res) => {
     dataValidator(campValidator, req.body);
+
+    const geoData = await geoCoder.forwardGeocode({
+        query: req.body.campground.location,
+        limit: 1,
+    }).send()
+
     let { id } = req.params;
+
+    req.body.campground.geoLocationCode = geoData.body.features[0].geometry
     req.body.campground.image = new Object({
         url: req.file.path,
         filename: req.file.filename

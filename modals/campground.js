@@ -17,9 +17,21 @@ const campgroundSchema = new Schema({
         min: 0,
         required: true,
     },
+
     description: {
         type: String,
         required: true,
+    },
+    geoLocationCode: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        },
     },
     location: {
         type: String,

@@ -2,15 +2,23 @@
 
     About This Camp</title>
 <%- include('./partials/head.ejs') %>
-    <link rel="stylesheet" href="/public/styles/theCampground.css">
-    <link rel="stylesheet" href="/public/styles/stars.css">
 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+
+    <link rel="stylesheet" href="/public/styles/stars.css">
+    <link rel="stylesheet" href="/public/styles/theCampground.css">
     </head>
 
     <body>
+
+
         <%- include('./partials/navbar.ejs') %>
             <%- include('./partials/flashMsg.ejs') %>
-
+                <div class="map-box my-5">
+                    <button id="mapToggler"><i class="fas fa-map-marker-alt"></i></button>
+                    <div id='map'></div>
+                </div>
                 <div class="row">
 
                     <div id="theCampShowcase" class="col-xs-6 col-md-4  mx-2 card my-5 shadow-lg p-3  mb-5 bg-body rounded" style="width: 24rem; height: 30rem;">
@@ -39,7 +47,7 @@
                                         <% } %>
                         </div>
                     </div>
-                    <div class="col-xs-6 col-md-4 mx-2  card my-5 shadow-lg p-3  mb-5 bg-body rounded" style="width: 24rem; height: 30rem;">
+                    <div class="col-xs-6 col-md-4 mx-2  card my-5 shadow-lg p-3  mb-5 bg-body rounded" id="postReviewForm" style="width: 24rem; height: 30rem;">
                         <div class="card-body">
                             <div class="card-title">
                                 <h5><strong>Leave a Review</strong></h5>
@@ -130,4 +138,11 @@
             starsRating.remove()
         }
     </script>
+    <script>
+        const mapToken = '<%- process.env.mapbox_token %>';
+        const campCoordinates = <%-JSON.stringify(theCampground.geoLocationCode.coordinates) %>
+    </script>
+
+    <script src="/public//scripts/mapboxScripts.js"></script>
+
     <%- include('./partials/buttom.ejs') %>
