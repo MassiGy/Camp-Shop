@@ -2,7 +2,8 @@ const Campground = require('../../modals/campground');
 const User = require('../../modals/user');
 const { dataValidator, campValidator } = require('../../tools/validators')
 const { cloudinary } = require('../../cloudinary/index')
-
+const mbxSdk = require('@mapbox/mapbox-sdk');
+const mbxgeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 
 module.exports.allCamps = async(req, res) => {
     const campgrounds = await Campground.find({});
