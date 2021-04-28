@@ -22,20 +22,20 @@ textarea {
 }
 
 .map-box:hover>#map {
-    width: 250px;
-    height: 150px;
+    width: 300px;
+    height: 180px;
     background-color: chocolate;
 }
 
 .map-box:hover {
-    width: 320px;
-    height: 180px;
+    width: 360px;
+    height: 200px;
 }
 
 .map-box {
     position: absolute;
-    top: 15%;
-    right: 1%;
+    top: 10%;
+    right: 0%;
     margin-right: 0% !important;
     height: 50px;
     border-radius: 40px;
@@ -53,7 +53,7 @@ textarea {
     color: white !important;
     float: left;
     width: 0px;
-    transition: 0.8s;
+    transition: 1s;
     text-decoration: white;
     border-radius: 10%;
 }

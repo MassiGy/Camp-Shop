@@ -4,6 +4,7 @@ const { dataValidator, campValidator } = require('../../tools/validators')
 const { cloudinary } = require('../../cloudinary/index')
 const mbxSDK = require('@mapbox/mapbox-sdk');
 const mbxGeoCoding = require('@mapbox/mapbox-sdk/services/geocoding');
+const { array } = require('joi');
 const mbxToken = process.env.mapbox_token;
 const geoCoder = mbxGeoCoding({ accessToken: mbxToken })
 
@@ -86,6 +87,10 @@ module.exports.postEditCamp = async(req, res) => {
 module.exports.deleteCamp = async(req, res) => {
     let { id } = req.params;
     const campToDelete = await Campground.findByIdAndDelete(id)
+    const fetchedUser = await User.findById(campToDelete.author)
+    let campToDeleteIndex = fetchedUser.postedCampgrounds.indexOf(campToDelete._id)
+    fetchedUser.postedCampgrounds.splice(campToDeleteIndex, 1)
+    await fetchedUser.save()
     await cloudinary.uploader.destroy(campToDelete.image.filename)
     req.flash('success', 'Successfully Deleted Campground')
     res.redirect(`/campgrounds`)
