@@ -21,33 +21,37 @@
                 </div>
                 <div class="row">
 
-                    <div id="theCampShowcase" class="col-xs-6 col-md-4  mx-2 card my-5 shadow-lg p-3  mb-5 bg-body rounded" style="width: 24rem; height: 30rem;">
-                        <img src=" <%= theCampground.image.url %>  " class="card-img-top img-fluid">
+                    <div id="theCampShowcase" class="col-xs-6 col-md-4  mx-2 card my-5 shadow-lg p-3  mb-5 bg-body rounded" style="width: 24rem; height: 33rem;">
+                        <img src=" <%= theCampground.image.url %>  " class="card-img-top img-fluid img-thumbnail">
                         <div class="card-body">
-                            <h4 class="card-title">
+                            <h5 class="card-title">
+                                Camp Name:
                                 <%= theCampground.title %>
-                                    </h3>
-                                    <h5>$
-                                        <%= theCampground.price %> /night
-                                    </h5>
-                                    <h6 class="text-muted">
-                                        <%= theCampground.location %>
-                                    </h6>
-                                    <p class="card-text">
-                                        Description:
-                                        <%= theCampground.description %>
-                                    </p>
+                            </h5>
 
-                                    <% if(activeUser && activeUser._id.equals(theCampground.author)){ %>
-                                        <a class="btn btn-outline-info my-3" href="/campgrounds/<%= theCampground._id %>/edit">  Edit Camp  </a>
-                                        <a class="btn btn-outline-info my-3" href="/campgrounds">All Camps  </a>
-                                        <form class="d-inline" action="/campgrounds/<%= theCampground._id %>?_method=DELETE" method="POST">
-                                            <button class="btn btn-outline-danger my-3">Delete</button>
-                                        </form>
-                                        <% } %>
+                            <h6><b> For just : $
+                                <%= theCampground.price %> /night</b>
+                            </h6>
+                            <details class="text-muted">
+                                <h6>Camp Location :
+                                    <%= theCampground.location %>
+                                </h6>
+                                <p class="card-text">
+                                    Camp Description:
+                                    <%= theCampground.description %>
+                                </p>
+                            </details>
+
+                            <% if(activeUser && activeUser._id.equals(theCampground.author)){ %>
+                                <a class="btn btn-outline-info mt-2 mb-1" href="/campgrounds/<%= theCampground._id %>/edit">  Edit Camp  </a>
+                                <a class="btn btn-outline-info mt-2 mb-1" href="/campgrounds">All Camps  </a>
+                                <form class="d-inline" action="/campgrounds/<%= theCampground._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-outline-danger mt-2 mb-1">Delete</button>
+                                </form>
+                                <% } %>
                         </div>
                     </div>
-                    <div class="col-xs-6 col-md-4 mx-2  card my-5 shadow-lg p-3  mb-5 bg-body rounded" id="postReviewForm" style="width: 24rem; height: 30rem;">
+                    <div class="col-xs-6 col-md-4 mx-2  card my-5 shadow-lg p-3  mb-5 bg-body rounded" id="postReviewForm" style="width: 24rem; height: 33rem;">
                         <div class="card-body">
                             <div class="card-title">
                                 <h5><strong>Leave a Review</strong></h5>

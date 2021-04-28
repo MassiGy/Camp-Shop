@@ -4,6 +4,12 @@
     align-items: center;
 }
 
+.card-img-top {
+    width: 96%;
+    margin: auto;
+    height: 45%;
+}
+
 .reviews {
     width: 40% !important;
     margin-left: 30% !important;

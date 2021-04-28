@@ -154,3 +154,8 @@ body::-webkit-scrollbar-thumb {
         display: none !important;
     }
 }
+
+.card-img-top {
+    height: 150px !important;
+    width: 250px;
+}
