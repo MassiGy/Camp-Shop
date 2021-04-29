@@ -3,7 +3,7 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/dark-v10',
     center: [-103.59179687498357, 40.66995747013945],
-    zoom: 3
+    zoom: 1
 });
 
 map.on('load', function() {
@@ -100,14 +100,8 @@ map.on('load', function() {
     // description HTML from its properties.
     map.on('click', 'unclustered-point', function(e) {
         var coordinates = e.features[0].geometry.coordinates.slice();
-        var mag = e.features[0].properties.mag;
-        var tsunami;
+        var popupMsg = e.features[0].properties.onMapPupUp;
 
-        if (e.features[0].properties.tsunami === 1) {
-            tsunami = 'yes';
-        } else {
-            tsunami = 'no';
-        }
 
         // Ensure that if the map is zoomed out such that
         // multiple copies of the feature are visible, the
@@ -115,12 +109,9 @@ map.on('load', function() {
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
-
         new mapboxgl.Popup()
             .setLngLat(coordinates)
-            .setHTML(
-                'magnitude: ' + mag + '<br>Was there a tsunami?: ' + tsunami
-            )
+            .setHTML(popupMsg)
             .addTo(map);
     });
 
