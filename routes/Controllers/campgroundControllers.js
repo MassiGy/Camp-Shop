@@ -4,7 +4,6 @@ const { dataValidator, campValidator } = require('../../tools/validators')
 const { cloudinary } = require('../../cloudinary/index')
 const mbxSDK = require('@mapbox/mapbox-sdk');
 const mbxGeoCoding = require('@mapbox/mapbox-sdk/services/geocoding');
-const { array } = require('joi');
 const mbxToken = process.env.mapbox_token;
 const geoCoder = mbxGeoCoding({ accessToken: mbxToken })
 
@@ -41,7 +40,7 @@ module.exports.postNewCamp = async(req, res) => {
 
 
     const newCamp = await new Campground(req.body.campground);
-    newCamp.geoLocationCode = geoData.body.features[0].geometry
+    newCamp.geometry = geoData.body.features[0].geometry
     newCamp.author = req.user._id;
     newCamp.image = new Object({
         url: req.file.path,
@@ -69,7 +68,7 @@ module.exports.postEditCamp = async(req, res) => {
 
     let { id } = req.params;
 
-    req.body.campground.geoLocationCode = geoData.body.features[0].geometry
+    req.body.campground.geometry = geoData.body.features[0].geometry
     req.body.campground.image = new Object({
         url: req.file.path,
         filename: req.file.filename

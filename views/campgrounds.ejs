@@ -1,6 +1,8 @@
 <title>Camps Shop</title>
 <%- include('./partials/head.ejs') %>
     <link rel="stylesheet" href="../public/styles/campgrounds.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
     </head>
 
     <body>
@@ -30,6 +32,7 @@
         </nav>
 
         <main>
+            <div id="map" style="width: 400px; height: 300px;"></div>
 
 
             <div class="mx-5 flashMsg">
@@ -41,7 +44,6 @@
                     <button id="searchIcon"><i  class="fas fa-search "></i></button>
                 </form>
             </div>
-
             <div class="row pt-5">
                 <% for(let campground of campgrounds) {%>
                     <div class="col-xs-6 col-lg-4 ">
@@ -77,4 +79,12 @@
                         <a id="last" href="#first"> <i class="fas fa-arrow-up"></i></a>
         </div>
     </body>
+
+    <script>
+        const mapToken = '<%- process.env.mapbox_token %>'
+        const campgrounds = {
+            "features": <%- JSON.stringify(campgrounds)%>
+        }
+    </script>
+    <script src="/public/scripts/clusterMapScripts.js"></script>
     <%- include('./partials/buttom.ejs') %>
