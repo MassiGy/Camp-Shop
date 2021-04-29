@@ -98,11 +98,11 @@ module.exports.deleteCamp = async(req, res) => {
 
 module.exports.search = async(req, res) => {
     const { searchedInput } = req.body
-    const campgrounds = await Campground.find({ location: searchedInput })
+    const campgrounds = await Campground.find({ location: { $regex: `.*${searchedInput}.*` } })
     if (campgrounds.length > 0) {
         res.render('campgrounds.ejs', { campgrounds })
     } else {
-        req.flash('danger', 'Not Found (Please Insert Location As : City, State)');
+        req.flash('danger', 'Not Found (Please Search by Location)');
         res.redirect('/campgrounds')
     }
 

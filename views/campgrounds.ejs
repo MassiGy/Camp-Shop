@@ -32,20 +32,21 @@
         </nav>
 
         <main>
-            <div class="map-box my-5">
-                <button id="mapToggler"><i class="fas fa-map-marker-alt"></i></button>
-                <div id='map'></div>
-            </div>
 
             <div class="mx-5 flashMsg">
                 <%- include('./partials/flashMsg.ejs') %>
             </div>
             <div class="search-box">
                 <form class="search-section" action="/campgrounds/search" method="POST">
-                    <input type="text" placeholder="City, State" name="searchedInput" id="searchedInput" autofocus>
-                    <button id="searchIcon"><i  class="fas fa-search "></i></button>
+                    <input type="text" placeholder="Search By Place" name="searchedInput" id="searchedInput" autofocus>
+                    <i id="searchIcon" class="fas fa-search "></i>
                 </form>
             </div>
+            <div class="map-box my-5">
+                <i id="mapToggler" class="fas fa-map-marker-alt"></i>
+                <div id='map'></div>
+            </div>
+
             <div class="row pt-5">
                 <% for(let campground of campgrounds) {%>
                     <div class="col-xs-6 col-lg-4 ">
@@ -58,7 +59,7 @@
                                 <p class="card-text text-muted">
                                     <%= campground.location %>
                                 </p>
-                                <a href="campgrounds/<%= campground._id %>" class="btn btn-outline-success btn-sm mb-1 ">
+                                <a href="/campgrounds/<%= campground._id %>" class="btn btn-outline-success btn-sm mb-1 ">
                                     <%= campground.title %>
                                 </a>
                             </div>
