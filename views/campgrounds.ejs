@@ -32,8 +32,10 @@
         </nav>
 
         <main>
-            <div id="map" style="width: 400px; height: 300px;"></div>
-
+            <div class="map-box my-5">
+                <button id="mapToggler"><i class="fas fa-map-marker-alt"></i></button>
+                <div id='map'></div>
+            </div>
 
             <div class="mx-5 flashMsg">
                 <%- include('./partials/flashMsg.ejs') %>
@@ -83,7 +85,7 @@
     <script>
         const mapToken = '<%- process.env.mapbox_token %>'
         const campgrounds = {
-            "features": <%- JSON.stringify(campgrounds)%>
+            features: <%- JSON.stringify(campgrounds)%>
         }
     </script>
     <script src="/public/scripts/clusterMapScripts.js"></script>

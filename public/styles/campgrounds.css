@@ -6,6 +6,7 @@ body {
 main {
     width: 80%;
     margin-left: 20%;
+    top: 98%;
 }
 
 .hero-image {
@@ -32,60 +33,8 @@ main {
     }
 }
 
-.search-box {
-    margin-bottom: auto !important;
-}
 
-.search-section:hover>#searchedInput {
-    width: 240px;
-    padding: 0 6px;
-}
-
-.search-section {
-    position: absolute;
-    top: 82%;
-    right: 0%;
-    margin-right: 0% !important;
-    height: 50px;
-    border-radius: 40px;
-    background-color: chocolate;
-    padding: 10px;
-    margin-top: 10px !important;
-    margin-right: 10px !important;
-    z-index: 1000;
-}
-
-#searchedInput {
-    border: none;
-    background: none;
-    outline: none;
-    padding: 0;
-    color: white !important;
-    float: left;
-    line-height: 25px;
-    width: 0px;
-    transition: 0.5s;
-    text-decoration: white;
-}
-
-#searchedInput::placeholder {
-    color: whitesmoke;
-}
-
-#searchIcon {
-    border: none;
-    background: none;
-    outline: none;
-    float: right !important;
-    height: 25px !important;
-    width: 25px !important;
-    border-radius: 40px !important;
-    display: flex !important;
-    color: white;
-    justify-content: center !important;
-    align-items: center !important;
-    margin-right: 3px;
-}
+/* SCROLL BAR STYLES */
 
 body::-webkit-scrollbar {
     width: 0.5rem;
@@ -98,6 +47,9 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background: #6649b8;
 }
+
+
+/* NAVBAR STYLES */
 
 .navbar {
     width: 10% !important;
@@ -159,4 +111,140 @@ body::-webkit-scrollbar-thumb {
 .card-img-top {
     height: 150px !important;
     width: 250px;
+}
+
+
+/* Cluster Map Styles */
+
+@media screen and (max-width: 600px) {
+    .map-box:hover>#map {
+        width: 200px;
+        height: 100px;
+        background-color: chocolate;
+    }
+    ;
+    .map-box:hover {
+        width: 260px;
+        height: 140px;
+        z-index: 1000;
+        position: absolute;
+    }
+}
+
+.map-box:hover>#map {
+    width: 340px;
+    height: 280px;
+    background-color: chocolate;
+}
+
+.map-box:hover {
+    width: 400px;
+    height: 300px;
+    z-index: 1000;
+    position: absolute;
+}
+
+.map-box {
+    position: absolute;
+    top: 92%;
+    right: 0%;
+    margin-right: 0% !important;
+    height: 50px;
+    border-radius: 40px;
+    background-color: chocolate;
+    padding: 10px;
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+    z-index: 1000;
+}
+
+#map {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    color: white !important;
+    float: left;
+    width: 0px;
+    transition: 0.5s;
+    text-decoration: white;
+    border-radius: 10%;
+}
+
+#mapToggler {
+    border: none;
+    background: none;
+    outline: none;
+    float: right !important;
+    height: 25px !important;
+    width: 25px !important;
+    border-radius: 40px !important;
+    display: flex !important;
+    color: white;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-right: 3px !important;
+    margin-left: 3px !important;
+    z-index: 1000;
+}
+
+
+/* Search Box Styles  */
+
+.search-box {
+    margin-bottom: auto !important;
+    z-index: 1000;
+}
+
+.search-section:hover>#searchedInput {
+    width: 240px;
+    padding: 0 6px;
+}
+
+.search-section {
+    position: absolute;
+    top: 82%;
+    right: 0%;
+    margin-right: 0% !important;
+    height: 50px;
+    border-radius: 40px;
+    background-color: chocolate;
+    padding: 10px;
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+    z-index: 1000;
+}
+
+#searchedInput {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    color: white !important;
+    float: left;
+    line-height: 25px;
+    width: 0px;
+    transition: 0.5s;
+    text-decoration: white;
+}
+
+#searchedInput::placeholder {
+    color: whitesmoke;
+}
+
+#searchIcon {
+    border: none;
+    background: none;
+    outline: none;
+    float: right !important;
+    height: 25px !important;
+    width: 25px !important;
+    border-radius: 40px !important;
+    display: flex !important;
+    color: white;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-right: 3px !important;
+    margin-left: 3px !important;
+    z-index: 1000;
 }
