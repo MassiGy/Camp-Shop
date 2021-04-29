@@ -61,7 +61,6 @@
                                 <br>
                                 <br>
 
-                                <input class="input-range" type="range" min="0" max="5" name="review[rating]" id="rangeRating" style="width: 150px;" required>
 
                                 <section id="starsRating">
                                     <div class="col-3 ">
@@ -106,12 +105,8 @@
 
                         <div class="card-body">
                             <h5>Mark/5 :
-
-                                <p id="rangeRatingResult">
-                                    <%= review.rating %>
-
-                                </p>
-
+                                <br>
+                                <br>
                                 <p id="starsRatingResult" class="starability-result" data-rating=<%=review.rating %>>
                                 </p>
                             </h5>
@@ -133,15 +128,6 @@
 
 
     </body>
-    <script>
-        let rangeRating = document.getElementById('rangeRating')
-        let starsRating = document.getElementById('starsRating')
-        if (screen.width > 600) {
-            rangeRating.remove()
-        } else {
-            starsRating.remove()
-        }
-    </script>
     <script>
         const mapToken = '<%- process.env.mapbox_token %>';
         const campCoordinates = <%-JSON.stringify(theCampground.geometry.coordinates) %>
