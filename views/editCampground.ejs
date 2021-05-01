@@ -7,69 +7,70 @@
 
     <body>
 
+        <%- include('./partials/flashMsg.ejs') %>
 
-        <%- include('./partials/navbar.ejs') %>
-            <div class="row">
+            <%- include('./partials/navbar.ejs') %>
+                <div class="row">
 
-                <div class="col-6 offset-3 ">
-                    <ul>
-                        <H4>Update Your Campground!</H4>
-                    </ul>
-                    <ul>
-                        <form action="/campgrounds/<%= theCampground._id %>?_method=PATCH" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
-                            <label for="title">Campground title :</label>
-                            <div class="input-group mb-3">
-                                <input required name="campground[title]" id="title" type="text" class="form-control" value=" <%= theCampground.title %>  " placeholder="title" aria-label="title" aria-describedby="basic-addon1" autofocus>
-                                <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">Please enter a valid title</div>
-                            </div>
-
-                            <label for="location">Campground location:</label>
-                            <div class="input-group mb-3">
-                                <input required name="campground[location]" id="location" type="text" class="form-control" value=" <%= theCampground.location %>  " placeholder="location" aria-label="location" aria-describedby="basic-addon1">
-                                <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">Please enter a valid location</div>
-                            </div>
-
-                            <label for="image">Campground image :</label>
-                            <div class="input-group mb-3">
-                                <input required name="campground[image]" id="image" type="file" class="form-control " placeholder="image adress (url) " aria-label="image " aria-describedby="basic-addon1">
-                                <div class="valid-feedback ">Looks Good!</div>
-                                <div class="invalid-feedback ">Please enter a valid image adress</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="validationTextarea" class="form-label">Description:</label>
-                                <textarea class="form-control" id="validationTextarea" name="campground[description]" placeholder="Required example textarea" required style="max-height:80px ;"> <%= theCampground.description %></textarea>
-                                <div class="valid-feedback">Looks Good!</div>
-                                <div class="invalid-feedback">
-                                    Please enter a description in the textarea.
+                    <div class="col-6 offset-3 ">
+                        <ul>
+                            <H4>Update Your Campground!</H4>
+                        </ul>
+                        <ul>
+                            <form action="/campgrounds/<%= theCampground._id %>?_method=PATCH" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+                                <label for="title">Campground title :</label>
+                                <div class="input-group mb-3">
+                                    <input required name="campground[title]" id="title" type="text" class="form-control" value=" <%= theCampground.title %>  " placeholder="title" aria-label="title" aria-describedby="basic-addon1" autofocus>
+                                    <div class="valid-feedback">Looks Good!</div>
+                                    <div class="invalid-feedback">Please enter a valid title</div>
                                 </div>
-                            </div>
 
-
-                            <label for="price" class="form-label">Price/night:</label>
-                            <div class="input-group ">
-                                <span class="input-group-text" id="inputGroupPrepend3">$</span>
-                                <input type="number" class="form-control" id="price" name="campground[price]" placeholder=" <%= theCampground.price %>  " aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" ] required>
-                                <div class="invalid-feedback">
-                                    Please choose a price greater then 0$.
+                                <label for="location">Campground location:</label>
+                                <div class="input-group mb-3">
+                                    <input required name="campground[location]" id="location" type="text" class="form-control" value=" <%= theCampground.location %>  " placeholder="location" aria-label="location" aria-describedby="basic-addon1">
+                                    <div class="valid-feedback">Looks Good!</div>
+                                    <div class="invalid-feedback">Please enter a valid location</div>
                                 </div>
-                                <div class="valid-feedback">Looks Good!</div>
 
-                            </div>
+                                <label for="image">Campground image :</label>
+                                <div class="input-group mb-3">
+                                    <input required name="campground[image]" id="image" type="file" class="form-control " placeholder="image adress (url) " aria-label="image " aria-describedby="basic-addon1">
+                                    <div class="valid-feedback ">Looks Good!</div>
+                                    <div class="invalid-feedback ">Please enter a valid image adress</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="validationTextarea" class="form-label">Description:</label>
+                                    <textarea class="form-control" id="validationTextarea" name="campground[description]" placeholder="Required example textarea" required style="max-height:80px ;"> <%= theCampground.description %></textarea>
+                                    <div class="valid-feedback">Looks Good!</div>
+                                    <div class="invalid-feedback">
+                                        Please enter a description in the textarea.
+                                    </div>
+                                </div>
 
 
-                            <button class="btn btn-outline-success my-3">Edit</button>
-                            <a class="btn btn-outline-info" href="/campgrounds/<%=theCampground._id %>  ">Cancel</a>
-                        </form>
-                    </ul>
+                                <label for="price" class="form-label">Price/night:</label>
+                                <div class="input-group ">
+                                    <span class="input-group-text" id="inputGroupPrepend3">$</span>
+                                    <input type="number" class="form-control" id="price" name="campground[price]" placeholder=" <%= theCampground.price %>  " aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" ] required>
+                                    <div class="invalid-feedback">
+                                        Please choose a price greater then 0$.
+                                    </div>
+                                    <div class="valid-feedback">Looks Good!</div>
+
+                                </div>
+
+
+                                <button class="btn btn-outline-success my-3">Edit</button>
+                                <a class="btn btn-outline-info" href="/campgrounds/<%=theCampground._id %>  ">Cancel</a>
+                            </form>
+                        </ul>
+
+                    </div>
+
+
+
 
                 </div>
-
-
-
-
-            </div>
 
 
     </body>
