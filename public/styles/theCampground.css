@@ -10,9 +10,15 @@
     height: 45%;
 }
 
+#avatarImg {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
 .reviews {
-    width: 40% !important;
-    margin-left: 30% !important;
+    width: 33rem;
+    margin: auto;
 }
 
 @media screen and (max-width: 600px) {

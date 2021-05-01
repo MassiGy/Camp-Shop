@@ -22,7 +22,13 @@ module.exports.renderEditForm = async(req, res) => {
 }
 
 module.exports.showPage = async(req, res) => {
-    const theCampground = await Campground.findById(req.params.id).populate('reviews')
+    const theCampground = await Campground.findById(req.params.id).populate({
+        path: 'reviews',
+        populate: {
+            path: 'owner',
+            modal: User,
+        }
+    })
     res.render('theCampground.ejs', { theCampground })
 }
 
