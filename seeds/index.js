@@ -63,7 +63,7 @@ const seedDB = async() => {
                 ]
             },
             image: {
-                url: 'https://res.cloudinary.com/https-res-cloudinary-com-massigy-images/image/upload/v1619876269/CampShop/FB_IMG_1537891494422_yvlqpr.jpg',
+                url: "https://res.cloudinary.com/https-res-cloudinary-com-massigy-images/image/upload/v1619880040/CampShop/AdminPictures/NFP_Campground_A80U1788_afmwtd.jpg",
                 filename: 'YelpCamp/ahfnenvca4tha00h2ubt'
             },
         })

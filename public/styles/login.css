@@ -2,7 +2,6 @@
 body {
     margin: 0 !important;
     padding: 0 !important;
-    background-image: url('https://images.unsplash.com/photo-1476041800959-2f6bb412c8ce?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGdyb3VuZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80') no-repeat !important;
     background: rgb(2, 0, 36) !important;
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(2, 2, 19, 1) 61%, rgba(0, 212, 255, 1) 100%) !important;
     font-family: sans-serif !important;
