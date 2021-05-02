@@ -21,7 +21,7 @@
                 </div>
                 <div class="row">
 
-                    <div id="theCampShowcase" class="col-xs-6 col-md-4  mx-2 card my-5 shadow-lg p-3  mb-5 bg-body rounded" style="width: 24rem; height: 33rem;">
+                    <div id="theCampShowcase" class="col-xs-6 col-md-4  mx-2 card my-5 shadow-lg p-3  mb-5 bg-body rounded" style="width: 24rem; height: 35rem;">
                         <img src=" <%= theCampground.image.url %>  " class="card-img-top img-fluid img-thumbnail">
                         <div class="card-body">
                             <h5 class="card-title">
@@ -38,7 +38,7 @@
                                 </h6>
                                 <p class="card-text">
                                     Camp Description:
-                                    <%= theCampground.description %>
+                                    <%=theCampground.description.substring(0,120)%>...
                                 </p>
                             </details>
 
@@ -51,7 +51,7 @@
                                 <% } %>
                         </div>
                     </div>
-                    <div class="col-xs-6 col-md-4 mx-2  card my-5 shadow-lg p-3  mb-5 bg-body rounded" id="postReviewForm" style="width: 24rem; height: 33rem;">
+                    <div class="col-xs-6 col-md-4 mx-2  card my-5 shadow-lg p-3  mb-5 bg-body rounded" id="postReviewForm" style="width: 24rem; height: 35rem;">
                         <div class="card-body">
                             <div class="card-title">
                                 <h5><strong>Leave a Review</strong></h5>
@@ -100,7 +100,7 @@
                     </div>
 
                 </div>
-                <main class="d-flex justify-content-center align-items-center">
+                <main class="d-flex justify-content-center align-items-center mb-3">
                     <% for(let review of theCampground.reviews){ %>
                         <div class="row  shadow-lg p-3  bg-body rounded reviews">
 
