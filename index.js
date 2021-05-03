@@ -18,6 +18,7 @@ const multer = require('multer')
 const upload = multer({ dest: 'uploads/' })
 const flash = require('connect-flash')
 const session = require('express-session')
+const MongoStore = require('connect-mongo');
 const passport = require('passport')
 const localStrategy = require('passport-local');
 const User = require('./modals/user')
@@ -27,10 +28,21 @@ const signupRoutes = require('./routes/signupRoutes')
 const otherRoutes = require('./routes/otherRoutes')
 const signoutRoutes = require('./routes/signoutRoutes')
 const reviewRoutes = require('./routes/reviewRoutes')
+
+
+/// App Configs Variable
+
 const dbUrl = process.env.dataBaseUrl || 'mongodb://localhost:27017/myApp';
 const sessionName = process.env.sessionName || 'u.controllers'
 const sessionSecret = process.env.sessionSecret || 'u.controllers.token'
+
+const store = new MongoStore({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,
+    secret: sessionSecret,
+})
 const sessionConfig = {
+    store: store,
     secret: sessionSecret,
     name: sessionName,
     resave: false,
