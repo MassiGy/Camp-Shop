@@ -20,25 +20,6 @@ db.once('open', function() {
 
 const sample = array => array[Math.floor(Math.random() * array.length)]
 
-// const seedDB = async() => {
-//     await Campground.deleteMany({})
-//     for (let i = 0; i < 3; i++) {
-//         const rand1000 = Math.floor(Math.random() * 1000)
-//         let camp = new Campground({
-//             title: `${sample(descriptors)} ${sample(places)}`,
-//             location: `${cities[rand1000].city}, ${cities[rand1000].state}`,
-//             description: 'a good place to rest!',
-//             image: 'https://source.unsplash.com/collection/483251/1600x900',
-//             price: rand1000 / 10,
-//             author: "60808d6903847a313057c721",
-
-
-
-//         })
-//         await camp.save()
-//     }
-// }
-
 
 
 
@@ -74,17 +55,3 @@ const seedDB = async() => {
 seedDB().then(() => {
     mongoose.connection.close()
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // seedDB()
