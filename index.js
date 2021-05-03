@@ -9,6 +9,7 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express')
 const app = express()
 const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require("helmet");
 const path = require('path')
 const methodOverRide = require('method-override')
 const mongoose = require('mongoose')
@@ -35,6 +36,7 @@ const sessionConfig = {
     resave: false,
     saveUninitialized: false,
     Cookie: {
+        // secure: true,
         httpOnly: true,
         expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
     }
@@ -61,6 +63,7 @@ db.once('open', function() {
 app.engine('ejs', ejsMate)
 app.use(express.urlencoded({ extended: true }))
 app.use(mongoSanitize())
+app.use(helmet({ contentSecurityPolicy: false }));
 app.use(methodOverRide('_method'))
 app.use(express.json());
 app.set('view engine', 'ejs');
