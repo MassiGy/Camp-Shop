@@ -27,9 +27,9 @@ const signupRoutes = require('./routes/signupRoutes')
 const otherRoutes = require('./routes/otherRoutes')
 const signoutRoutes = require('./routes/signoutRoutes')
 const reviewRoutes = require('./routes/reviewRoutes')
-const dbUrl = process.env.dataBaseUrl
-const sessionName = process.env.sessionName
-const sessionSecret = process.env.sessionSecret
+const dbUrl = process.env.dataBaseUrl || 'mongodb://localhost:27017/myApp';
+const sessionName = process.env.sessionName || 'u.controllers'
+const sessionSecret = process.env.sessionSecret || 'u.controllers.token'
 const sessionConfig = {
     secret: sessionSecret,
     name: sessionName,
