@@ -28,8 +28,9 @@ main {
     color: whitesmoke;
     text-align: center;
     position: absolute;
+    font-weight: 900;
     top: 50%;
-    right: 30%;
+    right: 35%;
 }
 
 @media screen and (max-width: 800px) {
