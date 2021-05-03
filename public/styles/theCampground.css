@@ -52,14 +52,14 @@ textarea {
 }
 
 .map-box:hover>#map {
-    width: 340px;
-    height: 280px;
+    width: 380px;
+    height: 300px;
     background-color: chocolate;
 }
 
 .map-box:hover {
-    width: 400px;
-    height: 300px;
+    width: 440px;
+    height: 320px;
     z-index: 1000;
     position: absolute;
 }

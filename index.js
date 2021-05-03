@@ -8,6 +8,7 @@ if (process.env.NODE_ENV !== 'production') {
 /// Requiring the Needed Packages & Config
 const express = require('express')
 const app = express()
+const mongoSanitize = require('express-mongo-sanitize');
 const path = require('path')
 const methodOverRide = require('method-override')
 const mongoose = require('mongoose')
@@ -59,6 +60,7 @@ db.once('open', function() {
 
 app.engine('ejs', ejsMate)
 app.use(express.urlencoded({ extended: true }))
+app.use(mongoSanitize())
 app.use(methodOverRide('_method'))
 app.use(express.json());
 app.set('view engine', 'ejs');
