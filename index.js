@@ -33,7 +33,7 @@ const reviewRoutes = require('./routes/reviewRoutes')
 /// App Configs Variable
 
 const dbUrl = process.env.dataBaseUrl || 'mongodb://localhost:27017/myApp';
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 const sessionName = process.env.sessionName || 'u.controllers'
 const sessionSecret = process.env.sessionSecret || 'u.controllers.token'
 const store = new MongoStore({
