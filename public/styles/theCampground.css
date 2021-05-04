@@ -21,10 +21,17 @@
     margin: auto;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .reviews {
         width: 70% !important;
         margin-left: 15% !important;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .row {
+        width: 80% !important;
+        margin-left: 10% !important;
     }
 }
 
@@ -36,18 +43,20 @@ textarea {
 
 /* Maps Styles */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .map-box:hover>#map {
-        width: 200px;
-        height: 100px;
+        width: 240px !important;
+        height: 160px !important;
         background-color: chocolate;
     }
-    ;
+}
+
+@media screen and (max-width: 700px) {
     .map-box:hover {
-        width: 260px;
-        height: 140px;
-        z-index: 1000;
-        position: absolute;
+        width: 300px !important;
+        height: 200px !important;
+        z-index: 1000 !important;
+        position: absolute !important;
     }
 }
 

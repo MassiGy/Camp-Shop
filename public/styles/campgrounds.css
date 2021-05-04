@@ -131,16 +131,16 @@ body::-webkit-scrollbar-thumb {
 
 @media screen and (max-width: 600px) {
     .map-box:hover>#map {
-        width: 300px !important;
-        height: 200px !important;
+        width: 240px !important;
+        height: 160px !important;
         background-color: chocolate;
     }
 }
 
 @media screen and (max-width: 600px) {
     .map-box:hover {
-        width: 360px !important;
-        height: 240px !important;
+        width: 300px !important;
+        height: 200px !important;
         z-index: 1000 !important;
         position: absolute !important;
     }
@@ -161,7 +161,7 @@ body::-webkit-scrollbar-thumb {
 
 .map-box {
     position: absolute;
-    top: 92%;
+    top: 96%;
     right: 0%;
     margin-right: 0% !important;
     height: 50px;
@@ -270,7 +270,7 @@ body::-webkit-scrollbar-thumb {
 
 .scrollDown-box {
     position: absolute;
-    top: 102%;
+    top: 110%;
     right: 0%;
     margin-right: 0% !important;
     height: 50px;
