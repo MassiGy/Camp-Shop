@@ -30,8 +30,7 @@ const reviewRoutes = require('./routes/reviewRoutes')
 
 
 /// App Configs Variable
-// process.env.dataBaseUrl ||
-const dbUrl = 'mongodb://localhost:27017/myApp';
+const dbUrl = process.env.dataBaseUrl || 'mongodb://localhost:27017/myApp';
 const port = process.env.PORT || 3000;
 const sessionName = process.env.sessionName || 'u.controllers'
 const sessionSecret = process.env.sessionSecret || 'u.controllers.token'
@@ -47,7 +46,7 @@ const sessionConfig = {
     resave: false,
     saveUninitialized: false,
     Cookie: {
-        // secure: true,
+        secure: true,
         httpOnly: true,
         expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
     }
