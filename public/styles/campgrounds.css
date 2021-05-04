@@ -4,10 +4,16 @@ body {
 }
 
 main {
-    width: 80%;
+    width: 75%;
     margin-left: 15%;
-    margin-right: 5%;
+    margin-right: 15%;
     top: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .main {
+        margin-right: 25% !important;
+    }
 }
 
 #last {
@@ -105,7 +111,7 @@ body::-webkit-scrollbar-thumb {
     }
     ;
     .main {
-        margin-left: 10%;
+        margin-right: 25% !important;
     }
 }
 

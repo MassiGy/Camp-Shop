@@ -5,6 +5,20 @@ const opts = { toJSON: { virtuals: true } };
 
 
 
+const imageSchema = new Schema({
+    url: {
+        type: String,
+        required: true,
+    },
+    filename: {
+        type: String,
+        required: true,
+    }
+}, { _id: false })
+
+imageSchema.virtual('thumbnail').get(function() {
+    return this.url.replace('/upload', '/upload/w_300')
+})
 
 
 const campgroundSchema = new Schema({
@@ -37,10 +51,7 @@ const campgroundSchema = new Schema({
         type: String,
         required: true,
     },
-    image: {
-        url: String,
-        filename: String,
-    },
+    image: imageSchema,
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User',
