@@ -1,11 +1,11 @@
 @import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
 body {
-    margin: 0 !important;
-    padding: 0 !important;
-    background: rgb(2, 0, 36) !important;
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(2, 2, 19, 1) 61%, rgba(0, 212, 255, 1) 100%) !important;
-    font-family: sans-serif !important;
-    background-size: cover !important;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://res.cloudinary.com/https-res-cloudinary-com-massigy-images/image/upload/v1620130711/CampShop/AdminPictures/photo-1515444744559-7be63e1600de_bo8kog.jpg");
+    background-size: cover;
+    background-position: center;
+    text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
 }
 
 .login-box {
@@ -58,7 +58,7 @@ body {
     margin-left: 10px;
 }
 
-.btn {
+#loginBtn {
     width: 94% !important;
     margin: 12px 0 !important;
     margin-left: 3% !important;

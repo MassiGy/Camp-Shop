@@ -1,6 +1,6 @@
 body {
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://res.cloudinary.com/https-res-cloudinary-com-massigy-images/image/upload/v1619977431/CampShop/AdminPictures/photo-1526491109672-74740652b963_pu9vsa.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://res.cloudinary.com/https-res-cloudinary-com-massigy-images/image/upload/v1619879776/CampShop/AdminPictures/photo-1476041800959-2f6bb412c8ce_bfxx6a.jpg");
     background-size: cover;
     background-position: center;
     text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
