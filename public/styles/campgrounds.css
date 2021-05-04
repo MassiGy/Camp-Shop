@@ -11,8 +11,8 @@ main {
 }
 
 @media screen and (max-width: 800px) {
-    .main {
-        margin-right: 25% !important;
+    main {
+        margin-right: 20% !important;
     }
 }
 
@@ -131,16 +131,18 @@ body::-webkit-scrollbar-thumb {
 
 @media screen and (max-width: 600px) {
     .map-box:hover>#map {
-        width: 200px;
-        height: 100px;
+        width: 300px !important;
+        height: 200px !important;
         background-color: chocolate;
     }
-    ;
+}
+
+@media screen and (max-width: 600px) {
     .map-box:hover {
-        width: 260px;
-        height: 140px;
-        z-index: 1000;
-        position: absolute;
+        width: 360px !important;
+        height: 240px !important;
+        z-index: 1000 !important;
+        position: absolute !important;
     }
 }
 
@@ -169,6 +171,7 @@ body::-webkit-scrollbar-thumb {
     margin-top: 10px !important;
     margin-right: 10px !important;
     z-index: 1000;
+    margin-bottom: 40px !important;
 }
 
 #map {
@@ -205,7 +208,7 @@ body::-webkit-scrollbar-thumb {
 /* Search Box Styles  */
 
 .search-box {
-    margin-bottom: auto !important;
+    margin-bottom: 40px !important;
     z-index: 1000;
 }
 

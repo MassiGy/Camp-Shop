@@ -35,25 +35,25 @@
             </div>
         </nav>
 
+
+
+        <div class="mx-5 flashMsg">
+            <%- include('./partials/flashMsg.ejs') %>
+        </div>
+        <div class="search-box">
+            <form class="search-section" action="/campgrounds/search" method="POST">
+                <input type="text" placeholder="Search By Place" name="searchedInput" id="searchedInput" autofocus>
+                <i id="searchIcon" class="fas fa-search "></i>
+            </form>
+        </div>
+        <div class="map-box my-5">
+            <i id="mapToggler" class="fas fa-map-marker-alt"></i>
+            <div id='map'></div>
+        </div>
+        <div class="scrollDown-box my-5">
+            <a href="#last"><i id="scrollDown" class="fas fa-arrow-down"></i></a>
+        </div>
         <main>
-
-            <div class="mx-5 flashMsg">
-                <%- include('./partials/flashMsg.ejs') %>
-            </div>
-            <div class="search-box">
-                <form class="search-section" action="/campgrounds/search" method="POST">
-                    <input type="text" placeholder="Search By Place" name="searchedInput" id="searchedInput" autofocus>
-                    <i id="searchIcon" class="fas fa-search "></i>
-                </form>
-            </div>
-            <div class="map-box my-5">
-                <i id="mapToggler" class="fas fa-map-marker-alt"></i>
-                <div id='map'></div>
-            </div>
-            <div class="scrollDown-box my-5">
-                <a href="#last"><i id="scrollDown" class="fas fa-arrow-down"></i></a>
-            </div>
-
             <div class="row pt-5">
                 <% for(let campground of campgrounds) {%>
                     <div class="col-xs-6 col-lg-4 ">
