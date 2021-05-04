@@ -25,11 +25,11 @@ const sample = array => array[Math.floor(Math.random() * array.length)]
 
 
 const seedDB = async() => {
-    try {
-        await Campground.deleteMany({});
-    } catch (e) {
-        console.log(e.message)
-    }
+    // try {
+    //     await Campground.deleteMany({});
+    // } catch (e) {
+    //     console.log(e.message)
+    // }
 
     for (let i = 0; i < 100; i++) {
         const random1000 = Math.floor(Math.random() * 1000);
