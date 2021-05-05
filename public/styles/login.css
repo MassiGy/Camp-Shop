@@ -53,8 +53,12 @@ body {
     padding-bottom: 6px !important;
 }
 
-.invalid-feedback,
+.invalid-feedback {
+    margin-left: 10px;
+}
+
 .valid-feedback {
+    margin-top: 15px;
     margin-left: 10px;
 }
 

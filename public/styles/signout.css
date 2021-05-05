@@ -68,8 +68,11 @@ body {
     margin-left: 3% !important;
 }
 
-.invalid-feedback,
-.valid-feedback {
+.invalid-feedback {
     margin-left: 10px;
-    color: white;
+}
+
+.valid-feedback {
+    margin-top: 15px;
+    margin-left: 10px;
 }
