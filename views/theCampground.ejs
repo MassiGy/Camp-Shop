@@ -107,19 +107,23 @@
                             <% for(let review of theCampground.reviews){ %>
                                 <div class="row mb-4  shadow-lg p-3  bg-body rounded reviews">
 
-                                    <div class="col-xs-6 col-md-3 ">
+                                    <div class="col-xs-6 col-md-4 ">
                                         <img id="avatarImg" src="https://res.cloudinary.com/https-res-cloudinary-com-massigy-images/image/upload/w_100/v1619887318/CampShop/AdminPictures/avatar2_u50b3j.png" alt="">
+                                        <br>
                                         <strong class="ms-3">  <%= review.owner.username %></strong>
                                     </div>
-                                    <div class="col-xs-6 col-md-3">
+
+                                    <div class="col-xs-6 col-md-4">
+                                        <br>
                                         <p id="starsRatingResult" class="starability-result" data-rating=<%=review.rating %>>
                                         </p>
                                         <p>
                                             <h6>Review Text :</h6>
                                             <%= review.reviewBody %>
                                         </p>
+
                                         <% if(activeUser && activeUser._id.equals(review.owner._id)){%>
-                                            <div class="mb-3 ms-3">
+                                            <div>
                                                 <form action="/campgrounds/<%= theCampground._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
                                                     <button class="btn btn-outline-danger">Delete</button>
                                                 </form>
