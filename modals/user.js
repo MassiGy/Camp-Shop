@@ -20,6 +20,7 @@ userSchema.post('findOneAndDelete', async(doc) => {
     if (doc.postedCampgrounds.length > 0) {
         doc.postedCampgrounds.forEach(async(el) => {
             await Campground.findByIdAndDelete(el);
+            // try find one and delete to enable the compground.js middleware
         });
     }
 

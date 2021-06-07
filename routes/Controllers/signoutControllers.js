@@ -18,7 +18,7 @@ module.exports.signout = async(req, res) => {
         req.flash('danger', 'There Is No SignedIn User With That Credentials')
         res.redirect('/signout')
     } else {
-        await User.findOneAndDelete({ username: req.body.user.username })
+        await User.findOneAndDelete({ username: req.body.user.username }) // add logic to remove all reviews made by this user, like a mongoose middleware
         req.session.isSignedIn = null;
         req.flash('success', 'Successfully Signed Out, GoodBy!')
         res.redirect('/campgrounds')
