@@ -59,6 +59,6 @@ const seedDB = async() => {
 //     mongoose.connection.close()
 // })
 
-await Campground.deleteMany({}).then(() => {
+Campground.deleteMany({}).then(() => {
     mongoose.connection.close();
 })
