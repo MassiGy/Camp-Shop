@@ -8,7 +8,7 @@ html {
 }
 
 body {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 
 main {
@@ -45,7 +45,8 @@ main {
     position: absolute;
     font-weight: 900;
     top: 50%;
-    right: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 @media screen and (max-width: 80rem) {
@@ -130,8 +131,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .card-img-top {
-    height: 15rem;
-    width: 25rem;
+    height: 10rem;
+    width: 20rem;
 }
 
 
