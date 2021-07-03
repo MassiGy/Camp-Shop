@@ -1,6 +1,14 @@
-body {
+* {
     margin: 0%;
     padding: 0%;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.4rem;
 }
 
 main {
@@ -10,7 +18,7 @@ main {
     top: 100%;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 80rem) {
     main {
         margin-right: 20%;
     }
@@ -18,7 +26,7 @@ main {
 
 #last {
     width: 100%;
-    height: 1px;
+    height: 0.1rem;
 }
 
 .hero-image {
@@ -40,7 +48,7 @@ main {
     right: 35%;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 80rem) {
     .hero-text {
         right: 10%;
     }
@@ -77,20 +85,20 @@ body::-webkit-scrollbar-thumb {
 
 .nav-link a {
     color: white;
-    margin-left: 2px;
+    margin-left: 0.2rem;
     margin-bottom: 15%;
 }
 
 .nav-link:hover {
     color: white;
-    border-bottom: #6649b8 solid 2px;
-    margin-left: 2px;
+    border-bottom: #6649b8 solid 0.2rem;
+    margin-left: 0.2rem;
 }
 
 .bottumPage {
     display: flex;
     width: 100%;
-    height: 100px;
+    height: 10rem;
     align-items: center;
     justify-content: center;
     background-color: #6649b8;
@@ -105,7 +113,7 @@ body::-webkit-scrollbar-thumb {
     color: tomato;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 80rem) {
     .navbar {
         display: none;
     }
@@ -115,46 +123,46 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 80rem) {
     .bottumPage {
         display: none;
     }
 }
 
 .card-img-top {
-    height: 150px;
-    width: 250px;
+    height: 15rem;
+    width: 25rem;
 }
 
 
 /* Cluster Map Styles */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 60rem) {
     .map-box:hover>.map-box__map {
-        width: 240px;
-        height: 160px;
+        width: 24rem;
+        height: 16rem;
         background-color: chocolate;
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 60rem) {
     .map-box:hover {
-        width: 300px;
-        height: 200px;
+        width: 30rem;
+        height: 20rem;
         z-index: 1000;
         position: absolute;
     }
 }
 
 .map-box:hover>.map-box__map {
-    width: 400px;
-    height: 300px;
+    width: 40rem;
+    height: 30rem;
     background-color: chocolate;
 }
 
 .map-box:hover {
-    width: 460px;
-    height: 320px;
+    width: 46rem;
+    height: 32rem;
     z-index: 1000;
     position: absolute;
 }
@@ -164,15 +172,15 @@ body::-webkit-scrollbar-thumb {
     top: 92%;
     right: 0%;
     margin-right: 0%;
-    height: 50px;
-    width: 50px;
-    border-radius: 40px;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 4rem;
     background-color: chocolate;
-    padding: 10px;
-    margin-top: 10px;
-    margin-right: 10px;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
     z-index: 1000;
-    margin-bottom: 40px;
+    margin-bottom: 4rem;
 }
 
 .map-box__map {
@@ -182,7 +190,7 @@ body::-webkit-scrollbar-thumb {
     padding: 0;
     color: white;
     float: left;
-    width: 0px;
+    width: 0;
     transition: 0.5s;
     text-decoration: white;
     border-radius: 10%;
@@ -193,15 +201,15 @@ body::-webkit-scrollbar-thumb {
     background: none;
     outline: none;
     float: right;
-    height: 25px;
-    width: 25px;
+    height: 2.5rem;
+    width: 2.5rem;
     border-radius: 50%;
     display: flex;
     color: white;
     justify-content: center;
     align-items: center;
-    margin-right: 3px;
-    margin-left: 3px;
+    margin-right: 0.3rem;
+    margin-left: 0.3rem;
     z-index: 1000;
 }
 
@@ -209,13 +217,13 @@ body::-webkit-scrollbar-thumb {
 /* Search Box Styles  */
 
 .search-box {
-    margin-bottom: 40px;
+    margin-bottom: 4rem;
     z-index: 1000;
 }
 
 .search-section:hover>#search-section__input {
-    width: 240px;
-    padding: 0 6px;
+    width: 24rem;
+    padding: 0 0.6rem;
 }
 
 .search-section {
@@ -223,12 +231,12 @@ body::-webkit-scrollbar-thumb {
     top: 86%;
     right: 0%;
     margin-right: 0%;
-    height: 50px;
-    border-radius: 40px;
+    height: 5rem;
+    border-radius: 4rem;
     background-color: chocolate;
-    padding: 10px;
-    margin-top: 10px;
-    margin-right: 10px;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
     z-index: 1000;
 }
 
@@ -239,8 +247,8 @@ body::-webkit-scrollbar-thumb {
     padding: 0;
     color: white;
     float: left;
-    line-height: 25px;
-    width: 0px;
+    line-height: 2.5rem;
+    width: 0;
     transition: 0.5s;
     text-decoration: white;
 }
@@ -254,15 +262,15 @@ body::-webkit-scrollbar-thumb {
     background: none;
     outline: none;
     float: right;
-    height: 25px;
-    width: 25px;
-    border-radius: 40px;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 4rem;
     display: flex;
     color: white;
     justify-content: center;
     align-items: center;
-    margin-right: 3px;
-    margin-left: 3px;
+    margin-right: 0.3rem;
+    margin-left: 0.3rem;
     z-index: 1000;
 }
 
@@ -274,12 +282,12 @@ body::-webkit-scrollbar-thumb {
     top: 102%;
     right: 0%;
     margin-right: 0%;
-    height: 50px;
-    border-radius: 40px;
+    height: 5rem;
+    border-radius: 4rem;
     background-color: chocolate;
-    padding: 10px;
-    margin-top: 10px;
-    margin-right: 10px;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
     z-index: 999;
 }
 
@@ -287,11 +295,11 @@ body::-webkit-scrollbar-thumb {
     border: none;
     background: none;
     outline: none;
-    height: 25px;
-    width: 25px;
-    border-radius: 40px;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 4rem;
     color: white;
-    margin-right: 3px;
-    margin-left: 3px;
+    margin-right: 0.3rem;
+    margin-left: 0.3rem;
     z-index: 1000;
 }
