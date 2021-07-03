@@ -1,5 +1,16 @@
 @import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
 body {
+    font-size: 1.6rem;
     height: 100vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("https://res.cloudinary.com/https-res-cloudinary-com-massigy-images/image/upload/v1620131547/CampShop/AdminPictures/photo-1504280390367-361c6d9f38f4_pbp2yh.jpg");
     background-size: cover;
@@ -9,7 +20,7 @@ body {
 }
 
 .signout-box {
-    width: 280px;
+    width: 28rem;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -19,37 +30,37 @@ body {
 
 .signout-box h1 {
     float: left;
-    font-size: 40px;
-    border-bottom: 6px solid #f07c00;
-    margin-bottom: 50px;
-    padding: 13px 0;
+    font-size: 4rem;
+    border-bottom: 0.6rem solid #f07c00;
+    margin-bottom: 5rem;
+    padding: 1.3rem 0;
 }
 
 .textbox {
     width: 100%;
     overflow: hidden;
-    font-size: 20px;
-    padding: 8px 0;
-    margin: 8px 0;
+    font-size: 2rem;
+    padding: 0.8rem 0;
+    margin: 0.8rem 0;
 }
 
 .textbox i {
-    width: 26px;
+    width: 2.6rem;
     float: left;
     text-align: center;
-    border-bottom: 1px solid #f07c00;
+    border-bottom: 0.1rem solid #f07c00;
 }
 
 .textbox input {
     border: none;
-    border-bottom: 1px solid #f07c00;
+    border-bottom: 0.1rem solid #f07c00;
     outline: none;
     background: none;
     color: white;
-    font-size: 18px;
+    font-size: 1.8rem;
     width: 80%;
     float: left;
-    margin: 0 10px;
+    margin: 0 1rem;
 }
 
 .textbox input::placeholder {
@@ -59,20 +70,20 @@ body {
 #signout-btn__btn {
     width: 94%;
     background: none;
-    border: 2px solid #f07c00;
+    border: 0.2rem solid #f07c00;
     color: wheat;
-    padding: 5px;
-    font-size: 18px;
+    padding: 0.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
-    margin: 12px 0;
+    margin: 1.2rem 0;
     margin-left: 3%;
 }
 
 .invalid-feedback {
-    margin-left: 10px;
+    margin-left: 1rem;
 }
 
 .valid-feedback {
-    margin-top: 15px;
-    margin-left: 10px;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
 }
