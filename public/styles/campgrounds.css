@@ -1,6 +1,7 @@
 * {
     margin: 0%;
     padding: 0%;
+    box-sizing: border-box;
 }
 
 html {
@@ -18,20 +19,14 @@ main {
     top: 100%;
 }
 
-@media screen and (max-width: 80rem) {
-    main {
-        margin-right: 20%;
-    }
-}
-
 #last {
     width: 100%;
     height: 0.1rem;
 }
 
 .hero-image {
-    width: 100%;
-    height: 80%;
+    width: 100vw;
+    height: 80vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/https-res-cloudinary-com-massigy-images/image/upload/v1619879776/CampShop/AdminPictures/photo-1476041800959-2f6bb412c8ce_bfxx6a.jpg');
     background-position: center;
     background-repeat: no-repeat;
@@ -47,12 +42,6 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-@media screen and (max-width: 80rem) {
-    .hero-text {
-        right: 10%;
-    }
 }
 
 
@@ -118,10 +107,6 @@ body::-webkit-scrollbar-thumb {
     .navbar {
         display: none;
     }
-    ;
-    .main {
-        margin-right: 25%;
-    }
 }
 
 @media screen and (min-width: 80rem) {
@@ -132,6 +117,11 @@ body::-webkit-scrollbar-thumb {
 
 .card-img-top {
     height: 10rem;
+    width: 20rem;
+}
+
+.card {
+    height: 25rem;
     width: 20rem;
 }
 

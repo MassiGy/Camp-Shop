@@ -1,8 +1,8 @@
 <title>Camps Shop</title>
 <%- include('./partials/head.ejs') %>
-    <link rel="stylesheet" href="../public/styles/campgrounds.css">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="../public/styles/campgrounds.css">
     </head>
 
     <body>
@@ -57,7 +57,7 @@
             <div class="row pt-5">
                 <% for(let campground of campgrounds) {%>
                     <div class="col-xs-6 col-lg-4 ">
-                        <div class="card my-5 shadow-lg p-3  mb-5 bg-body rounded" style="width: 18rem; height: 20rem;">
+                        <div class="card my-5 shadow-lg p-3  mb-5 bg-body rounded">
                             <img src=" <%= campground.image.thumbnail %>  " class="card-img-top img-thumbnail img-fluid">
                             <div class="card-body">
                                 <h5 class="card-title">
