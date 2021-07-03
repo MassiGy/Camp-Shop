@@ -22,15 +22,15 @@
 
 @media screen and (max-width: 700px) {
     .reviews {
-        width: 70% !important;
-        margin-left: 15% !important;
+        width: 70%;
+        margin-left: 15%;
     }
 }
 
 @media screen and (max-width: 700px) {
     .row {
-        width: 80% !important;
-        margin-left: 10% !important;
+        width: 80%;
+        margin-left: 10%;
     }
 }
 
@@ -43,23 +43,23 @@ textarea {
 /* Maps Styles */
 
 @media screen and (max-width: 700px) {
-    .map-box:hover>#map {
-        width: 240px !important;
-        height: 160px !important;
+    .map-box:hover>.map-box__map {
+        width: 240px;
+        height: 160px;
         background-color: chocolate;
     }
 }
 
 @media screen and (max-width: 700px) {
     .map-box:hover {
-        width: 300px !important;
-        height: 200px !important;
-        z-index: 1000 !important;
-        position: absolute !important;
+        width: 300px;
+        height: 200px;
+        z-index: 1000;
+        position: absolute;
     }
 }
 
-.map-box:hover>#map {
+.map-box:hover>.map-box__map {
     width: 380px;
     height: 300px;
     background-color: chocolate;
@@ -76,22 +76,22 @@ textarea {
     position: absolute;
     top: 10%;
     right: 0%;
-    margin-right: 0% !important;
+    margin-right: 0%;
     height: 50px;
     border-radius: 40px;
     background-color: chocolate;
     padding: 10px;
-    margin-top: 10px !important;
-    margin-right: 10px !important;
+    margin-top: 10px;
+    margin-right: 10px;
     z-index: 1000;
 }
 
-#map {
+.map-box__map {
     border: none;
     background: none;
     outline: none;
     padding: 0;
-    color: white !important;
+    color: white;
     float: left;
     width: 0px;
     transition: 1s;
@@ -99,18 +99,18 @@ textarea {
     border-radius: 10%;
 }
 
-#mapToggler {
+#map-box__toggler {
     border: none;
     background: none;
     outline: none;
-    float: right !important;
-    height: 25px !important;
-    width: 25px !important;
-    border-radius: 50px !important;
-    display: flex !important;
+    float: right;
+    height: 25px;
+    width: 25px;
+    border-radius: 50px;
+    display: flex;
     color: white;
-    justify-content: center !important;
-    align-items: center !important;
-    margin-right: 3px !important;
-    margin-left: 3px !important;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3px;
+    margin-left: 3px;
 }

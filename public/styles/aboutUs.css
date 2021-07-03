@@ -21,8 +21,8 @@ body {
 
 @media screen and (max-width: 960px) {
     #adminPicture {
-        width: 12rem !important;
-        height: 12rem !important;
+        width: 12rem;
+        height: 12rem;
     }
 }
 
@@ -67,7 +67,7 @@ a,
 a:hover {
     font-weight: 400;
     color: white;
-    text-align: left !important;
+    text-align: left;
 }
 
 footer {
