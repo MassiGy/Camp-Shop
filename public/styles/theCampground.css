@@ -19,6 +19,7 @@ body {
 }
 
 .card {
+    font-size: 1.5rem;
     width: 30rem !important;
     height: 40rem !important;
 }
