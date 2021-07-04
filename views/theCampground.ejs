@@ -1,13 +1,13 @@
 <title>
 
     About This Camp</title>
+<link rel="stylesheet" href="/public/styles/theCampground.css">
 <%- include('./partials/head.ejs') %>
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
 
     <link rel="stylesheet" href="/public/styles/stars.css">
-    <link rel="stylesheet" href="/public/styles/theCampground.css">
     </head>
 
     <body>
@@ -20,7 +20,7 @@
                     <div class="map-box__map" id='map'></div>
                 </div>
                 <div class="row">
-                    <div id="theCampShowcase" class="col-xs-6 col-md-4  mx-2 card my-5 shadow-lg p-3  mb-5 bg-body rounded" style="width: 24rem; height: 35rem;">
+                    <div id="theCampShowcase" class="col-xs-6 col-md-4  mx-2 card my-5 shadow-lg p-3  mb-5 bg-body rounded">
                         <img src=" <%= theCampground.image.thumbnail %>  " class="card-img-top img-fluid img-thumbnail">
                         <div class="card-body">
                             <h5 class="card-title">
@@ -50,7 +50,7 @@
                                 <% } %>
                         </div>
                     </div>
-                    <div class="col-xs-6 col-md-4 mx-2  card my-5 shadow-lg p-3  mb-5 bg-body rounded" id="postReviewForm" style="width: 24rem; height: 35rem;">
+                    <div class="col-xs-6 col-md-4 mx-2  card my-5 shadow-lg p-3  mb-5 bg-body rounded" id="postReviewForm">
                         <div class="card-body">
                             <div class="card-title">
                                 <h5><strong>Leave a Review</strong></h5>
