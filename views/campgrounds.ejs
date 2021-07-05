@@ -1,8 +1,8 @@
 <title>Camps Shop</title>
 <%- include('./partials/head.ejs') %>
+    <link rel="stylesheet" href="../public/styles/campgrounds.css">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
-    <link rel="stylesheet" href="../public/styles/campgrounds.css">
     </head>
 
     <body>
@@ -66,7 +66,7 @@
                                 <p class="card-text text-muted">
                                     <%= campground.location %>
                                 </p>
-                                <a href="/campgrounds/<%= campground._id %>" class="btn btn-outline-success btn-sm mb-1 ">
+                                <a href="/campgrounds/<%= campground._id %>" class="btn btn-outline-success btn-md mb-1 ">
                                     <%= campground.title %>
                                 </a>
                             </div>

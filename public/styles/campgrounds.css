@@ -8,6 +8,18 @@ html {
     font-size: 62.5%;
 }
 
+@media (max-width:80rem) {
+    html {
+        font-size: 55%;
+    }
+    body {
+        font-size: 2rem;
+    }
+    .btn {
+        font-size: 1.5rem;
+    }
+}
+
 body {
     font-size: 1.6rem;
 }
@@ -22,6 +34,10 @@ main {
 #last {
     width: 100%;
     height: 0.1rem;
+}
+
+.btn {
+    font-size: 1.3rem;
 }
 
 .hero-image {
@@ -127,31 +143,14 @@ body::-webkit-scrollbar-thumb {
 
 /* Cluster Map Styles */
 
-@media screen and (max-width: 60rem) {
-    .map-box:hover>.map-box__map {
-        width: 24rem;
-        height: 16rem;
-        background-color: chocolate;
-    }
-}
-
-@media screen and (max-width: 60rem) {
-    .map-box:hover {
-        width: 30rem;
-        height: 20rem;
-        z-index: 1000;
-        position: absolute;
-    }
-}
-
 .map-box:hover>.map-box__map {
-    width: 40rem;
-    height: 30rem;
+    width: 90%;
+    height: 94%;
     background-color: chocolate;
 }
 
 .map-box:hover {
-    width: 46rem;
+    width: 42rem;
     height: 32rem;
     z-index: 1000;
     position: absolute;
@@ -220,13 +219,12 @@ body::-webkit-scrollbar-thumb {
     position: absolute;
     top: 86%;
     right: 0%;
-    margin-right: 0%;
     height: 5rem;
     border-radius: 4rem;
     background-color: chocolate;
     padding: 1rem;
-    margin-top: 1rem;
     margin-right: 1rem;
+    margin-bottom: 4rem;
     z-index: 1000;
 }
 
@@ -271,12 +269,10 @@ body::-webkit-scrollbar-thumb {
     position: absolute;
     top: 102%;
     right: 0%;
-    margin-right: 0%;
     height: 5rem;
     border-radius: 4rem;
     background-color: chocolate;
     padding: 1rem;
-    margin-top: 1rem;
     margin-right: 1rem;
     z-index: 999;
 }
