@@ -56,6 +56,16 @@ main {
     transform: translate(-50%, -50%);
 }
 
+.hero-text__header {
+    font-size: 5rem;
+    letter-spacing: 15;
+    padding-left: 1rem;
+}
+
+.hero-text__attach {
+    font-size: 2rem;
+}
+
 
 /* SCROLL BAR STYLES */
 
