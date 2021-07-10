@@ -23,6 +23,9 @@ body {
     html {
         font-size: 55%;
     }
+    body {
+        height: inherit;
+    }
 }
 
 .header__logo {
