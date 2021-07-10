@@ -8,6 +8,15 @@ html {
     font-size: 62.5%;
 }
 
+@media screen and (max-width:60rem) {
+    html {
+        font-size: 55%;
+    }
+    body {
+        height: 150vh;
+    }
+}
+
 body {
     font-size: 1.6rem;
     height: 100vh;
@@ -17,6 +26,32 @@ body {
     background-repeat: no-repeat;
     text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
     box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+}
+
+.section-about {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.heading-primary {
+    font-size: 4rem;
+    padding: 3rem 0;
+}
+
+.paragraph {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.btn {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+}
+
+.header__logo {
+    font-size: 2.8rem;
+    font-weight: 500;
 }
 
 .cover-container {
@@ -45,10 +80,4 @@ body {
 .btn-secondary:hover {
     color: #333;
     text-shadow: none;
-}
-
-@media screen and (max-width:60rem) {
-    body {
-        height: 150vh;
-    }
 }

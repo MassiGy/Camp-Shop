@@ -12,9 +12,6 @@ html {
     html {
         font-size: 55%;
     }
-    body {
-        font-size: 2rem;
-    }
     .btn {
         font-size: 1.5rem;
     }
@@ -150,7 +147,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .map-box:hover {
-    width: 42rem;
+    width: 40rem;
     height: 32rem;
     z-index: 1000;
     position: absolute;
