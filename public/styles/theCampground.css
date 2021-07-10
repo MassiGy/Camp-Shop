@@ -8,6 +8,12 @@ html {
     font-size: 62.5%;
 }
 
+@media screen and (max-width: 70rem) {
+    html {
+        font-size: 55%;
+    }
+}
+
 body {
     font-size: 1.6rem;
 }
@@ -39,21 +45,6 @@ body {
     margin: auto;
 }
 
-
-/* @media screen and (max-width: 70rem) {
-    .reviews {
-        width: 70%;
-        margin-left: 15%;
-    }
-}
-
-@media screen and (max-width: 70rem) {
-    .row {
-        width: 80%;
-        margin-left: 10%;
-    }
-} */
-
 textarea {
     max-width: 40rem;
     max-height: 10rem;
@@ -77,9 +68,8 @@ textarea {
 
 .map-box {
     position: absolute;
-    top: 92%;
+    top: 6%;
     right: 0%;
-    margin-right: 0%;
     height: 5rem;
     width: 5rem;
     border-radius: 4rem;

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark mb-5">
-    <div class="container-fluid">
+    <div class="container-fluid navbar__container">
         <a class="navbar-brand" href="/campgrounds"><i class="fas fa-map-signs"></i> Camps Shop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
                         Tools
                     </a>
 
-                    <ul class="dropdown-menu" style="color:white !important; background:#212529 !important;" aria-labelledby="navbarScrollingDropdown">
+                    <ul class="navbar__dropdown dropdown-menu" style="color:white !important; background:#212529 !important;" aria-labelledby="navbarScrollingDropdown">
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="/campgrounds"><i class="fas fa-campground"></i> Our Camps</a>
                         </li>
@@ -41,6 +41,7 @@
                 </li>
 
         </div>
+    </div>
 </nav>
 <style>
     body::-webkit-scrollbar {
@@ -59,5 +60,31 @@
         color: white;
         border-bottom: #6649b8 solid 2px;
         margin-left: 2px;
+    }
+    
+    .navbar {
+        font-size: 1.5rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.7rem;
+        padding-right: 5rem;
+    }
+    
+    .navbar__dropdown {
+        font-size: inherit;
+        width: 20vw;
+    }
+    
+    .navbar__container {
+        height: 4rem;
+        width: 60vw;
+    }
+    
+    @media screen and (max-width:80rem) {
+        .navbar__container {
+            height: inherit;
+            width: 90vw;
+        }
     }
 </style>

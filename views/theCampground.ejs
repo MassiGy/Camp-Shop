@@ -28,13 +28,13 @@
                                 <%= theCampground.title %>
                             </h5>
 
-                            <h6><b> For just : $
-                                <%= theCampground.price %> /night</b>
-                            </h6>
+                            <h5> For just : $
+                                <%= theCampground.price %> /night
+                            </h5>
                             <details class="text-muted">
-                                <h6>Camp Location :
+                                <p>Camp Location :
                                     <%= theCampground.location %>
-                                </h6>
+                                </p>
                                 <p class="card-text">
                                     Camp Description:
                                     <%=theCampground.description.substring(0,80)%>...
@@ -51,15 +51,11 @@
                         </div>
                     </div>
                     <div class="col-xs-6 col-md-4 mx-2  card my-5 shadow-lg p-3  mb-5 bg-body rounded" id="postReviewForm">
-                        <div class="card-body">
+                        <div class="card-body mt-5">
                             <div class="card-title">
-                                <h5><strong>Leave a Review</strong></h5>
                             </div>
                             <form class="form-groupe" action="/campgrounds/<%= theCampground._id %>/reviews/new" method="post">
-                                <label for="rate1"><b>Mark/5:</b></label>
-                                <br>
-                                <br>
-
+                                <h1 class="mb-5">Feedback Us!</h1>
 
                                 <section id="starsRating">
                                     <div class="col-3 ">
@@ -87,11 +83,9 @@
                                     </div>
                                 </section>
                                 <div class="mb-3">
-                                    <br>
-                                    <label class="form-label" for="review[reviewBody]"><b>What You Think?</b></label>
                                     <textarea class="form-control" name="review[reviewBody]" id="review[reviewBody]" cols="60" rows="3" placeholder="Tell us more about this camp!" autofocus></textarea>
                                 </div>
-                                <button class="btn btn-outline-success my-3 ">Post</button>
+                                <button class="btn btn-outline-success btn-lg mt-5 ">Post</button>
 
                             </form>
 
