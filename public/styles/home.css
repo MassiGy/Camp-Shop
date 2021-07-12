@@ -18,6 +18,7 @@ html {
 }
 
 body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.6rem;
     height: 100vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1559521783-1d1599583485?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
