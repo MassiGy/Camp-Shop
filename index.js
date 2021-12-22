@@ -31,7 +31,7 @@ const reviewRoutes = require('./routes/reviewRoutes')
 
 /// App Configs Variable
 const dbUrl = process.env.dataBaseUrl || 'mongodb://localhost:27017/myApp';
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 const sessionName = process.env.sessionName || 'u.controllers'
 const sessionSecret = process.env.sessionSecret || 'u.controllers.token'
 const store = new MongoStore({
@@ -58,7 +58,7 @@ const sessionConfig = {
 
 ///Connecting to  the Data Base 
 
-mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
+mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {

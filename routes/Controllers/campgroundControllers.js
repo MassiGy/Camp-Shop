@@ -13,6 +13,16 @@ module.exports.allCamps = async(req, res) => {
     const campgrounds = await Campground.find({});
     res.render('campgrounds.ejs', { campgrounds })
 }
+
+module.exports.get_all_camp_json = async(req, res) => {
+    const campgrounds = await Campground.find({})
+    .select("-image -description -author -reviews -geometry -properties");
+    // the select method will take the queried documents and exclude or include feilds
+    // look up the select method on the mongoose docs
+    res.status(200).send(campgrounds);
+}
+
+
 module.exports.renderNewForm = (req, res) => {
     res.render('createCampground.ejs')
 }

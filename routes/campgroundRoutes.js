@@ -19,7 +19,7 @@ const upload = multer({ storage })
 
 
 router.get('/', catchAsync(campgroundControllers.allCamps))
-
+router.get('/get_json', catchAsync(campgroundControllers.get_all_camp_json));
 router.get('/new', isLoggedIn, campgroundControllers.renderNewForm)
 
 router.get('/:id', catchAsync(campgroundControllers.showPage))
