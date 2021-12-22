@@ -9,7 +9,7 @@ const dbUrl = process.env.dataBaseUrl || 'mongodb://localhost:27017/myApp';
 
 
 
-mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -28,7 +28,7 @@ const sample = array => array[Math.floor(Math.random() * array.length)]
 const seedDB = async() => {
     await Campground.deleteMany({});
 
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 300; i++) {
         const random1000 = Math.floor(Math.random() * 1000);
         const price = Math.floor(Math.random() * 20) + 10;
         const camp = new Campground({
@@ -55,6 +55,4 @@ const seedDB = async() => {
 
 
 
-seedDB().then(() => {
-    mongoose.connection.close()
-})
+seedDB()

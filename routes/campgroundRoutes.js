@@ -19,7 +19,6 @@ const upload = multer({ storage })
 
 
 router.get('/', catchAsync(campgroundControllers.allCamps))
-router.get('/get_json', catchAsync(campgroundControllers.get_all_camp_json));
 router.get('/new', isLoggedIn, campgroundControllers.renderNewForm)
 
 router.get('/:id', catchAsync(campgroundControllers.showPage))
@@ -35,6 +34,19 @@ router.patch('/:id', isLoggedIn, isAuthor, upload.single('campground[image]'), c
 router.delete('/:id', isLoggedIn, isAuthor, catchAsync(campgroundControllers.deleteCamp))
 
 router.post('/search', catchAsync(campgroundControllers.search))
+
+
+
+
+// for the new version of the app -- camp-shop-redesign.herokuapp.com
+
+
+router.get('/get_json', catchAsync(campgroundControllers.get_all_camp_json));
+router.get('/search/:query', catchAsync(campgroundControllers.query_then_send));
+
+
+
+
 
 
 module.exports = router;

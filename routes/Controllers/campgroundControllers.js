@@ -14,13 +14,6 @@ module.exports.allCamps = async(req, res) => {
     res.render('campgrounds.ejs', { campgrounds })
 }
 
-module.exports.get_all_camp_json = async(req, res) => {
-    const campgrounds = await Campground.find({})
-    .select("-image -description -author -reviews -geometry -properties");
-    // the select method will take the queried documents and exclude or include feilds
-    // look up the select method on the mongoose docs
-    res.status(200).send(campgrounds);
-}
 
 
 module.exports.renderNewForm = (req, res) => {
@@ -121,6 +114,33 @@ module.exports.search = async(req, res) => {
         req.flash('danger', 'Not Found (Please Search by Location)');
         res.redirect('/campgrounds')
     }
+}
 
 
+
+// for the new version of the app -- camp-shop-redesign.herokuapp.com
+
+
+module.exports.get_all_camp_json = async(req, res) => {
+    const campgrounds = await Campground.find({})
+    .select("-image -description -author -reviews -geometry -properties");
+    // the select method will take the queried documents and exclude or include feilds
+    // look up the select method on the mongoose docs
+    res.status(200).send(campgrounds);
+}
+
+
+
+
+
+
+module.exports.query_then_send = async(req, res) => {
+    const { query } = req.params;
+    const campgrounds = await Campground.find({ location: { $regex: `.*${query}.*` } })
+    .select("-image -description -author -reviews -geometry -properties");
+    if (campgrounds.length > 0) {
+        res.status(200).send( campgrounds );
+    } else {
+        res.status(404).send("NOTHING WAS FOUND");
+    }
 }
