@@ -15,6 +15,12 @@ const upload = multer({ storage })
 
 
 
+// for the new version of the app -- camp-shop-redesign.herokuapp.com
+
+
+router.get('/get_json', catchAsync(campgroundControllers.get_all_camp_json));
+router.get('/search/:query', catchAsync(campgroundControllers.query_then_send));
+//////////////////////////////
 
 
 
@@ -37,12 +43,6 @@ router.post('/search', catchAsync(campgroundControllers.search))
 
 
 
-
-// for the new version of the app -- camp-shop-redesign.herokuapp.com
-
-
-router.get('/get_json', catchAsync(campgroundControllers.get_all_camp_json));
-router.get('/search/:query', catchAsync(campgroundControllers.query_then_send));
 
 
 
