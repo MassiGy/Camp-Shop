@@ -136,11 +136,13 @@ module.exports.get_all_camp_json = async(req, res) => {
 
 module.exports.query_then_send = async(req, res) => {
     const { query } = req.params;
-    const campgrounds = await Campground.find({ location: { $regex: `.*${query}.*` } })
+    const campgrounds = await Campground.find({ location: { $regex: `.*${query}.*`, $options : 'i'} })
     .select("-image -description -author -reviews -geometry -properties");
     if (campgrounds.length > 0) {
         res.status(200).send( campgrounds );
     } else {
-        res.status(404).send("NOTHING WAS FOUND");
+        res.status(404).send({
+            "error": "Nothing Was Found"
+        });
     }
 }
