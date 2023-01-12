@@ -13,9 +13,14 @@ router.get('/aboutUs', (req, res) => {
     res.render('aboutUs.ejs')
 })
 router.get('/logout', (req, res) => {
-    req.logOut();
-    req.flash('success', 'Successfully Logged Out, By!')
-    res.redirect('/campgrounds')
+    req.logOut(err => {
+        if (err) {
+            req.flash("error", "Something went wrong on logout ! We will work on it soon.");
+            return res.redirect("/home");
+        }
+        req.flash("success", "Successfully Logged Out. Bye!")
+        res.redirect("/campgrounds");
+    });
 })
 router.all('*', (req, res, next) => {
     throw new appError('Not Found', 404)
