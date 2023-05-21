@@ -41,30 +41,35 @@ module.exports.showPage = async (req, res) => {
 module.exports.postNewCamp = async (req, res) => {
     dataValidator(campValidator, req.body);
 
-    let camp_id;
-    geoCoder
-        .forwardGeocode({ query: req.body.campground.location,limit: 1, })
-        .send()
-        .then(geoData => {
-            new Campground(req.body.campground)
-                .then(camp => {camp.geometry = geoData.body.features[0].geometry; return camp;})
-                .then(camp => {camp.author = req.user._id; return camp;})
-                .then(camp => {camp.image = new Object({url: req.file.path, filename: req.file.filename}); return camp})
-                .then(camp => {camp.save(); camp_id = camp._id});
-        });
 
+    const geoData = await geoCoder.forwardGeocode({
+        query: req.body.campground.location,
+        limit: 1,
+    }).send()
 
-    User
-        .findOne(req.user)
-        .then(user => {user.postedCampgrounds.push(newCamp); return user})
-        .then(user => user.save());
+    const [newCamp, user] = await Promise.allSettled([
+        await new Campground(req.body.campground),
+        await User.findOne(req.user)
+    ]);
+  
+    newCamp.geometry = geoData.body.features[0].geometry
+    newCamp.author = req.user._id;
+    newCamp.image = new Object({
+        url: req.file.path,
+        filename: req.file.filename
+    })
+    user.postedCampgrounds.push(newCamp);
+
 
 
    
-    
-    req.flash('success', 'Successfully Created Campground');
-    res.redirect(`/campgrounds/${camp_id}`)
+    await Promise.allSettled([
+        newCamp.save(),
+        user.save(),
+    ])
 
+    req.flash('success', 'Successfully Created Campground');
+    res.redirect(`/campgrounds/${newCamp._id}`)
 }
 
 module.exports.postEditCamp = async (req, res) => {
@@ -83,10 +88,13 @@ module.exports.postEditCamp = async (req, res) => {
         filename: req.file.filename
     })
 
+   
+    // theCampToEdit is the camp before the update
     let theCampToEdit = await Campground.findByIdAndUpdate(id, req.body.campground, { runValidators: true })
     await cloudinary.uploader.destroy(theCampToEdit.image.filename)
+  
     req.flash('success', 'Successfully Uptaded Campground')
-    res.redirect(`/campgrounds/${theCampToEdit._id}`)
+    res.redirect(`/campgrounds/${id}`)
 
 }
 
@@ -96,10 +104,16 @@ module.exports.deleteCamp = async (req, res) => {
     let { id } = req.params;
     const campToDelete = await Campground.findByIdAndDelete(id)
     const fetchedUser = await User.findById(campToDelete.author)
+    
     let campToDeleteIndex = fetchedUser.postedCampgrounds.indexOf(campToDelete._id)
-    fetchedUser.postedCampgrounds.splice(campToDeleteIndex, 1)
-    await fetchedUser.save()
-    await cloudinary.uploader.destroy(campToDelete.image.filename)
+    fetchedUser.postedCampgrounds.splice(campToDeleteIndex, 1);
+
+    Promise.allSettled([
+        fetchedUser.save(),
+        cloudinary.uploader.destroy(campToDelete.image.filename)
+    ]);
+
+
     req.flash('success', 'Successfully Deleted Campground')
     res.redirect(`/campgrounds`)
 }
@@ -122,7 +136,9 @@ module.exports.search = async (req, res) => {
 
 
 module.exports.get_all_camp_json = async (req, res) => {
-    const campgrounds = await Campground.find({})
+    const campgrounds = await Campground
+        .find({})
+        .limit(18)
         .select("-image -description -author -reviews -geometry -properties");
     // the select method will take the queried documents and exclude or include feilds
     // look up the select method on the mongoose docs
@@ -136,7 +152,8 @@ module.exports.get_all_camp_json = async (req, res) => {
 
 module.exports.query_then_send = async (req, res) => {
     const { query } = req.params;
-    const campgrounds = await Campground.find({ location: { $regex: `.*${query}.*`, $options: 'i' } })
+    const campgrounds = await Campground
+        .find({ location: { $regex: `.*${query}.*`, $options: 'i' } })
         .select("-image -description -author -reviews -geometry -properties");
     if (campgrounds.length > 0) {
         res.status(200).send(campgrounds);
