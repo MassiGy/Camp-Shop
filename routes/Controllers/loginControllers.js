@@ -9,8 +9,11 @@ module.exports.renderLoginForm = (req, res) => {
 
 module.exports.postLogin = async(req, res) => {
     const returnTo = previousUrl || '/campgrounds';
+    
     req.session.isSignedIn = req.body.username;
+    
     delete req.session.previousUrl;
+    
     req.flash('success', 'Successfuly LoggedIn, Welcome!')
     res.redirect(`${returnTo}`)
 }

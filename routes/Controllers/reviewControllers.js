@@ -10,9 +10,13 @@ module.exports.showPage = (req, res) => {
 
 module.exports.postReview = async(req, res) => {
     dataValidator(reviewValidator, req.body)
+   
     const { id } = req.params;
+   
     const parentCamp = await Campground.findById(id)
+   
     if (parentCamp) {
+   
         const postedReview = new Review(req.body.review);
         postedReview.owner = req.user._id;
         await postedReview.save()
@@ -20,9 +24,12 @@ module.exports.postReview = async(req, res) => {
         await parentCamp.save()
         req.flash('success', 'Successfuly Posted Review!')
         res.redirect(`/campgrounds/${id}`)
+   
     } else {
+   
         req.flash('danger', 'Camp Not Found')
         res.redirect('/campgrounds')
+   
     }
 }
 

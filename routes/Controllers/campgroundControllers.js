@@ -47,18 +47,19 @@ module.exports.postNewCamp = async (req, res) => {
         limit: 1,
     }).send()
 
-    const [newCamp, user] = await Promise.allSettled([
-        await new Campground(req.body.campground),
-        await User.findOne(req.user)
-    ]);
-  
+    const newCamp = new Campground(req.body.campground);
+    
+    
     newCamp.geometry = geoData.body.features[0].geometry
     newCamp.author = req.user._id;
     newCamp.image = new Object({
         url: req.file.path,
         filename: req.file.filename
     })
-    user.postedCampgrounds.push(newCamp);
+    
+    
+    const user= await User.findOne(req.user);
+    user.postedCampgrounds.unshift(newCamp);
 
 
 
