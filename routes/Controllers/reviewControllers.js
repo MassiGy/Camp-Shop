@@ -19,9 +19,14 @@ module.exports.postReview = async(req, res) => {
    
         const postedReview = new Review(req.body.review);
         postedReview.owner = req.user._id;
-        await postedReview.save()
-        parentCamp.reviews.push(postedReview)
-        await parentCamp.save()
+        parentCamp.reviews.unshift(postedReview)
+        
+        await Promise.allSettled([
+            await postedReview.save(),
+            await parentCamp.save()
+        ])
+        
+        
         req.flash('success', 'Successfuly Posted Review!')
         res.redirect(`/campgrounds/${id}`)
    
