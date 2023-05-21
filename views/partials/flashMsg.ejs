@@ -1,30 +1,32 @@
+<style>
+    .alert {
+        z-index: 1100;
+    }
+</style>
+
+
 <% if(danger && danger.length){ %>
     <p class="alert alert-danger   alert-alert-dismissible fade show position-fixed bottom-0 end-0 " role="alert">
         <%= danger %>
     </p>
-    <% } %>
+<% } %>
 
 
-        <% if(success && success.length){ %>
-            <p class="alert alert-success alert-alert-dismissible fade show position-fixed bottom-0 end-0" role="alert">
-                <%= success %>
-            </p>
-            <% } %>
+<% if(success && success.length){ %>
+    <p class="alert alert-success alert-alert-dismissible fade show position-fixed bottom-0 end-0" role="alert">
+        <%= success %>
+    </p>
+<% } %>
 
 
-                <% if(passport && passport.length){ %>
-                    <p class="alert alert-danger alert-alert-dismissible fade position-fixed show bottom-0 end-0"
-                        role="alert">
-                        <%= passport %>
-                    </p>
-
-                    <% } %>
-
+<% if(passport && passport.length){ %>
+    <p class="alert alert-danger alert-alert-dismissible fade position-fixed show bottom-0 end-0"
+        role="alert">
+        <%= passport %>
+    </p>
+<% } %>
 
 
 
-                        <style>
-                            .alert {
-                                z-index: 1100;
-                            }
-                        </style>
+
+                       

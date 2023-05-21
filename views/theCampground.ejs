@@ -21,7 +21,7 @@
                 </div>
                 <div class="row">
                     <div id="theCampShowcase" class="col-xs-6 col-md-4  mx-2 card my-5 shadow-lg p-3  mb-5 bg-body rounded">
-                        <img src=" <%= theCampground.image.thumbnail %>  " class="card-img-top img-fluid img-thumbnail">
+                        <img src=" <%= theCampground.image?.thumbnail %>  " class="card-img-top img-fluid img-thumbnail">
                         <div class="card-body">
                             <h5 class="card-title">
                                 Camp Name:
@@ -95,7 +95,7 @@
                 </div>
 
                 <main class=" mb-3">
-                    <% if(theCampground.reviews.length >0){ %>
+                    <% if(theCampground.reviews?.length >0){ %>
                         <h5 class="text-center my-5">Camp Reviews:</h5>
                         <% } %>
                             <% for(let review of theCampground.reviews){ %>
@@ -104,7 +104,7 @@
                                     <div class="col-xs-6 col-md-4 ">
                                         <img id="avatarImg" src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png" alt="">
                                         <br>
-                                        <strong class="ms-3">  <%= review.owner.username %></strong>
+                                        <strong class="ms-3">  <%= review?.owner?.username %></strong>
                                     </div>
 
                                     <div class="col-xs-6 col-md-4">
@@ -113,12 +113,12 @@
                                         </p>
                                         <p>
                                             <h6>Review Text :</h6>
-                                            <%= review.reviewBody %>
+                                            <%= review?.reviewBody %>
                                         </p>
 
-                                        <% if(activeUser && activeUser._id.equals(review.owner._id)){%>
+                                        <% if(activeUser && activeUser._id.equals(review?.owner?._id)){%>
                                             <div>
-                                                <form action="/campgrounds/<%= theCampground._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
+                                                <form action="/campgrounds/<%= theCampground._id %>/reviews/<%= review?._id %>?_method=DELETE" method="post">
                                                     <button class="btn btn-outline-danger">Delete</button>
                                                 </form>
                                             </div>
@@ -132,7 +132,7 @@
     </body>
     <script>
         const mapToken = '<%- process.env.mapbox_token %>';
-        const campCoordinates = <%-JSON.stringify(theCampground.geometry.coordinates) %>
+        const campCoordinates = <%-JSON.stringify(theCampground.geometry?.coordinates) %>
     </script>
 
     <script src="/public//scripts/mapboxScripts.js"></script>
