@@ -40,7 +40,9 @@ module.exports.postReview = async(req, res) => {
 
 module.exports.delete = async(req, res) => {
     const { reviewId, id } = req.params;
+   
     await Review.findByIdAndDelete(reviewId)
+   
     req.flash('success', 'Successfuly Deleted Review')
     res.redirect(`/campgrounds/${id}`);
 }

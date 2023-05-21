@@ -12,19 +12,16 @@ const userSchema = new Schema({
     postedCampgrounds: [{
         type: Schema.Types.ObjectId,
         ref: 'Campground',
-    }, ]
+    },]
 })
 userSchema.plugin(passportLM)
 
 
-userSchema.post('findOneAndDelete', async(doc) => {
-    await Review.deleteMany({ owner: doc._id });
-    if (doc.postedCampgrounds.length > 0) {
-        doc.postedCampgrounds.forEach(async(el) => {
-            await Campground.findByIdAndDelete(el);
-        });
-    }
-
+userSchema.post('findOneAndDelete', async (doc) => {
+    // no need to await, this will be done after the task queue is empty
+    // if awaited, it will slow down the call stack
+    Review.deleteMany({ owner: doc._id });
+    doc.postedCampgrounds.forEach(el => Campground.findByIdAndDelete(el));
 })
 
 
