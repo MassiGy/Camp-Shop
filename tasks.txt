@@ -1,1 +1,2 @@
 - To improve performance, use the mongo operators to avoid using double mongoose queries. Like $push to push to an array without using a second query.
+- verify the authentication process

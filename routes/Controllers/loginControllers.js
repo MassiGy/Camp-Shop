@@ -16,7 +16,7 @@ module.exports.renderLoginForm = (req, res) => {
 module.exports.postLogin = async(req, res) => {
 
     // set the returnTo behavior (default = /campgrounds)
-    const returnTo = previousUrl || '/campgrounds';
+    const returnTo = req.session.previousUrl || '/campgrounds';
     
     // once the user is logged in, add the username to the session
     req.session.isSignedIn = req.body.username;
@@ -24,7 +24,7 @@ module.exports.postLogin = async(req, res) => {
     // override the session previous url store
     delete req.session.previousUrl;
     
-    // redirect
+    // redirect to the return to page
     req.flash('success', 'Successfuly LoggedIn, Welcome!')
     res.redirect(`${returnTo}`)
 }
