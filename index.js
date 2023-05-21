@@ -15,7 +15,7 @@ const methodOverRide = require('method-override')
 const mongoose = require('mongoose')
 const ejsMate = require('ejs-mate')
 const multer = require('multer')
-const flash = require('connect-flash')
+const flash = require('connect-flash');
 const session = require('express-session')
 const MongoStore = require('connect-mongo');
 const passport = require('passport')
@@ -32,23 +32,27 @@ const reviewRoutes = require('./routes/reviewRoutes')
 /// App Configs Variable
 const dbUrl = process.env.dataBaseUrl || 'mongodb://localhost:27017/myApp';
 const port = process.env.PORT || 8080;
-const sessionName = process.env.sessionName || 'u.controllers'
-const sessionSecret = process.env.sessionSecret || 'u.controllers.token'
+const sessionName = process.env.sessionName || 'u.controllers';
+const sessionSecret = process.env.sessionSecret || 'u.controllers.token';
+
+
 const store = new MongoStore({
     mongoUrl: dbUrl,
-    touchAfter: 24 * 60 * 60,
+    touchAfter: 7 * 24 * 60 * 60,
     secret: sessionSecret,
 })
+
+
 const sessionConfig = {
     store: store,
     secret: sessionSecret,
     name: sessionName,
     resave: false,
     saveUninitialized: false,
-    Cookie: {
-        secure: true,
-        httpOnly: true,
-        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    cookie: {
+        secure: process.env.NODE_ENV == 'production',
+        httpOnly: process.env.NODE_ENV == 'production',
+        maxAge: 7 * 24 * 60 * 60 * 1000,
     }
 
 }
@@ -61,8 +65,8 @@ const sessionConfig = {
 mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-    console.log('App.js/Database connected!')
+db.once('open', function () {
+    console.log('Index.js/Database connected!')
 });
 
 
@@ -70,22 +74,26 @@ db.once('open', function() {
 
 /// App Configs Middelwares
 
-app.engine('ejs', ejsMate)
 app.use(express.urlencoded({ extended: true }))
 app.use(mongoSanitize())
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(methodOverRide('_method'))
 app.use(express.json());
+
+app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/public', express.static('public'))
+
 app.use(session(sessionConfig))
 app.use(flash())
+
 app.use(passport.initialize())
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
+
 app.use((req, res, next) => {
     res.locals.success = req.flash('success')
     res.locals.danger = req.flash('danger')

@@ -9,8 +9,8 @@ const geoCoder = mbxGeoCoding({ accessToken: mbxToken })
 
 
 
-module.exports.allCamps = async(req, res) => {
-    const campgrounds = await Campground.find({});
+module.exports.allCamps = async (req, res) => {
+    const campgrounds = await Campground.find({}).limit(18);
     res.render('campgrounds.ejs', { campgrounds })
 }
 
@@ -19,12 +19,12 @@ module.exports.allCamps = async(req, res) => {
 module.exports.renderNewForm = (req, res) => {
     res.render('createCampground.ejs')
 }
-module.exports.renderEditForm = async(req, res) => {
+module.exports.renderEditForm = async (req, res) => {
     const theCampground = await Campground.findById(req.params.id)
     res.render('editCampground.ejs', { theCampground })
 }
 
-module.exports.showPage = async(req, res) => {
+module.exports.showPage = async (req, res) => {
     const theCampground = await Campground.findById(req.params.id).populate({
         path: 'reviews',
         populate: {
@@ -38,36 +38,36 @@ module.exports.showPage = async(req, res) => {
 
 
 
-module.exports.postNewCamp = async(req, res) => {
+module.exports.postNewCamp = async (req, res) => {
     dataValidator(campValidator, req.body);
 
-
-    const geoData = await geoCoder.forwardGeocode({
-        query: req.body.campground.location,
-        limit: 1,
-    }).send()
-
-
-    const newCamp = await new Campground(req.body.campground);
-    newCamp.geometry = geoData.body.features[0].geometry
-    newCamp.author = req.user._id;
-    newCamp.image = new Object({
-        url: req.file.path,
-        filename: req.file.filename
-    })
+    let camp_id;
+    geoCoder
+        .forwardGeocode({ query: req.body.campground.location,limit: 1, })
+        .send()
+        .then(geoData => {
+            new Campground(req.body.campground)
+                .then(camp => {camp.geometry = geoData.body.features[0].geometry; return camp;})
+                .then(camp => {camp.author = req.user._id; return camp;})
+                .then(camp => {camp.image = new Object({url: req.file.path, filename: req.file.filename}); return camp})
+                .then(camp => {camp.save(); camp_id = camp._id});
+        });
 
 
-    const user = await User.findOne(req.user);
-    user.postedCampgrounds.push(newCamp);
+    User
+        .findOne(req.user)
+        .then(user => {user.postedCampgrounds.push(newCamp); return user})
+        .then(user => user.save());
 
-    await newCamp.save();
-    await user.save()
+
+   
+    
     req.flash('success', 'Successfully Created Campground');
-    res.redirect(`/campgrounds/${newCamp._id}`)
+    res.redirect(`/campgrounds/${camp_id}`)
 
 }
 
-module.exports.postEditCamp = async(req, res) => {
+module.exports.postEditCamp = async (req, res) => {
     dataValidator(campValidator, req.body);
 
     const geoData = await geoCoder.forwardGeocode({
@@ -92,7 +92,7 @@ module.exports.postEditCamp = async(req, res) => {
 
 
 
-module.exports.deleteCamp = async(req, res) => {
+module.exports.deleteCamp = async (req, res) => {
     let { id } = req.params;
     const campToDelete = await Campground.findByIdAndDelete(id)
     const fetchedUser = await User.findById(campToDelete.author)
@@ -105,7 +105,7 @@ module.exports.deleteCamp = async(req, res) => {
 }
 
 
-module.exports.search = async(req, res) => {
+module.exports.search = async (req, res) => {
     const { searchedInput } = req.body
     const campgrounds = await Campground.find({ location: { $regex: `.*${searchedInput}.*` } })
     if (campgrounds.length > 0) {
@@ -121,9 +121,9 @@ module.exports.search = async(req, res) => {
 // for the new version of the app -- camp-shop-redesign.herokuapp.com
 
 
-module.exports.get_all_camp_json = async(req, res) => {
+module.exports.get_all_camp_json = async (req, res) => {
     const campgrounds = await Campground.find({})
-    .select("-image -description -author -reviews -geometry -properties");
+        .select("-image -description -author -reviews -geometry -properties");
     // the select method will take the queried documents and exclude or include feilds
     // look up the select method on the mongoose docs
     res.status(200).send(campgrounds);
@@ -134,12 +134,12 @@ module.exports.get_all_camp_json = async(req, res) => {
 
 
 
-module.exports.query_then_send = async(req, res) => {
+module.exports.query_then_send = async (req, res) => {
     const { query } = req.params;
-    const campgrounds = await Campground.find({ location: { $regex: `.*${query}.*`, $options : 'i'} })
-    .select("-image -description -author -reviews -geometry -properties");
+    const campgrounds = await Campground.find({ location: { $regex: `.*${query}.*`, $options: 'i' } })
+        .select("-image -description -author -reviews -geometry -properties");
     if (campgrounds.length > 0) {
-        res.status(200).send( campgrounds );
+        res.status(200).send(campgrounds);
     } else {
         res.status(404).send({
             "error": "Nothing Was Found"

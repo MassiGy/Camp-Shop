@@ -15,13 +15,12 @@ const upload = multer({ storage })
 
 
 
-// for the new version of the app -- camp-shop-redesign.herokuapp.com
+// for the new version of the app -- camp-shop-redesign
 
 
 router.get('/get_json', catchAsync(campgroundControllers.get_all_camp_json));
 router.get('/search/:query', catchAsync(campgroundControllers.query_then_send));
 //////////////////////////////
-
 
 
 router.get('/', catchAsync(campgroundControllers.allCamps))
