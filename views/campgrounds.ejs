@@ -97,9 +97,11 @@
     </body>
 
     <script>
+        // pay attention to the ejs syntax, There should be no space between 
+        // the characteres <,%,-
         const mapToken = '<%- process.env.mapbox_token %>'
         const campgrounds = {
-            features: <% - JSON.stringify(campgrounds) %>
+            features: <%- JSON.stringify(campgrounds) %>
         }
     </script>
     <script src="/public/scripts/clusterMapScripts.js"></script>
