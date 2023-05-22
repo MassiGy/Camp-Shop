@@ -16,7 +16,7 @@ const imageSchema = new Schema({
     }
 }, { _id: false })
 
-imageSchema.virtual('thumbnail').get(function() {
+imageSchema.virtual('thumbnail').get(function () {
     return this.url.replace('/upload', '/upload/w_300')
 })
 
@@ -59,22 +59,20 @@ const campgroundSchema = new Schema({
     reviews: [{
         type: Schema.Types.ObjectId,
         ref: 'Review',
-    }, ]
+    },]
 }, opts)
 
 
-campgroundSchema.virtual('properties.onMapPupUp').get(function() {
+campgroundSchema.virtual('properties.onMapPupUp').get(function () {
     return `<a href="/campgrounds/${this._id}">Visit ${this.title}</a>`
 })
 
-campgroundSchema.post('findOneAndDelete', async(doc) => {
-    if (doc.reviews.length > 0) {
-        await Review.deleteMany({
-            _id: {
-                $in: doc.reviews
-            }
-        })
-    }
+campgroundSchema.post('findOneAndDelete', doc => {
+
+    // no need to await them, let nodejs do them after the task queue is empty
+    // if awaited, it will slow down the call stack
+    Review.deleteMany({_id: { $in: doc.reviews }  });
+
 })
 
 module.exports = mongoose.model('Campground', campgroundSchema)

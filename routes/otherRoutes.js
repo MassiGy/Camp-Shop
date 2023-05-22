@@ -5,13 +5,17 @@ const appError = require('../tools/appError')
 router.get('/', (req, res) => {
     res.render('home.ejs')
 })
+
 router.get('/home', (req, res) => {
     res.render('home.ejs')
 })
 
+
 router.get('/aboutUs', (req, res) => {
     res.render('aboutUs.ejs')
 })
+
+
 router.get('/logout', (req, res) => {
     req.logOut(err => {
         if (err) {
@@ -22,6 +26,8 @@ router.get('/logout', (req, res) => {
         res.redirect("/campgrounds");
     });
 })
+
+
 router.all('*', (req, res, next) => {
     throw new appError('Not Found', 404)
 })

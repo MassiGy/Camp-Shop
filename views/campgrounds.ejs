@@ -43,7 +43,8 @@
         </div>
         <div class="search-box">
             <form class="search-section" action="/campgrounds/search" method="POST">
-                <input type="text" placeholder="Search By Place" name="searchedInput" id="search-section__input" autofocus>
+                <input type="text" placeholder="Search By Place" name="searchedInput" id="search-section__input"
+                    autofocus>
                 <i id="search-section__icon" class="fas fa-search "></i>
             </form>
         </div>
@@ -59,7 +60,8 @@
                 <% for(let campground of campgrounds) {%>
                     <div class="col-xs-6 col-lg-4 ">
                         <div class="card my-5 shadow-lg p-3  mb-5 bg-body rounded">
-                            <img src=" <%= campground.image.thumbnail %>  " class="card-img-top img-thumbnail img-fluid">
+                            <img src=" <%= campground.image?.thumbnail %>  "
+                                class="card-img-top img-thumbnail img-fluid">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <%=campground.title %>
@@ -67,7 +69,8 @@
                                 <p class="card-text text-muted">
                                     <%= campground.location %>
                                 </p>
-                                <a href="/campgrounds/<%= campground._id %>" class="btn btn-outline-success btn-md mb-1 ">
+                                <a href="/campgrounds/<%= campground._id %>"
+                                    class="btn btn-outline-success btn-md mb-1 ">
                                     <%= campground.title %>
                                 </a>
                             </div>
@@ -94,9 +97,11 @@
     </body>
 
     <script>
+        // pay attention to the ejs syntax, There should be no space between 
+        // the characteres <,%,-
         const mapToken = '<%- process.env.mapbox_token %>'
         const campgrounds = {
-            features: <%- JSON.stringify(campgrounds)%>
+            features: <%- JSON.stringify(campgrounds) %>
         }
     </script>
     <script src="/public/scripts/clusterMapScripts.js"></script>
