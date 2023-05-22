@@ -12,7 +12,10 @@ const geoCoder = mbxGeoCoding({ accessToken: mbxToken })
 module.exports.allCamps = async (req, res) => {
 
     // fetch only some campground to be faster
-    const campgrounds = await Campground.find({}).limit(18);
+    const campgrounds = await Campground
+        .find({})
+        .select("-description -author -reviews -geometry -properties")
+        .limit(18);
     res.render('campgrounds.ejs', { campgrounds });
 }
 
@@ -32,7 +35,10 @@ module.exports.renderEditForm = async (req, res) => {
 module.exports.showPage = async (req, res) => {
 
     // fetch the campground & its reviews
-    const theCampground = await Campground.findById(req.params.id).populate({
+    const theCampground = await Campground
+        .findById(req.params.id)
+        .select("-author -geometry -properties")
+        .populate({
         path: 'reviews',
         populate: {
             path: 'owner',
@@ -147,7 +153,9 @@ module.exports.search = async (req, res) => {
     const { searchedInput } = req.body
 
     // fetch using a regex following the query
-    const campgrounds = await Campground.find({ location: { $regex: `.*${searchedInput}.*` } })
+    const campgrounds = await Campground
+            .find({ location: { $regex: `.*${searchedInput}.*` } })
+            .select("-description -author -reviews -geometry -properties")
 
     if (campgrounds.length > 0) {
 
