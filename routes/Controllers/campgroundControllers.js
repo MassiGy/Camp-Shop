@@ -39,12 +39,12 @@ module.exports.showPage = async (req, res) => {
         .findById(req.params.id)
         .select("-author -geometry -properties")
         .populate({
-        path: 'reviews',
-        populate: {
-            path: 'owner',
-            modal: User,
-        }
-    })
+            path: 'reviews',
+            populate: {
+                path: 'owner',
+                modal: User,
+            }
+        })
     res.render('theCampground.ejs', { theCampground })
 }
 
@@ -118,7 +118,7 @@ module.exports.postEditCamp = async (req, res) => {
         .findByIdAndUpdate(id, req.body.campground, { runValidators: true })
         .then(previousCamp => cloudinary.uploader.destroy(previousCamp.image.filename))
 
-    
+
 
     // flash & redirect to the campground detail page
     req.flash('success', 'Successfully Uptaded Campground')
@@ -134,10 +134,10 @@ module.exports.deleteCamp = async (req, res) => {
 
     // get the camp & its author
     const campToDelete = await Campground.findByIdAndDelete(id)
-    
+
     // conccurently update the user & destroy the image on the cloud 
     Promise.allSettled([
-        User.updateOne({_id: campToDelete.author}, {$pull: {postedCampgrounds: id}}),
+        User.updateOne({ _id: campToDelete.author }, { $pull: { postedCampgrounds: id } }),
         cloudinary.uploader.destroy(campToDelete.image.filename)
     ]);
 
@@ -154,8 +154,8 @@ module.exports.search = async (req, res) => {
 
     // fetch using a regex following the query
     const campgrounds = await Campground
-            .find({ location: { $regex: `.*${searchedInput}.*` } })
-            .select("-description -author -reviews -geometry -properties")
+        .find({ location: { $regex: `.*${searchedInput}.*` } })
+        .select("-description -author -reviews -geometry -properties")
 
     if (campgrounds.length > 0) {
 
@@ -169,6 +169,40 @@ module.exports.search = async (req, res) => {
         res.redirect('/campgrounds')
 
     }
+}
+
+
+// for the map on /campgrounds & /campgrounds/:id 
+
+// get the token
+module.exports.get_mapbox_token = (req, res) => {
+    return res.json({ "token": String(process.env.mapbox_token) });
+}
+
+// get the geometry data for the camps 
+module.exports.get_camps_geometry = async (req, res) => {
+    // get the id from the query string, if any
+    const id = req.query.id;
+
+    let data;
+
+    // if id, select the camp
+    if (id) {
+        data = await Campground
+            .find({ _id: id })
+            .select("-description -author -reviews -location -price -image -properties");
+
+    }
+    // otherwise, select all camps
+    else {
+        data = await Campground
+            .find({})
+            .select("-description -author -reviews -location -price -image -properties");
+
+    }
+
+    // return the data
+    return res.json(data);
 }
 
 

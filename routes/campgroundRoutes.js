@@ -25,6 +25,14 @@ router.get(
     catchAsync(campgroundControllers.renderEditForm)
 )
 
+// for the map box controllers
+
+router.get("/mapbox/token", campgroundControllers.get_mapbox_token)
+router.get("/mapbox/campgrounds", campgroundControllers.get_camps_geometry)
+
+
+
+
 router.post(
     '/new',
     isLoggedIn,

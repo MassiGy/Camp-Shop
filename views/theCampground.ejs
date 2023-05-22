@@ -130,11 +130,8 @@
 
                 </main>
     </body>
-    <script>
-        const mapToken = '<%- process.env.mapbox_token %>';
-        const campCoordinates = <%-JSON.stringify(theCampground.geometry?.coordinates) %>
-    </script>
+   
 
-    <script src="/public//scripts/mapboxScripts.js"></script>
+    <script src="/public/scripts/mapboxScripts.js"></script>
 
     <%- include('./partials/buttom.ejs') %>
