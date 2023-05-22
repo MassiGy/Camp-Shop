@@ -14,7 +14,7 @@ module.exports.allCamps = async (req, res) => {
     // fetch only some campground to be faster
     const campgrounds = await Campground
         .find({})
-        .select("-description -author -reviews -geometry -properties")
+        .select("-description -author -reviews -geometry -price -properties")
         .limit(18);
     res.render('campgrounds.ejs', { campgrounds });
 }
@@ -28,7 +28,9 @@ module.exports.renderNewForm = (req, res) => {
 module.exports.renderEditForm = async (req, res) => {
 
     // get the campground data, and then inject them to the edit form
-    const theCampground = await Campground.findById(req.params.id)
+    const theCampground = await Campground
+        .findById(req.params.id)
+        .select("-geometry -properties -image -author")
     res.render('editCampground.ejs', { theCampground })
 }
 
@@ -37,7 +39,7 @@ module.exports.showPage = async (req, res) => {
     // fetch the campground & its reviews
     const theCampground = await Campground
         .findById(req.params.id)
-        .select("-author -geometry -properties")
+        .select("-geometry -properties")
         .populate({
             path: 'reviews',
             populate: {
@@ -155,7 +157,7 @@ module.exports.search = async (req, res) => {
     // fetch using a regex following the query
     const campgrounds = await Campground
         .find({ location: { $regex: `.*${searchedInput}.*` } })
-        .select("-description -author -reviews -geometry -properties")
+        .select("-description -author -reviews -price -geometry -properties")
 
     if (campgrounds.length > 0) {
 

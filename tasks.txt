@@ -4,3 +4,9 @@
 
 
 The authenticate process is working just fine. Same goes for the authorization layer.
+
+
+To make sure that our new performance enhancements works, let compare the cost of the service before & after:
+
+before: cost of the application server is $1.29 (this was recorded in the last month which was not really a hight activity month)
+before: cost of the application server is ?
