@@ -148,13 +148,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 .card-img-top {
-    height: 10rem;
-    width: 20rem;
+    height: auto;
+    width: auto;
 }
 
 .card {
-    height: 25rem;
-    width: 20rem;
+    height: auto;
+    width: auto;
 }
 
 
