@@ -219,7 +219,8 @@ module.exports.get_all_camp_json = async (req, res) => {
     // look up the select method on the mongoose docs
     const campgrounds = await Campground
         .find({})
-        .select("-image -description -author -reviews -geometry -properties");
+        .limit(16)
+        .select("-image -description -author -title -reviews -geometry -properties");
 
     res.status(200).send(campgrounds);
 }
@@ -237,7 +238,8 @@ module.exports.query_then_send = async (req, res) => {
     // get the campground using the query
     const campgrounds = await Campground
         .find({ location: { $regex: `.*${query}.*`, $options: 'i' } })
-        .select("-image -description -author -reviews -geometry -properties");
+        .limit(16)
+        .select("-image -description -author -title -reviews -geometry -properties");
 
     if (campgrounds.length > 0) {
 
