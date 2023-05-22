@@ -82,3 +82,8 @@ body {
     color: #333;
     text-shadow: none;
 }
+
+.nav-item.dropdown .nav-link{
+    border-bottom: transparent solid 2px;
+    transition: all ease-in-out 0.3s;
+}
