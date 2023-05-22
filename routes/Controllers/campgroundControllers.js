@@ -70,15 +70,12 @@ module.exports.postNewCamp = async (req, res) => {
         filename: req.file.filename
     })
 
-    // find the the user & then push to it the new camp
-    const user = await User.findOne(req.user);
-    user.postedCampgrounds.unshift(newCamp);
 
 
-    // save the new camp the the modified user concurrently
+    // save the new camp & update the user concurrently
     await Promise.allSettled([
         newCamp.save(),
-        user.save(),
+        User.updateOne(req.user, { $push: { postedCampgrounds: newCamp } })
     ])
 
     // informe the user & redirect
@@ -109,11 +106,13 @@ module.exports.postEditCamp = async (req, res) => {
     })
 
 
-    // theCampToEdit is the camp before the update
-    let theCampToEdit = await Campground.findByIdAndUpdate(id, req.body.campground, { runValidators: true })
+    // update the camp then delete its previous image 
+    // there is no need to wait untill the previous image is destroy to move on
+    await Campground
+        .findByIdAndUpdate(id, req.body.campground, { runValidators: true })
+        .then(previousCamp => cloudinary.uploader.destroy(previousCamp.image.filename))
 
-    // remove the preivous image on the cloud
-    await cloudinary.uploader.destroy(theCampToEdit.image.filename)
+    
 
     // flash & redirect to the campground detail page
     req.flash('success', 'Successfully Uptaded Campground')
@@ -125,20 +124,14 @@ module.exports.postEditCamp = async (req, res) => {
 
 module.exports.deleteCamp = async (req, res) => {
 
-
     let { id } = req.params;
 
     // get the camp & its author
     const campToDelete = await Campground.findByIdAndDelete(id)
-    const fetchedUser = await User.findById(campToDelete.author)
-
-    // remove the camp from the author posted camps list
-    let campToDeleteIndex = fetchedUser.postedCampgrounds.indexOf(campToDelete._id)
-    fetchedUser.postedCampgrounds.splice(campToDeleteIndex, 1);
-
-    // conccurently save the modifies user & destroy the image on the cloud 
+    
+    // conccurently update the user & destroy the image on the cloud 
     Promise.allSettled([
-        fetchedUser.save(),
+        User.updateOne({_id: campToDelete.author}, {$pull: {postedCampgrounds: id}}),
         cloudinary.uploader.destroy(campToDelete.image.filename)
     ]);
 
