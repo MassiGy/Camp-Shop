@@ -35,7 +35,7 @@ body {
 }
 
 .cover-container {
-    max-width: 60vw;
+    max-width: 80vw;
 }
 
 .nav-link {
@@ -47,8 +47,8 @@ body {
 }
 
 .nav-link:hover {
-    color: rgba(255, 255, 255, 0.5);
-    border-bottom-color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 1);
+    border-bottom-color: rgba(255, 255, 255, 1);
 }
 
 .nav-link.active {
@@ -83,7 +83,7 @@ footer {
 
 .text-box__content {
     font-size: 1.8rem;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .text-box__link {
@@ -92,4 +92,13 @@ footer {
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
+}
+
+.social-links{
+    display: flex;
+    justify-content: center;
+}
+
+.pt-3{
+    padding-top: 3rem;
 }
