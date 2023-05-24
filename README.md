@@ -27,7 +27,7 @@
 - Ejs for the server side rendering template engine. (SSR)
 - HTML/CSS/Bootstrap for the views look.
 - Mapbox api for the maps.
-- Cloudinary for the image storage.
+- Cloudinary for image storage.
 - Git for source code control.
 
 <br>
@@ -81,8 +81,9 @@ For more details, here are the steps to follow along.
 
 - **Now, that your work is on github, you can go ahead & fire up a pull request.**
 
-After doing so, I will be prompted to review your code to see if will merge it or not. Thanks for your hard work & take care! 
+After doing so, I will be prompted to review your code to see if it will be merged or not. Thanks for your hard work & take care! 
 
 <br>
 
 ---
+
