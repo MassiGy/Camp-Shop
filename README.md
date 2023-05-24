@@ -54,25 +54,23 @@ For more details, here are the steps to follow along.
 
 ```sh
 
-    # clone 
-    git clone https://www.github.com/<your_username>/Camp-Shop.git
+    # after cloning, navigate to the project
 
+    # to sync with origin
+    git remote add upstream <main_repo_url>
+    git remote add origin <your_forked_repo_url>
+    
+    # to setup your locat dev branch
+    git branch your_local_branch
+    git checkout your_local_branch
 
-    # navigate to the project
-    cd Camp-Shop 
-
-    # create your branch with a meaningful name
-
-    git checkout -b dev-your_username-your_feature
-
-
-    # git add * & git push
-
+    # to add your changes
     git add *
-    git commit -m "+dev-your_username-your_feature: your commit"
-    git push origin dev-your_username-your_feature
+    git commit -m "+your_local_branch: your commit here"
 
-  
+    # push to your forked repo
+    git push origin your_local_branch
+
 
 ```
 
@@ -85,5 +83,10 @@ After doing so, I will be prompted to review your code to see if it will be merg
 
 <br>
 
+
+Also by doing so, if any updates are made to the main repo `master` branch, you can easily get the latest updates by 
+`git pull upstream master`
+
 ---
+
 
