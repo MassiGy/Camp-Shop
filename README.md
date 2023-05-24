@@ -84,8 +84,7 @@ After doing so, I will be prompted to review your code to see if it will be merg
 <br>
 
 
-Also by doing so, if any updates are made to the main repo `master` branch, you can easily get the latest updates by 
-`git pull upstream master`
+Also by doing so, if any updates are made to the main repo `master` branch, you can easily get the latest updates with  `git pull upstream master`
 
 ---
 
