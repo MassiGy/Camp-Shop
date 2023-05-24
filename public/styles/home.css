@@ -68,8 +68,8 @@ body {
 }
 
 .nav-link:hover {
-    color: rgba(255, 255, 255, 0.5);
-    border-bottom-color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 1);
+    border-bottom-color: rgba(255, 255, 255, 1);
 }
 
 .nav-link.active {
