@@ -39,12 +39,14 @@ main {
 }
 
 .hero-image {
-    width: 100vw;
+    width: calc(100vw - 10%);
     height: 80vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/https-res-cloudinary-com-massigy-images/image/upload/v1619879776/CampShop/AdminPictures/photo-1476041800959-2f6bb412c8ce_bfxx6a.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    margin-left: 10%;
 }
 
 .hero-text {
@@ -57,10 +59,10 @@ main {
 }
 
 .hero-text__header {
-    font-weight: 300;
+    font-weight: 600;
     font-size: 5rem;
-    letter-spacing: 20;
-    padding-left: 1rem;
+    letter-spacing: 5px;
+    padding-left: 0rem
 }
 
 .hero-text__attach {
@@ -139,6 +141,18 @@ body::-webkit-scrollbar-thumb {
     .navbar {
         display: none;
     }
+    .hero-image{
+        width: 100vw;
+        margin-left: 0;
+    }
+    .hero-text{
+        width: 95%;
+    }
+    .hero-text__header{
+        font-weight: 600;
+        letter-spacing: 2;
+        padding-left: 0;
+    }
 }
 
 @media screen and (min-width: 80rem) {
@@ -186,6 +200,7 @@ body::-webkit-scrollbar-thumb {
     margin-right: 1rem;
     z-index: 1000;
     margin-bottom: 4rem;
+    cursor: pointer;
 }
 
 .map-box__map {
@@ -216,6 +231,7 @@ body::-webkit-scrollbar-thumb {
     margin-right: 0.3rem;
     margin-left: 0.3rem;
     z-index: 1000;
+    cursor: pointer;
 }
 
 
@@ -235,13 +251,13 @@ body::-webkit-scrollbar-thumb {
     position: absolute;
     top: 86%;
     right: 0%;
-    height: 5rem;
     border-radius: 4rem;
     background-color: chocolate;
     padding: 1rem;
     margin-right: 1rem;
     margin-bottom: 4rem;
     z-index: 1000;
+    cursor: pointer;
 }
 
 #search-section__input {
