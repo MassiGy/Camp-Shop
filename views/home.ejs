@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="https://img.icons8.com/fluent/48/000000/camping-tent.png" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/styles/home.css">
     <title> Camp Shop</title>
 </head>
@@ -18,6 +20,7 @@
                 <h3 class="float-md-left mb-5 header__logo"><i class="fas fa-map-signs"></i> Camp Shop</h3>
                 <nav class="nav nav-masthead justify-content-center float-md-right header__navbar">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="/aboutUs">About Us</a>
                     <% if(!activeUser) { %>
                         <a class="nav-link" href="/login">Login</a>
                         <a class="nav-link" href="/signup">SignUp</a>
@@ -25,7 +28,7 @@
                             <a class="nav-link" href="/logout">Logout</a>
                             <a class="nav-link" href="/signout">SignOut</a>
                             <% } %>
-                                <a class="nav-link" href="/aboutUs">About Us</a>
+
 
                 </nav>
             </div>
@@ -34,7 +37,8 @@
             <div class="section-about">
 
                 <h1 class="heading-primary"><i class="fas fa-map-signs"></i> Camp Shop</h1>
-                <p class="lead paragraph"> Welcome to Camp Shop! Find, Post, Review Campgrounds For Free! Feel free to share some of your own and comment on others!</p>
+                <p class="lead paragraph"> Welcome to Camp Shop! Find, Post, Review Campgrounds For Free! Feel free to
+                    share some of your own and comment on others!</p>
                 <a href="/campgrounds" class="btn btn-md btn-secondary font-weight-bold border-white bg-white">View
                     Campgrounds</a>
             </div>
@@ -46,8 +50,12 @@
     </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
