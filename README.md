@@ -48,7 +48,7 @@ For more details, here are the steps to follow along.
 
 - **First, fork the project on github.**
 
-- **Use git to clone your forked project locally.**
+- **Use git to clone & setup your forked project locally.**
 
 <br>
 
