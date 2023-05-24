@@ -1,0 +1,83 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 80%;
+}
+
+@media (max-width:80rem) {
+    html {
+        font-size: 70%;
+    }
+
+    .btn {
+        font-size: 1.5rem;
+    }
+}
+
+body {
+    font-family: 'Lato', Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.6rem;
+}
+
+.pl-0 {
+    padding-left: 0;
+}
+ul > h4{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.form-main{
+    width: 100%;
+}
+.form-main label{
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-main input.form-control{
+    border-radius: 0.2rem !important;
+}
+
+.form-main input.form-control::placeholder{
+    text-transform: capitalize;
+}
+
+.navbar-expand-lg .navbar-collapse{
+    flex-grow: initial !important;
+}
+.navbar-expand-lg .navbar-collapse .dropdown-menu[data-bs-popper]{
+    left: auto;
+    margin-top: 0.125rem;
+    right: 0;
+}
+
+.navbar-expand-lg .navbar-collapse a.nav-link.dropdown-toggle{
+    border-bottom: transparent solid 2px;
+}
+.navbar-expand-lg .navbar-collapse a.nav-link:hover {
+    border-bottom: #fff solid 2px;
+    color: #fff !important;
+}
+
+ul.navbar__dropdown.dropdown-menu.show .nav-link{
+    border-bottom: transparent solid 2px;
+    transition: all ease-in-out 0.3s;
+}
+ul.navbar__dropdown.dropdown-menu.show a.nav-link:hover{
+    border-bottom: #fff solid 2px;
+}
+
+ul.navbar__dropdown.dropdown-menu.show li:last-child a.nav-link:hover {
+    border-bottom: transparent solid 2px;
+}
+
+.main-form-sec{
+    background: #fff;
+    padding: 24px;
+    box-shadow: #00000057 0px 6px 12px;
+    border-radius: 4px;
+}
