@@ -12,7 +12,7 @@
 ## How to access the project:
 
 
-- [Camp shop is online on railway.](camp-shop.up.railway.app)
+- [Camp shop is online on railway.](https://www.camp-shop.up.railway.app)
 
 
 <br>
