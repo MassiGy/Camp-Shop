@@ -20,8 +20,10 @@
                     <div class="map-box__map" id='map'></div>
                 </div>
                 <div class="row">
-                    <div id="theCampShowcase" class="col-xs-6 col-md-4  mx-2 card my-5 shadow-lg p-3  mb-5 bg-body rounded">
-                        <img src=" <%= theCampground.image?.thumbnail %>  " class="card-img-top img-fluid img-thumbnail">
+                    <div id="theCampShowcase"
+                        class="col-xs-6 col-md-4  mx-2 card my-5 shadow-lg p-3  mb-5 bg-body rounded">
+                        <img src=" <%= theCampground.image?.thumbnail %>  "
+                            class="card-img-top img-fluid img-thumbnail">
                         <div class="card-body">
                             <h5 class="card-title">
                                 Camp Name:
@@ -42,25 +44,30 @@
                             </details>
 
                             <% if(activeUser && activeUser._id.equals(theCampground.author)){ %>
-                                <a class="btn btn-outline-info mt-2 mb-1" href="/campgrounds/<%= theCampground._id %>/edit">  Edit Camp  </a>
-                                <a class="btn btn-outline-info mt-2 mb-1" href="/campgrounds">All Camps  </a>
-                                <form class="d-inline" action="/campgrounds/<%= theCampground._id %>?_method=DELETE" method="POST">
+                                <a class="btn btn-outline-info mt-2 mb-1"
+                                    href="/campgrounds/<%= theCampground._id %>/edit"> Edit Camp </a>
+                                <a class="btn btn-outline-info mt-2 mb-1" href="/campgrounds">All Camps </a>
+                                <form class="d-inline" action="/campgrounds/<%= theCampground._id %>?_method=DELETE"
+                                    method="POST">
                                     <button class="btn btn-outline-danger mt-2 mb-1">Delete</button>
                                 </form>
                                 <% } %>
                         </div>
                     </div>
-                    <div class="col-xs-6 col-md-4 mx-2  card my-5 shadow-lg p-3  mb-5 bg-body rounded" id="postReviewForm">
+                    <div class="col-xs-6 col-md-4 mx-2  card my-5 shadow-lg p-3  mb-5 bg-body rounded"
+                        id="postReviewForm">
                         <div class="card-body mt-5">
                             <div class="card-title">
                             </div>
-                            <form class="form-groupe" action="/campgrounds/<%= theCampground._id %>/reviews/new" method="post">
+                            <form class="form-groupe" action="/campgrounds/<%= theCampground._id %>/reviews/new"
+                                method="post">
                                 <h1 class="mb-5">Feedback Us!</h1>
 
                                 <section id="starsRating">
                                     <div class="col-3 ">
                                         <fieldset class="starability-checkmark">
-                                            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0" checked aria-label="No rating." />
+                                            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]"
+                                                value="0" checked aria-label="No rating." />
 
                                             <input type="radio" id="rate1" name="review[rating]" value="1" />
                                             <label for="rate1">1 star.</label>
@@ -83,7 +90,9 @@
                                     </div>
                                 </section>
                                 <div class="mb-3">
-                                    <textarea class="form-control" name="review[reviewBody]" id="review[reviewBody]" cols="60" rows="3" placeholder="Tell us more about this camp!" autofocus></textarea>
+                                    <textarea class="form-control" name="review[reviewBody]" id="review[reviewBody]"
+                                        cols="60" rows="3" placeholder="Tell us more about this camp!"
+                                        autofocus></textarea>
                                 </div>
                                 <button class="btn btn-outline-success btn-lg mt-5 ">Post</button>
 
@@ -94,43 +103,59 @@
 
                 </div>
 
-                <main class=" mb-3">
-                    <% if(theCampground.reviews?.length >0){ %>
+                <main class="campgroundReviews mb-3">
+                    <% if(theCampground.reviews?.length>0){ %>
                         <h5 class="text-center my-5">Camp Reviews:</h5>
                         <% } %>
-                            <% for(let review of theCampground.reviews){ %>
-                                <div class="row mb-4  shadow-lg p-3  bg-body rounded reviews">
+                            <div class="row mx-0 review-main">
+                                <div class="col-md-8 justify-content-center">
+                                    <div class="row mx-0">
+                                        <% for(let review of theCampground.reviews){ %>
+                                            <div class="col-md-6 reviews">
+                                                <div class="row mx-0 shadow-lg rounded">
+                                                    <div class="col-3 col-md-4 ">
+                                                        <img id="avatarImg"
+                                                            src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
+                                                            alt="">
 
-                                    <div class="col-xs-6 col-md-4 ">
-                                        <img id="avatarImg" src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png" alt="">
-                                        <br>
-                                        <strong class="ms-3">  <%= review?.owner?.username %></strong>
-                                    </div>
+                                                        <strong class="mt-2 d-block text-center">
+                                                            <%= review?.owner?.username %>
+                                                        </strong>
+                                                    </div>
 
-                                    <div class="col-xs-6 col-md-4">
-                                        <br>
-                                        <p id="starsRatingResult" class="starability-result" data-rating=<%=review.rating %>>
-                                        </p>
-                                        <p>
-                                            <h6>Review Text :</h6>
-                                            <%= review?.reviewBody %>
-                                        </p>
+                                                    <div class="col-9 col-md-8">
+                                                        <br>
+                                                        <p id="starsRatingResult" class="starability-result"
+                                                            data-rating=<%=review.rating %>>
+                                                        </p>
 
-                                        <% if(activeUser && activeUser._id.equals(review?.owner?._id)){%>
-                                            <div>
-                                                <form action="/campgrounds/<%= theCampground._id %>/reviews/<%= review?._id %>?_method=DELETE" method="post">
-                                                    <button class="btn btn-outline-danger">Delete</button>
-                                                </form>
+                                                        <h6>Review Text :</h6>
+                                                        <p class="txt-overflow">
+                                                            <%= review?.reviewBody %>
+                                                        </p>
+
+                                                        <% if(activeUser &&
+                                                            activeUser._id.equals(review?.owner?._id)){%>
+                                                            <div>
+                                                                <form
+                                                                    action="/campgrounds/<%= theCampground._id %>/reviews/<%= review?._id %>?_method=DELETE"
+                                                                    method="post">
+                                                                    <button
+                                                                        class="btn btn-outline-danger">Delete</button>
+                                                                </form>
+                                                            </div>
+                                                            <% } %>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <% } %>
                                     </div>
-
                                 </div>
-                                <% } %>
+                            </div>
 
                 </main>
     </body>
-   
+
 
     <script src="/public/scripts/mapboxScripts.js"></script>
 

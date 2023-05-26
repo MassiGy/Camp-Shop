@@ -110,3 +110,53 @@ textarea {
     margin-left: 0.3rem;
     z-index: 1000;
 }
+
+.navbar-expand-lg .navbar-collapse {
+    flex-grow: initial !important;
+}
+
+.navbar-expand-lg .navbar-collapse .dropdown-menu[data-bs-popper] {
+    left: auto;
+    margin-top: 0.125rem;
+    right: 0;
+}
+
+.navbar-expand-lg .navbar-collapse a.nav-link.dropdown-toggle {
+    border-bottom: transparent solid 2px;
+}
+
+.navbar-expand-lg .navbar-collapse a.nav-link:hover {
+    border-bottom: #fff solid 2px;
+    color: #fff !important;
+}
+
+ul.navbar__dropdown.dropdown-menu.show .nav-link {
+    border-bottom: transparent solid 2px;
+    transition: all ease-in-out 0.3s;
+}
+
+ul.navbar__dropdown.dropdown-menu.show a.nav-link:hover {
+    border-bottom: #fff solid 2px;
+}
+
+ul.navbar__dropdown.dropdown-menu.show li:last-child a.nav-link:hover {
+    border-bottom: transparent solid 2px;
+}
+
+.campgroundReviews{
+    width: 100%;
+}
+.campgroundReviews h5{
+    font-size: 3rem;
+    font-weight: bold;
+}
+.review-main .reviews{
+    margin-bottom: 16px;
+}
+.review-main .reviews .row.mx-0.shadow-lg.rounded{
+    min-height: 150px;
+    padding: 12px;
+}
+.txt-overflow{
+    overflow-wrap: anywhere;
+}
