@@ -150,7 +150,13 @@ ul.navbar__dropdown.dropdown-menu.show li:last-child a.nav-link:hover {
     font-size: 3rem;
     font-weight: bold;
 }
-
-.review-main{
-    
+.review-main .reviews{
+    margin-bottom: 16px;
+}
+.review-main .reviews .row.mx-0.shadow-lg.rounded{
+    min-height: 150px;
+    padding: 12px;
+}
+.txt-overflow{
+    overflow-wrap: anywhere;
 }
