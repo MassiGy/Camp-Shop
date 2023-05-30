@@ -330,3 +330,18 @@ body::-webkit-scrollbar-thumb {
 .col-xs-6.col-lg-4:last-child .card.my-5.shadow-lg.p-3.mb-5.bg-body.rounded {
     margin-bottom: 3rem !important;
 }
+a.col-xs-6.col-lg-4 .img-thumbnail{
+    padding: 0;
+    border-radius: 4px;
+}
+a.col-xs-6.col-lg-4{
+    text-decoration: none !important;
+}
+a.col-xs-6.col-lg-4 .card-title{
+    color:#212529
+}
+a.col-xs-6.col-lg-4 .card .card-body{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+}
