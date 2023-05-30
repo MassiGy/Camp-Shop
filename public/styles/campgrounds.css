@@ -336,6 +336,10 @@ a.col-xs-6.col-lg-4 .img-thumbnail{
 }
 a.col-xs-6.col-lg-4{
     text-decoration: none !important;
+    transition: all ease-in-out 0.3s;
+}
+a.col-xs-6.col-lg-4:hover{
+    transform: scale(1.01);
 }
 a.col-xs-6.col-lg-4 .card-title{
     color:#212529
