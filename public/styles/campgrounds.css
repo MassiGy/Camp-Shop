@@ -327,7 +327,7 @@ body::-webkit-scrollbar-thumb {
     margin-bottom: 0 !important;
 }
 
-.col-xs-6.col-lg-4:last-child .card.my-5.shadow-lg.p-3.mb-5.bg-body.rounded {
+.col-xs-6.col-lg-4:last-child .card.shadow-lg.p-3.mb-5.bg-body.rounded {
     margin-bottom: 3rem !important;
 }
 a.col-xs-6.col-lg-4 .img-thumbnail{
