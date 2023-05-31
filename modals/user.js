@@ -17,7 +17,7 @@ const userSchema = new Schema({
 userSchema.plugin(passportLM)
 
 
-userSchema.post('findOneAndDelete', async (doc) => {
+userSchema.post('findOneAndDelete', (doc) => {
     // no need to await, this will be done after the task queue is empty
     // if awaited, it will slow down the call stack
     Review.deleteMany({ owner: doc._id });
