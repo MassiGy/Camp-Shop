@@ -160,3 +160,15 @@ ul.navbar__dropdown.dropdown-menu.show li:last-child a.nav-link:hover {
 .txt-overflow{
     overflow-wrap: anywhere;
 }
+#theCampShowcase .img-thumbnail{
+    padding: 0 !important;
+}
+#theCampShowcase .card-body details{
+    font-size: 12px;
+    color: #000 !important;
+}
+#theCampShowcase .card-body{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+}
